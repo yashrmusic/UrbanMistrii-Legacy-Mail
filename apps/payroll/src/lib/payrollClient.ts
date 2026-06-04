@@ -49,11 +49,14 @@ type DemoState = {
 };
 
 const demoKey = "um_payroll_app_state_v1";
+const mainAdminEmail = "mail@urbanmistrii.com";
 
 const numberValue = (value: number | string | null | undefined) => {
   const parsed = Number(value ?? 0);
   return Number.isFinite(parsed) ? parsed : 0;
 };
+
+const isMainAdminEmail = (email?: string | null) => email?.trim().toLowerCase() === mainAdminEmail;
 
 const toEmployee = (employee: DbEmployee): Employee => ({
   id: employee.id,
@@ -333,6 +336,8 @@ export const createDemoClient = (): PayrollClient => ({
 export const createSupabasePayrollClient = (supabase: SupabaseClient, session: Session): PayrollClient => ({
   mode: "supabase",
   getRole: async (): Promise<RoleName> => {
+    if (isMainAdminEmail(session.user.email)) return "admin";
+
     const { data, error } = await supabase
       .from("user_roles")
       .select("role")

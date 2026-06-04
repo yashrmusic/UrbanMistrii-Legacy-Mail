@@ -92,10 +92,13 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce(
-    (select role from public.user_roles where user_id = auth.uid()),
-    'pending'
-  );
+  select case
+    when lower(auth.jwt() ->> 'email') = 'mail@urbanmistrii.com' then 'admin'
+    else coalesce(
+      (select role from public.user_roles where user_id = auth.uid()),
+      'pending'
+    )
+  end;
 $$;
 
 create or replace function public.is_payroll_admin()
@@ -143,6 +146,7 @@ declare
   assigned_role text;
 begin
   select case
+    when lower(coalesce(new.email, '')) = 'mail@urbanmistrii.com' then 'admin'
     when not exists (select 1 from public.user_roles) then 'admin'
     when exists (
       select 1
@@ -159,6 +163,7 @@ begin
   on conflict (user_id) do update
     set email = lower(excluded.email),
         role = case
+          when excluded.email = 'mail@urbanmistrii.com' then 'admin'
           when public.user_roles.role = 'admin' then 'admin'
           else excluded.role
         end,
@@ -173,18 +178,33 @@ create trigger on_auth_user_created_payroll_role
   after insert or update of email on auth.users
   for each row execute function public.handle_new_payroll_user();
 
+insert into public.user_roles (user_id, email, role)
+select id, lower(email), 'admin'
+from auth.users
+where lower(email) = 'mail@urbanmistrii.com'
+on conflict (user_id) do update
+  set email = excluded.email,
+      role = 'admin',
+      updated_at = now();
+
 update public.user_roles
 set role = 'employee',
     updated_at = now()
 from auth.users
 where user_roles.user_id = users.id
   and user_roles.role = 'pending'
+  and lower(coalesce(users.email, '')) <> 'mail@urbanmistrii.com'
   and exists (
     select 1
     from public.employees
     where employees.is_active
       and lower(employees.email) = lower(coalesce(users.email, ''))
   );
+
+update public.user_roles
+set role = 'admin',
+    updated_at = now()
+where lower(email) = 'mail@urbanmistrii.com';
 
 alter table public.user_roles enable row level security;
 alter table public.employees enable row level security;
