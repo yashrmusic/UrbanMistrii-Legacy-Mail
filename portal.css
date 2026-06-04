@@ -213,6 +213,17 @@ h2 {
   padding: 0 18px;
 }
 
+.portal-app-link {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.payroll-app-callout {
+  margin-bottom: 18px;
+}
+
 .ghost-action {
   background: transparent;
   border: 1px solid var(--line);
