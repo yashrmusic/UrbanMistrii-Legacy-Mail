@@ -1,0 +1,6 @@
+Contact: mailto:hr@urbanmistrii.com
+Contact: mailto:mail@urbanmistrii.com
+Expires: 2027-06-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://urbanmistrii.com/.well-known/security.txt
+Policy: https://urbanmistrii.com/portal

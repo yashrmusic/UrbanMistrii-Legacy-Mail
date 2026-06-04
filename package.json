@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "vercel-build": "node scripts/write-portal-config.js",
+    "build": "node scripts/write-portal-config.js"
+  }
+}

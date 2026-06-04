@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>Urban Mistrii Team Portal</title>
+    <meta name="theme-color" content="#f7f3ec">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/portal.css">
+  </head>
+  <body>
+    <main class="portal-shell">
+      <aside class="portal-sidebar" aria-label="Portal navigation">
+        <a class="portal-brand" href="/">
+          <img src="/assets/urbanmistrii-logo-clean.png" alt="Urban Mistrii Studio">
+        </a>
+        <nav class="portal-tabs" aria-label="Workflows" data-requires-auth hidden>
+          <div class="tab-group">
+            <p class="tab-label">Workspace</p>
+            <button class="tab is-active" type="button" data-tab="dashboard">Dashboard</button>
+            <button class="tab" type="button" data-tab="requests">My requests</button>
+            <button class="tab" type="button" data-tab="profile">My profile</button>
+          </div>
+          <div class="tab-group">
+            <p class="tab-label">Operations</p>
+            <button class="tab" type="button" data-tab="approvals" data-role-scope="hr,admin,leadership">Approvals</button>
+            <button class="tab" type="button" data-tab="people" data-role-scope="hr,admin,leadership">People</button>
+            <button class="tab" type="button" data-tab="activity" data-role-scope="hr,admin,leadership">Activity</button>
+            <button class="tab" type="button" data-tab="documents" data-role-scope="hr,admin,leadership">Documents</button>
+            <button class="tab" type="button" data-tab="leave">Leave</button>
+            <button class="tab" type="button" data-tab="onboarding" data-role-scope="hr,admin,leadership">Onboarding</button>
+            <button class="tab" type="button" data-tab="offboarding" data-role-scope="hr,admin,leadership">Offboarding</button>
+            <button class="tab" type="button" data-tab="payroll">Payroll</button>
+          </div>
+        </nav>
+        <div class="portal-side-note" data-guest-only>
+          <p class="portal-kicker">Team Access</p>
+          <h2>Secure access to internal operations, approvals, and team workflows.</h2>
+          <p>Use your company Google account or approved team credentials to enter the private Urban Mistrii dashboard.</p>
+        </div>
+        <div class="portal-lock">
+          <span>Auth</span>
+          <strong data-auth-state>Checking</strong>
+        </div>
+      </aside>
+
+      <section class="portal-main">
+        <header class="portal-header">
+          <div>
+            <p class="portal-kicker" data-auth-heading>Private Operations</p>
+            <h1 data-auth-title>Internal operations dashboard</h1>
+            <p class="portal-subhead" data-auth-subhead>Secure access to records, approvals, and internal workflows.</p>
+          </div>
+          <div class="header-actions" data-requires-auth hidden>
+            <button class="ghost-action" type="button" data-sign-out hidden>Sign out</button>
+            <button class="icon-button" type="button" title="Export records" aria-label="Export records" data-export data-role-scope="hr,admin,leadership">Export</button>
+            <button class="primary-action" type="button" data-open="leave">New request</button>
+          </div>
+        </header>
+
+        <p class="portal-notice" data-portal-notice hidden></p>
+
+        <section class="auth-card" data-auth-card data-guest-only>
+          <div>
+            <p class="portal-kicker">Secure sign in</p>
+            <h2>Password login</h2>
+            <p data-auth-copy>Sign in with your company Google account or your approved team email and password to access the private dashboard.</p>
+          </div>
+          <form class="auth-form" data-auth-form>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" placeholder="name@urbanmistrii.com" required>
+            </label>
+            <label>
+              <span>Password</span>
+              <input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+            </label>
+            <button type="submit">Sign in</button>
+            <button type="button" class="oauth-button" data-google-sign-in>Sign in with Google</button>
+            <p class="form-message" data-auth-message></p>
+          </form>
+        </section>
+
+        <section class="security-note" data-guest-only>
+          <div>
+            <p class="portal-kicker">Access controls</p>
+            <h2>Internal access is limited to approved company accounts and protected routes.</h2>
+          </div>
+          <ul class="security-list">
+            <li>Company-domain email gating</li>
+            <li>No-store caching on private routes</li>
+            <li>Database row-level access rules</li>
+            <li>Production environment credentials</li>
+            <li>Session-based access to internal records</li>
+          </ul>
+        </section>
+
+        <section class="panel is-active" data-panel="dashboard" data-requires-auth hidden>
+          <div class="metric-grid">
+            <article>
+              <span>Leave requests</span>
+              <strong data-count="leave">0</strong>
+            </article>
+            <article>
+              <span>Onboarding cases</span>
+              <strong data-count="onboarding">0</strong>
+            </article>
+            <article>
+              <span>Offboarding cases</span>
+              <strong data-count="offboarding">0</strong>
+            </article>
+            <article>
+              <span>Payroll entries</span>
+              <strong data-count="payroll">0</strong>
+            </article>
+          </div>
+          <div class="spotlight-grid">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Today at a glance</h2>
+                <span>Current session</span>
+              </div>
+              <div class="profile-snapshot">
+                <strong data-current-name>Team member</strong>
+                <p data-current-email>Signed-in account details will appear here.</p>
+                <div class="meta-pills">
+                  <span class="meta-pill" data-current-role>Team member</span>
+                  <span class="meta-pill" data-current-access>Company account</span>
+                </div>
+              </div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Priority queue</h2>
+                <span>Immediate next steps</span>
+              </div>
+              <p class="panel-intro">A short list of the things most worth addressing next inside the portal.</p>
+              <div class="queue-list" data-priority-queue></div>
+            </article>
+          </div>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Available actions</h2>
+                <span>Workspace</span>
+              </div>
+              <p class="panel-intro">The actions available for your account. Each submission is saved to the private system and shared with the right internal team.</p>
+              <div class="queue-list" data-queue></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Your access scope</h2>
+                <span data-workspace-label>Team workspace</span>
+              </div>
+              <p class="panel-intro" data-role-summary>Signed-in team members can move through personal requests, core records, and the daily operating essentials available to their workspace.</p>
+              <ul class="check-list" data-role-capabilities>
+                <li>Personal requests and profile access</li>
+                <li>Secure leave and payroll submissions</li>
+                <li>Protected session-based record access</li>
+              </ul>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Submission basics</h2>
+                <span>Before you send</span>
+              </div>
+              <ul class="check-list" data-baseline-list>
+                <li>Use your company email for every request</li>
+                <li>Check dates and month fields before submitting</li>
+                <li>Add notes when context will help HR review faster</li>
+                <li>Submitted records stay tied to your signed-in account</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="requests" data-requires-auth hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>My requests</h2>
+                <span>Personal records</span>
+              </div>
+              <p class="panel-intro">A single view of the requests tied to your signed-in company account.</p>
+              <div class="record-list" data-personal-requests></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Quick actions</h2>
+                <span>Common next steps</span>
+              </div>
+              <p class="panel-intro">Jump directly into the workflows most people use most often.</p>
+              <div class="action-list">
+                <button class="action-tile" type="button" data-open="leave">
+                  <strong>Submit leave</strong>
+                  <span>Create a fresh leave request.</span>
+                </button>
+                <button class="action-tile" type="button" data-open="payroll">
+                  <strong>Update payroll inputs</strong>
+                  <span>Record working days, leave days, and claims.</span>
+                </button>
+                <button class="action-tile" type="button" data-open="profile">
+                  <strong>Review profile</strong>
+                  <span>Check contact, reporting, and access details.</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="profile" data-requires-auth hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>My profile</h2>
+                <span>Account and reporting</span>
+              </div>
+              <p class="panel-intro">Core identity, reporting, and access details connected to your portal account.</p>
+              <div class="profile-sheet">
+                <div>
+                  <span>Name</span>
+                  <strong data-profile-name>Team member</strong>
+                </div>
+                <div>
+                  <span>Email</span>
+                  <strong data-profile-email>name@urbanmistrii.com</strong>
+                </div>
+                <div>
+                  <span>Access</span>
+                  <strong data-profile-access>Company account</strong>
+                </div>
+                <div>
+                  <span>Role</span>
+                  <strong data-profile-role>Team member</strong>
+                </div>
+                <div>
+                  <span>Manager</span>
+                  <strong data-profile-manager>Assigned during onboarding</strong>
+                </div>
+                <div>
+                  <span>Primary workspace</span>
+                  <strong>Urban Mistrii internal dashboard</strong>
+                </div>
+              </div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Access summary</h2>
+                <span>Current baseline</span>
+              </div>
+              <p class="panel-intro">A practical snapshot of your portal access and the records connected to your account.</p>
+              <ul class="check-list">
+                <li>Company email access active</li>
+                <li>Protected route access enforced</li>
+                <li>Personal leave records available</li>
+                <li>Payroll inputs linked to your account</li>
+                <li>HR can review submitted records when needed</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="approvals" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Approvals and pending items</h2>
+                <span>Operational review</span>
+              </div>
+              <p class="panel-intro">A working list of submissions that still need review or follow-through.</p>
+              <div class="control-bar">
+                <label class="control-field search-field">
+                  <span>Search</span>
+                  <input type="search" placeholder="Search requests or people" data-filter-input="approvals">
+                </label>
+                <label class="control-field">
+                  <span>Status</span>
+                  <select data-filter-status="approvals">
+                    <option value="all">All</option>
+                    <option value="awaiting">Awaiting review</option>
+                    <option value="pending">Pending</option>
+                    <option value="progress">In progress</option>
+                    <option value="ready">Ready for review</option>
+                    <option value="follow-up">Needs follow-up</option>
+                  </select>
+                </label>
+                <label class="control-field">
+                  <span>Sort</span>
+                  <select data-sort-select="approvals">
+                    <option value="recent">Most recent</option>
+                    <option value="name">Name A-Z</option>
+                    <option value="workflow">Workflow</option>
+                  </select>
+                </label>
+              </div>
+              <div class="record-list" data-approvals></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Approval rhythm</h2>
+                <span>Suggested cadence</span>
+              </div>
+              <ul class="check-list">
+                <li>Review fresh leave requests daily</li>
+                <li>Confirm joining details before start date</li>
+                <li>Track exits against handover checklist</li>
+                <li>Close payroll inputs before monthly review</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="people" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>People directory</h2>
+                <span>Current participants</span>
+              </div>
+              <p class="panel-intro">A lightweight internal directory built from live onboarding and request records.</p>
+              <div class="control-bar">
+                <label class="control-field search-field">
+                  <span>Search</span>
+                  <input type="search" placeholder="Search names, emails, roles" data-filter-input="people">
+                </label>
+                <label class="control-field">
+                  <span>Role</span>
+                  <select data-filter-role="people">
+                    <option value="all">All</option>
+                    <option value="hr">HR</option>
+                    <option value="admin">Admin</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="team">Team</option>
+                  </select>
+                </label>
+                <label class="control-field">
+                  <span>Sort</span>
+                  <select data-sort-select="people">
+                    <option value="name">Name A-Z</option>
+                    <option value="role">Role</option>
+                    <option value="email">Email</option>
+                  </select>
+                </label>
+              </div>
+              <div class="directory-list" data-people-directory></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Shared calendar markers</h2>
+                <span>Operational visibility</span>
+              </div>
+              <p class="panel-intro">Upcoming joins, leave windows, exits, and payroll checkpoints in one place.</p>
+              <div class="timeline-list" data-calendar-markers></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="activity" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Activity history</h2>
+                <span>Recent internal actions</span>
+              </div>
+              <p class="panel-intro">A time-ordered operational feed across requests, onboarding, offboarding, payroll, and status changes.</p>
+              <div class="control-bar">
+                <label class="control-field search-field">
+                  <span>Search</span>
+                  <input type="search" placeholder="Search activity, names, workflows" data-filter-input="activity">
+                </label>
+                <label class="control-field">
+                  <span>Workflow</span>
+                  <select data-filter-workflow="activity">
+                    <option value="all">All</option>
+                    <option value="leave">Leave</option>
+                    <option value="onboarding">Onboarding</option>
+                    <option value="offboarding">Offboarding</option>
+                    <option value="payroll">Payroll</option>
+                  </select>
+                </label>
+                <label class="control-field">
+                  <span>Sort</span>
+                  <select data-sort-select="activity">
+                    <option value="recent">Most recent</option>
+                    <option value="workflow">Workflow</option>
+                    <option value="status">Status</option>
+                  </select>
+                </label>
+              </div>
+              <div class="timeline-list" data-activity-feed></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Visibility notes</h2>
+                <span>Internal use only</span>
+              </div>
+              <ul class="check-list">
+                <li>Activity feed is limited to role-scoped operations access</li>
+                <li>Status changes are logged back into the internal record set</li>
+                <li>Exports remain restricted to internal operations roles</li>
+                <li>Regular team members do not see this surface</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="documents" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="split-layout">
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Documents and exports</h2>
+                <span>Internal reference</span>
+              </div>
+              <p class="panel-intro">A controlled set of internal references and export tools used during onboarding, reporting, and operational review.</p>
+              <div class="directory-list" data-documents-center></div>
+            </article>
+            <article class="work-panel">
+              <div class="panel-head">
+                <h2>Handling guidance</h2>
+                <span>Professional baseline</span>
+              </div>
+              <ul class="check-list">
+                <li>Keep exports inside approved internal channels only</li>
+                <li>Use live records instead of duplicate offline trackers where possible</li>
+                <li>Provision or close access through onboarding and offboarding records</li>
+                <li>Use role-based review before sharing sensitive operational material</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="leave" data-requires-auth hidden>
+          <div class="form-layout">
+            <form class="workflow-form" data-workflow="leave">
+              <h2>Leave request</h2>
+              <p class="form-intro">Create a leave record with dates, type, and context so operations and payroll stay aligned.</p>
+              <label><span>Name</span><input name="name" autocomplete="name" required></label>
+              <label><span>Email</span><input name="email" type="email" autocomplete="email" data-prefill-email required></label>
+              <label><span>Leave type</span><select name="type"><option>Casual</option><option>Sick</option><option>Emergency</option><option>Unpaid</option></select></label>
+              <label><span>Start date</span><input name="start" type="date" required></label>
+              <label><span>End date</span><input name="end" type="date" required></label>
+              <label class="full"><span>Reason</span><textarea name="reason" rows="4"></textarea></label>
+              <button type="submit">Submit request</button>
+              <p class="form-message" data-form-message></p>
+            </form>
+            <div class="record-list" data-records="leave"></div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="onboarding" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="form-layout">
+            <form class="workflow-form" data-workflow="onboarding">
+              <h2>Onboarding</h2>
+              <p class="form-intro">Team access is provisioned during onboarding. Use the new joiner's company email and choose the intended sign-in method.</p>
+              <label><span>Name</span><input name="name" required></label>
+              <label><span>Email</span><input name="email" type="email" required></label>
+              <label><span>Role</span><input name="role" required></label>
+              <label><span>Joining date</span><input name="joining" type="date"></label>
+              <label><span>Manager</span><input name="manager"></label>
+              <label><span>Access setup</span><select name="accessMethod"><option>Google Workspace</option><option>Password login</option></select></label>
+              <label class="full"><span>Notes</span><textarea name="notes" rows="4"></textarea></label>
+              <button type="submit">Create onboarding case</button>
+              <p class="form-message" data-form-message></p>
+            </form>
+            <div class="record-list" data-records="onboarding"></div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="offboarding" data-requires-auth data-role-scope="hr,admin,leadership" hidden>
+          <div class="form-layout">
+            <form class="workflow-form" data-workflow="offboarding">
+              <h2>Offboarding</h2>
+              <p class="form-intro">Log transition details, exit type, and checklist notes so nothing slips during closure.</p>
+              <label><span>Name</span><input name="name" required></label>
+              <label><span>Email</span><input name="email" type="email" required></label>
+              <label><span>Last day</span><input name="lastDay" type="date"></label>
+              <label><span>Exit type</span><select name="type"><option>Resignation</option><option>Contract end</option><option>Termination</option></select></label>
+              <label class="full"><span>Checklist notes</span><textarea name="notes" rows="4"></textarea></label>
+              <button type="submit">Create offboarding case</button>
+              <p class="form-message" data-form-message></p>
+            </form>
+            <div class="record-list" data-records="offboarding"></div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="payroll" data-requires-auth hidden>
+          <div class="form-layout">
+            <form class="workflow-form" data-workflow="payroll">
+              <h2>Payroll input</h2>
+              <p class="form-intro">Record attendance, leave, and expense details before the monthly payroll review cycle.</p>
+              <label><span>Name</span><input name="name" required></label>
+              <label><span>Email</span><input name="email" type="email" autocomplete="email" data-prefill-email required></label>
+              <label><span>Month</span><input name="month" type="month" required></label>
+              <label><span>Working days</span><input name="workingDays" type="number" min="0" step="0.5"></label>
+              <label><span>Leave days</span><input name="leaveDays" type="number" min="0" step="0.5"></label>
+              <label><span>Expense claim</span><input name="expense" type="number" min="0" step="1"></label>
+              <label class="full"><span>Notes</span><textarea name="notes" rows="4"></textarea></label>
+              <button type="submit">Submit payroll entry</button>
+              <p class="form-message" data-form-message></p>
+            </form>
+            <div class="record-list" data-records="payroll"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="editor-dialog" data-editor-dialog>
+      <form class="editor-form" method="dialog" data-editor-form>
+        <div class="panel-head">
+          <div>
+            <p class="portal-kicker">Internal edit</p>
+            <h2 data-editor-title>Edit record</h2>
+          </div>
+          <button class="ghost-action" type="button" data-editor-close>Close</button>
+        </div>
+        <div class="editor-grid" data-editor-fields></div>
+        <div class="inline-actions">
+          <button class="primary-action" type="submit">Save changes</button>
+          <button class="ghost-action" type="button" data-editor-cancel>Cancel</button>
+        </div>
+        <p class="form-message" data-editor-message></p>
+      </form>
+    </dialog>
+
+    <script src="/portal.js"></script>
+  </body>
+</html>

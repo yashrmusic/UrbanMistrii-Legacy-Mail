@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /portal.html
+
+Sitemap: https://urbanmistrii.com/sitemap.xml
