@@ -101,6 +101,10 @@ button {
   text-align: left;
 }
 
+.tab.portal-nav-link {
+  display: block;
+}
+
 .tab.is-active,
 .tab:hover {
   background: rgba(255, 250, 242, 0.1);

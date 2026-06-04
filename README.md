@@ -5,6 +5,7 @@ Repository mirror for the Urban Mistrii website.
 ## Internal Apps
 
 - `apps/payroll` builds the internal payroll app served at `/portal/payroll`.
+- `apps/studio-tools` builds the internal architecture tools app served at `/portal/studio`.
 - `packages/payroll-core` owns deterministic salary calculation logic.
 - `database/supabase-payroll-schema.sql` creates payroll tables and RLS policies.
 - `database/supabase-payroll-may-2026-import.sql` seeds the May 2026 employee roster and payroll run from the company sheet.
