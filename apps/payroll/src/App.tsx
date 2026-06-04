@@ -21,7 +21,7 @@ import type { LucideIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { hasSupabaseConfig, loadPortalConfig } from "./lib/config";
 import { createDemoClient, createSupabasePayrollClient } from "./lib/payrollClient";
-import type { Employee, PayrollClient, PayrollEntry, PayrollRun, PortalConfig } from "./types";
+import type { Employee, MyPayrollRecord, PayrollClient, PayrollEntry, PayrollRun, PortalConfig } from "./types";
 
 type ViewKey = "dashboard" | "employees" | "payroll" | "run";
 
@@ -187,17 +187,29 @@ function App() {
     queryKey: ["payroll-role", session?.user.id ?? "demo"]
   });
   const isAdmin = roleQuery.data === "admin";
-  const appEnabled = readyForData && isAdmin;
+  const isEmployee = roleQuery.data === "employee";
+  const adminEnabled = readyForData && isAdmin;
+  const employeeEnabled = readyForData && isEmployee;
 
   const employeesQuery = useQuery({
-    enabled: appEnabled,
+    enabled: adminEnabled,
     queryFn: () => client.listEmployees(),
     queryKey: ["employees", client.mode, session?.user.id ?? "demo"]
   });
   const runsQuery = useQuery({
-    enabled: appEnabled,
+    enabled: adminEnabled,
     queryFn: () => client.listRuns(),
     queryKey: ["payroll-runs", client.mode, session?.user.id ?? "demo"]
+  });
+  const myEmployeeQuery = useQuery({
+    enabled: employeeEnabled,
+    queryFn: () => client.getMyEmployee(),
+    queryKey: ["my-employee", client.mode, session?.user.id ?? "demo"]
+  });
+  const myPayrollQuery = useQuery({
+    enabled: employeeEnabled,
+    queryFn: () => client.listMyPayrollRecords(),
+    queryKey: ["my-payroll-records", client.mode, session?.user.id ?? "demo"]
   });
 
   const employees = employeesQuery.data ?? [];
@@ -207,12 +219,12 @@ function App() {
   const selectedRun = runs.find((run) => run.id === selectedRunId) ?? latestRun;
 
   const latestEntriesQuery = useQuery({
-    enabled: appEnabled && Boolean(latestRun),
+    enabled: adminEnabled && Boolean(latestRun),
     queryFn: () => client.listEntries(latestRun!.id),
     queryKey: ["payroll-entries", client.mode, latestRun?.id ?? "none"]
   });
   const selectedEntriesQuery = useQuery({
-    enabled: appEnabled && activeView === "run" && Boolean(selectedRun),
+    enabled: adminEnabled && activeView === "run" && Boolean(selectedRun),
     queryFn: () => client.listEntries(selectedRun!.id),
     queryKey: ["payroll-entries", client.mode, selectedRun?.id ?? "none"]
   });
@@ -258,6 +270,23 @@ function App() {
 
   if (readyForData && roleQuery.data === "pending") {
     return <PendingScreen onSignOut={() => void supabase?.auth.signOut()} supportEmail={config?.supportEmail} />;
+  }
+
+  if (employeeEnabled) {
+    return (
+      <EmployeePayrollShell
+        employee={myEmployeeQuery.data ?? null}
+        employeeError={myEmployeeQuery.error?.message}
+        employeeLoading={myEmployeeQuery.isLoading}
+        mode={client.mode}
+        onSignOut={() => void supabase?.auth.signOut()}
+        records={myPayrollQuery.data ?? []}
+        recordsError={myPayrollQuery.error?.message}
+        recordsLoading={myPayrollQuery.isLoading}
+        sessionEmail={session?.user.email ?? "Local preview"}
+        showSignOut={Boolean(supabase)}
+      />
+    );
   }
 
   return (
@@ -469,7 +498,7 @@ function PendingScreen({ onSignOut, supportEmail }: { onSignOut: () => void; sup
           <p className="eyebrow">Access Pending</p>
           <h1>Waiting for admin approval</h1>
         </div>
-        <p className="auth-copy">Your account exists, but payroll access is limited to admins.</p>
+        <p className="auth-copy">Your account exists, but it is not matched to an active employee profile yet.</p>
         <div className="inline-actions">
           <a className="outline-button" href={`mailto:${supportEmail ?? "hr@urbanmistrii.com"}`}>Contact HR</a>
           <button className="primary-button" type="button" onClick={onSignOut}>
@@ -479,6 +508,225 @@ function PendingScreen({ onSignOut, supportEmail }: { onSignOut: () => void; sup
         </div>
       </section>
     </main>
+  );
+}
+
+function EmployeePayrollShell({
+  employee,
+  employeeError,
+  employeeLoading,
+  mode,
+  onSignOut,
+  records,
+  recordsError,
+  recordsLoading,
+  sessionEmail,
+  showSignOut
+}: {
+  employee: Employee | null;
+  employeeError?: string | undefined;
+  employeeLoading: boolean;
+  mode: PayrollClient["mode"];
+  onSignOut: () => void;
+  records: MyPayrollRecord[];
+  recordsError?: string | undefined;
+  recordsLoading: boolean;
+  sessionEmail: string;
+  showSignOut: boolean;
+}) {
+  return (
+    <div className="payroll-shell is-employee">
+      <aside className="payroll-sidebar">
+        <a className="brand-lockup" href="/portal">
+          <img src="/assets/urbanmistrii-logo-clean.png" alt="Urban Mistrii" />
+        </a>
+        <nav className="nav-stack" aria-label="Payroll navigation">
+          <NavButton icon={Wallet} label="My salary" active onClick={() => undefined} />
+        </nav>
+        <div className="session-box">
+          <span>{mode === "demo" ? "Demo employee" : "Employee access"}</span>
+          <strong>{sessionEmail}</strong>
+          {showSignOut ? (
+            <button className="quiet-button" type="button" onClick={onSignOut}>
+              <LogOut size={16} aria-hidden="true" />
+              Sign out
+            </button>
+          ) : null}
+        </div>
+      </aside>
+
+      <main className="payroll-main">
+        <header className="payroll-topbar">
+          <div>
+            <p className="eyebrow">Urban Mistrii Payroll</p>
+            <h1>My salary</h1>
+          </div>
+          <div className="topbar-actions">
+            <a className="outline-button" href="/portal">Portal</a>
+          </div>
+        </header>
+
+        <div className="notice-row">
+          <ShieldAlert size={18} aria-hidden="true" />
+          <span>This is a read-only employee view. Only your own salary records are available here.</span>
+        </div>
+
+        {employeeError || recordsError ? <p className="error-line">{employeeError ?? recordsError}</p> : null}
+
+        <EmployeeSelfView
+          employee={employee}
+          employeeLoading={employeeLoading}
+          records={records}
+          recordsLoading={recordsLoading}
+        />
+      </main>
+    </div>
+  );
+}
+
+function EmployeeSelfView({
+  employee,
+  employeeLoading,
+  records,
+  recordsLoading
+}: {
+  employee: Employee | null;
+  employeeLoading: boolean;
+  records: MyPayrollRecord[];
+  recordsLoading: boolean;
+}) {
+  const latestRecord = records.at(0);
+  const profile = employee ?? latestRecord?.employee ?? null;
+  const latestResult = latestRecord ? calcSalary(latestRecord.employee, latestRecord) : null;
+  const loading = employeeLoading || recordsLoading;
+
+  if (loading) {
+    return (
+      <section className="content-stack">
+        <section className="work-surface">
+          <div className="surface-header">
+            <div>
+              <p className="eyebrow">Employee Record</p>
+              <h2>Loading your payroll</h2>
+            </div>
+          </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (!profile) {
+    return (
+      <section className="empty-state">
+        <h2>No employee profile found</h2>
+        <p className="auth-copy">Ask HR to add your login email to the employee roster.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="content-stack">
+      <div className="metric-grid">
+        <Metric icon={Users} label="Profile" value={profile.name} />
+        <Metric icon={Building2} label="Position" value={profile.position} />
+        <Metric icon={CalendarPlus} label="Latest month" value={latestRecord ? monthLabel(latestRecord.run) : "Not published"} />
+        <Metric icon={CheckCircle2} label="Net salary" value={latestResult ? inr.format(latestResult.finalSalary) : "Not published"} />
+      </div>
+
+      <div className="employee-overview-grid">
+        <section className="work-surface">
+          <div className="surface-header">
+            <div>
+              <p className="eyebrow">Employee Profile</p>
+              <h2>{profile.name}</h2>
+            </div>
+            <Pill label={profile.status} tone={profile.status === "Permanent" ? "green" : "amber"} />
+          </div>
+          <div className="detail-grid">
+            <Detail label="Email" value={profile.email} />
+            <Detail label="Position" value={profile.position} />
+            <Detail label="Base salary" value={inr.format(profile.baseSalary)} />
+            <Detail label="Leave allowance" value={compactNumber.format(profile.leaveAllowance)} />
+          </div>
+        </section>
+
+        <section className="work-surface salary-snapshot">
+          <div className="surface-header">
+            <div>
+              <p className="eyebrow">Latest Salary</p>
+              <h2>{latestRecord ? monthLabel(latestRecord.run) : "Not published"}</h2>
+            </div>
+            <strong>{latestResult ? inr.format(latestResult.finalSalary) : "..."}</strong>
+          </div>
+          {latestRecord && latestResult ? (
+            <div className="detail-grid">
+              <Detail label="Base salary" value={inr.format(latestRecord.employee.baseSalary)} />
+              <Detail label="Per-day rate" value={inr.format(latestResult.perDayRate)} />
+              <Detail label="Total leaves" value={compactNumber.format(latestResult.totalLeaves)} />
+              <Detail label="Chargeable leaves" value={compactNumber.format(latestResult.chargeableLeaves)} />
+              <Detail label="Deduction" value={inr.format(latestResult.deduction)} />
+              <Detail label="Adjustment" value={inr.format(latestRecord.adjustment)} />
+              {latestRecord.notes ? <Detail label="Notes" value={latestRecord.notes} wide /> : null}
+            </div>
+          ) : (
+            <p className="auth-copy">No salary entry has been published for your profile yet.</p>
+          )}
+        </section>
+      </div>
+
+      <section className="content-stack">
+        <div className="section-toolbar">
+          <div>
+            <p className="eyebrow">History</p>
+            <h2>My salary records</h2>
+          </div>
+        </div>
+        <div className="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Base</th>
+                <th>Total leaves</th>
+                <th>Chargeable</th>
+                <th>Deduction</th>
+                <th>Adjustment</th>
+                <th>Final</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.length ? (
+                records.map((record) => {
+                  const result = calcSalary(record.employee, record);
+                  return (
+                    <tr key={record.id}>
+                      <td><strong>{monthLabel(record.run)}</strong></td>
+                      <td>{inr.format(record.employee.baseSalary)}</td>
+                      <td>{compactNumber.format(result.totalLeaves)}</td>
+                      <td>{compactNumber.format(result.chargeableLeaves)}</td>
+                      <td>{inr.format(result.deduction)}</td>
+                      <td>{inr.format(record.adjustment)}</td>
+                      <td><strong>{inr.format(result.finalSalary)}</strong></td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <TableEmpty colSpan={7} label="No salary records published yet" />
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  );
+}
+
+function Detail({ label, value, wide }: { label: string; value: React.ReactNode; wide?: boolean }) {
+  return (
+    <article className={`detail-item${wide ? " is-wide" : ""}`}>
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </article>
   );
 }
 

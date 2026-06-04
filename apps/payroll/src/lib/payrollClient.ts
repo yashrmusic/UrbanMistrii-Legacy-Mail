@@ -1,6 +1,6 @@
 import { calcSalary } from "@urbanmistrii/payroll-core";
 import type { Session, SupabaseClient } from "@supabase/supabase-js";
-import type { Employee, PayrollClient, PayrollEntry, PayrollRun, RoleName } from "../types";
+import type { Employee, MyPayrollRecord, PayrollClient, PayrollEntry, PayrollRun, RoleName } from "../types";
 
 type DbEmployee = {
   id: string;
@@ -36,6 +36,10 @@ type DbEntry = {
   deduction: number | string;
   final_salary: number | string;
   notes?: string | null;
+};
+
+type DbEntryWithRun = DbEntry & {
+  run?: DbRun | DbRun[];
 };
 
 type DemoState = {
@@ -76,6 +80,11 @@ const getEntryEmployee = (entry: DbEntry) => {
   return entry.employee;
 };
 
+const getEntryRun = (entry: DbEntryWithRun) => {
+  if (Array.isArray(entry.run)) return entry.run[0];
+  return entry.run;
+};
+
 const toEntry = (entry: DbEntry): PayrollEntry => {
   const employee = getEntryEmployee(entry);
   if (!employee) {
@@ -96,6 +105,18 @@ const toEntry = (entry: DbEntry): PayrollEntry => {
     deduction: numberValue(entry.deduction),
     finalSalary: numberValue(entry.final_salary),
     notes: entry.notes ?? ""
+  };
+};
+
+const toMyPayrollRecord = (entry: DbEntryWithRun): MyPayrollRecord => {
+  const run = getEntryRun(entry);
+  if (!run) {
+    throw new Error("Payroll entry is missing its payroll run.");
+  }
+
+  return {
+    ...toEntry(entry),
+    run: toRun(run)
   };
 };
 
@@ -225,9 +246,24 @@ const withResult = (entry: PayrollEntry): PayrollEntry => ({
 export const createDemoClient = (): PayrollClient => ({
   mode: "demo",
   getRole: async () => "admin",
+  getMyEmployee: async () => readDemoState().employees.find((employee) => employee.isActive) ?? null,
   listEmployees: async () => readDemoState().employees,
   listRuns: async () => readDemoState().runs,
   listEntries: async (runId) => readDemoState().entries.filter((entry) => entry.runId === runId),
+  listMyPayrollRecords: async () => {
+    const state = readDemoState();
+    const employee = state.employees.find((item) => item.isActive);
+    if (!employee) return [];
+
+    return state.entries
+      .filter((entry) => entry.employeeId === employee.id)
+      .map((entry) => {
+        const run = state.runs.find((item) => item.id === entry.runId);
+        if (!run) throw new Error("Demo payroll entry is missing its payroll run.");
+        return { ...entry, run };
+      })
+      .sort((a, b) => b.run.year - a.run.year || b.run.month - a.run.month);
+  },
   createRun: async (month, year) => {
     const state = readDemoState();
     const existing = state.runs.find((run) => run.month === month && run.year === year);
@@ -303,7 +339,17 @@ export const createSupabasePayrollClient = (supabase: SupabaseClient, session: S
       .eq("user_id", session.user.id)
       .maybeSingle();
     assertNoError(error);
-    return data?.role === "admin" ? "admin" : "pending";
+    if (data?.role === "admin" || data?.role === "employee") return data.role;
+    return "pending";
+  },
+  getMyEmployee: async () => {
+    const { data, error } = await supabase
+      .from("employees")
+      .select("*")
+      .limit(1)
+      .maybeSingle();
+    assertNoError(error);
+    return data ? toEmployee(data as DbEmployee) : null;
   },
   listEmployees: async () => {
     const { data, error } = await supabase.from("employees").select("*").order("name", { ascending: true });
@@ -327,6 +373,15 @@ export const createSupabasePayrollClient = (supabase: SupabaseClient, session: S
       .order("employee(name)", { ascending: true });
     assertNoError(error);
     return ((data ?? []) as DbEntry[]).map(toEntry);
+  },
+  listMyPayrollRecords: async () => {
+    const { data, error } = await supabase
+      .from("payroll_entries")
+      .select("*, employee:employees(*), run:payroll_runs(*)");
+    assertNoError(error);
+    return ((data ?? []) as DbEntryWithRun[])
+      .map(toMyPayrollRecord)
+      .sort((a, b) => b.run.year - a.run.year || b.run.month - a.run.month);
   },
   createRun: async (month, year) => {
     const { data: existing, error: existingError } = await supabase

@@ -4,10 +4,14 @@ create table if not exists public.user_roles (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null unique references auth.users(id) on delete cascade,
   email text not null unique,
-  role text not null default 'pending' check (role in ('admin', 'pending')),
+  role text not null default 'pending' check (role in ('admin', 'employee', 'pending')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.user_roles drop constraint if exists user_roles_role_check;
+alter table public.user_roles
+  add constraint user_roles_role_check check (role in ('admin', 'employee', 'pending'));
 
 create table if not exists public.employees (
   id uuid primary key default gen_random_uuid(),
@@ -104,6 +108,31 @@ as $$
   select public.current_payroll_role() = 'admin';
 $$;
 
+create or replace function public.current_payroll_employee_id()
+returns uuid
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select employees.id
+  from public.employees
+  where employees.is_active
+    and lower(employees.email) = lower(coalesce(auth.jwt() ->> 'email', ''))
+  limit 1;
+$$;
+
+create or replace function public.is_payroll_employee()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select public.current_payroll_role() = 'employee'
+    and public.current_payroll_employee_id() is not null;
+$$;
+
 create or replace function public.handle_new_payroll_user()
 returns trigger
 language plpgsql
@@ -113,13 +142,26 @@ as $$
 declare
   assigned_role text;
 begin
-  select case when exists (select 1 from public.user_roles) then 'pending' else 'admin' end
+  select case
+    when not exists (select 1 from public.user_roles) then 'admin'
+    when exists (
+      select 1
+      from public.employees
+      where employees.is_active
+        and lower(employees.email) = lower(coalesce(new.email, ''))
+    ) then 'employee'
+    else 'pending'
+  end
   into assigned_role;
 
   insert into public.user_roles (user_id, email, role)
   values (new.id, lower(new.email), assigned_role)
   on conflict (user_id) do update
     set email = lower(excluded.email),
+        role = case
+          when public.user_roles.role = 'admin' then 'admin'
+          else excluded.role
+        end,
         updated_at = now();
 
   return new;
@@ -130,6 +172,19 @@ drop trigger if exists on_auth_user_created_payroll_role on auth.users;
 create trigger on_auth_user_created_payroll_role
   after insert or update of email on auth.users
   for each row execute function public.handle_new_payroll_user();
+
+update public.user_roles
+set role = 'employee',
+    updated_at = now()
+from auth.users
+where user_roles.user_id = users.id
+  and user_roles.role = 'pending'
+  and exists (
+    select 1
+    from public.employees
+    where employees.is_active
+      and lower(employees.email) = lower(coalesce(users.email, ''))
+  );
 
 alter table public.user_roles enable row level security;
 alter table public.employees enable row level security;
@@ -144,14 +199,48 @@ drop policy if exists "user roles admin update" on public.user_roles;
 create policy "user roles admin update" on public.user_roles
   for update using (public.is_payroll_admin()) with check (public.is_payroll_admin());
 
+drop policy if exists "user roles admin insert" on public.user_roles;
+create policy "user roles admin insert" on public.user_roles
+  for insert with check (public.is_payroll_admin());
+
+drop policy if exists "user roles admin delete" on public.user_roles;
+create policy "user roles admin delete" on public.user_roles
+  for delete using (public.is_payroll_admin());
+
 drop policy if exists "employees admin all" on public.employees;
 create policy "employees admin all" on public.employees
   for all using (public.is_payroll_admin()) with check (public.is_payroll_admin());
+
+drop policy if exists "employees own read" on public.employees;
+create policy "employees own read" on public.employees
+  for select using (
+    public.is_payroll_employee()
+    and id = public.current_payroll_employee_id()
+  );
 
 drop policy if exists "payroll runs admin all" on public.payroll_runs;
 create policy "payroll runs admin all" on public.payroll_runs
   for all using (public.is_payroll_admin()) with check (public.is_payroll_admin());
 
+drop policy if exists "payroll runs employee read" on public.payroll_runs;
+create policy "payroll runs employee read" on public.payroll_runs
+  for select using (
+    public.is_payroll_employee()
+    and exists (
+      select 1
+      from public.payroll_entries
+      where payroll_entries.run_id = payroll_runs.id
+        and payroll_entries.employee_id = public.current_payroll_employee_id()
+    )
+  );
+
 drop policy if exists "payroll entries admin all" on public.payroll_entries;
 create policy "payroll entries admin all" on public.payroll_entries
   for all using (public.is_payroll_admin()) with check (public.is_payroll_admin());
+
+drop policy if exists "payroll entries employee own read" on public.payroll_entries;
+create policy "payroll entries employee own read" on public.payroll_entries
+  for select using (
+    public.is_payroll_employee()
+    and employee_id = public.current_payroll_employee_id()
+  );

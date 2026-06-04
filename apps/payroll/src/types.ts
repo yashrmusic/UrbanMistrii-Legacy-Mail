@@ -11,7 +11,7 @@ export type PortalConfig = {
   portalMode?: string;
 };
 
-export type RoleName = "admin" | "pending";
+export type RoleName = "admin" | "employee" | "pending";
 
 export type Employee = {
   id: string;
@@ -49,12 +49,18 @@ export type PayrollEntry = {
   notes: string;
 };
 
+export type MyPayrollRecord = PayrollEntry & {
+  run: PayrollRun;
+};
+
 export type PayrollClient = {
   mode: "demo" | "supabase";
   createRun: (month: number, year: number) => Promise<PayrollRun>;
+  getMyEmployee: () => Promise<Employee | null>;
   getRole: () => Promise<RoleName>;
   listEmployees: () => Promise<Employee[]>;
   listEntries: (runId: string) => Promise<PayrollEntry[]>;
+  listMyPayrollRecords: () => Promise<MyPayrollRecord[]>;
   listRuns: () => Promise<PayrollRun[]>;
   removeEmployee: (id: string) => Promise<void>;
   saveEmployee: (employee: Employee) => Promise<Employee>;
