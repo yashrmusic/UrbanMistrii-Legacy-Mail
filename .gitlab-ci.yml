@@ -1,0 +1,26 @@
+stages:
+  - deploy
+
+deploy:production:
+  image: node:24
+  stage: deploy
+  environment:
+    name: production
+    url: https://urbanmistrii.com
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $VERCEL_TOKEN'
+    - when: never
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+    - mkdir -p .vercel
+    - printf '{"orgId":"team_mgcpaaVMPHd0TfJ9Qnbtpdzl","projectId":"prj_I0Ddtv5MucEZo3GVQhYtPEUw3GJQ"}' > .vercel/project.json
+  script:
+    - npx --yes vercel@54.11.1 pull --yes --environment=production --token="$VERCEL_TOKEN"
+    - npx --yes vercel@54.11.1 build --prod --token="$VERCEL_TOKEN"
+    - npx --yes vercel@54.11.1 deploy --prebuilt --prod --token="$VERCEL_TOKEN"
