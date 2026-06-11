@@ -3,6 +3,27 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const navShell = document.querySelector("[data-nav-shell]");
 const filters = document.querySelectorAll(".filter");
 const projects = document.querySelectorAll(".project");
+const localTime = document.querySelector("[data-local-time]");
+
+const updateLocalTime = () => {
+  if (!localTime) return;
+
+  localTime.textContent = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).format(new Date());
+};
+
+if (localTime) {
+  updateLocalTime();
+  window.setInterval(updateLocalTime, 1000);
+}
 
 const updateHeader = () => {
   if (header) {
