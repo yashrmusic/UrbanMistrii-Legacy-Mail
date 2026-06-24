@@ -95,6 +95,8 @@ filters.forEach((button) => {
 const revealTargets = document.querySelectorAll(
   ".section-grid, .project, .studio-copy, .process > div, .service-grid article, .press-cards article, .contact-panel, .case-study"
     + ", .updates, .update-list article"
+    + ", .mf-hero, .mf-project-index, .mf-image-field, .mf-studio-index, .mf-service-index, .mf-press-strip"
+    + ", .mf-contact-index, .mf-proof-strip, .mf-testimonial-strip, .mf-instagram-strip, .mf-project-row"
 );
 
 revealTargets.forEach((target) => target.setAttribute("data-reveal", ""));
@@ -112,6 +114,31 @@ const observer = new IntersectionObserver(
 );
 
 revealTargets.forEach((target) => observer.observe(target));
+
+document.querySelectorAll("img").forEach((img) => {
+  if (img.complete) {
+    img.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => img.classList.add("loaded"));
+  }
+});
+
+document.querySelectorAll(".mf-hero-project").forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / centerY * -6;
+    const rotateY = (x - centerX) / centerX * 6;
+    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "perspective(600px) rotateX(0) rotateY(0)";
+  });
+});
 
 window.addEventListener("pageshow", () => {
   if (window.location.hash) {
@@ -351,3 +378,185 @@ const createAssistant = () => {
 };
 
 createAssistant();
+
+const projectFilterButtons = document.querySelectorAll(".mf-project-filters button");
+const projectRows = document.querySelectorAll(".mf-project-row");
+
+projectFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+
+    projectFilterButtons.forEach((b) => b.classList.remove("is-active"));
+    button.classList.add("is-active");
+
+    projectRows.forEach((row) => {
+      const shouldShow = filter === "all" || row.dataset.category === filter;
+      row.classList.toggle("is-hidden", !shouldShow);
+    });
+  });
+});
+
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImg = lightbox?.querySelector(".lightbox-img");
+const lightboxCaption = lightbox?.querySelector(".lightbox-caption");
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+const openLightbox = (img, caption) => {
+  if (!lightbox || !lightboxImg) return;
+
+  const allImages = document.querySelectorAll(
+    ".mf-hero-project img, .mf-project-row img, .mf-image-field img"
+  );
+  lightboxImages = Array.from(allImages).map((i) => ({
+    src: i.getAttribute("src"),
+    alt: i.getAttribute("alt"),
+    caption: i.closest("a, figure")?.querySelector("span, figcaption")?.textContent?.trim() || i.alt
+  }));
+
+  const clickedSrc = img.getAttribute("src");
+  lightboxIndex = lightboxImages.findIndex((i) => i.src === clickedSrc);
+  if (lightboxIndex === -1) lightboxIndex = 0;
+
+  showLightboxImage();
+  lightbox.hidden = false;
+  document.body.style.overflow = "hidden";
+};
+
+const showLightboxImage = () => {
+  if (!lightboxImages.length) return;
+  const item = lightboxImages[lightboxIndex];
+  lightboxImg.src = item.src;
+  lightboxImg.alt = item.alt;
+  lightboxCaption.textContent = item.caption;
+};
+
+const closeLightbox = () => {
+  if (!lightbox) return;
+  lightbox.hidden = true;
+  document.body.style.overflow = "";
+};
+
+const navigateLightbox = (direction) => {
+  if (!lightboxImages.length) return;
+  lightboxIndex = (lightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+  showLightboxImage();
+};
+
+document.querySelectorAll(".mf-hero-project, .mf-project-row, .mf-image-field figure").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    if (e.target.tagName === "IMG") {
+      e.preventDefault();
+      openLightbox(e.target);
+    }
+  });
+});
+
+document.querySelectorAll(".mf-hero-project img, .mf-project-row img, .mf-image-field img").forEach((img) => {
+  img.setAttribute("data-lightbox-target", "");
+});
+
+if (lightbox) {
+  lightbox.querySelector(".lightbox-close")?.addEventListener("click", closeLightbox);
+  lightbox.querySelector(".lightbox-prev")?.addEventListener("click", () => navigateLightbox(-1));
+  lightbox.querySelector(".lightbox-next")?.addEventListener("click", () => navigateLightbox(1));
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") navigateLightbox(-1);
+    if (e.key === "ArrowRight") navigateLightbox(1);
+  });
+}
+
+const backToTop = document.querySelector("[data-back-to-top]");
+
+if (backToTop) {
+  const toggleBackToTop = () => {
+    backToTop.classList.toggle("is-visible", window.scrollY > 600);
+  };
+
+  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+  toggleBackToTop();
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+const testimonialBlocks = document.querySelectorAll("[data-testimonials] blockquote");
+const dotsContainer = document.querySelector("[data-testimonial-dots]");
+let testimonialIndex = 0;
+let testimonialTimer;
+
+if (testimonialBlocks.length && dotsContainer) {
+  testimonialBlocks.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.setAttribute("aria-label", `Testimonial ${i + 1}`);
+    if (i === 0) dot.classList.add("is-active");
+    dot.addEventListener("click", () => showTestimonial(i));
+    dotsContainer.append(dot);
+  });
+
+  const showTestimonial = (index) => {
+    testimonialBlocks.forEach((b) => b.classList.remove("is-visible"));
+    dotsContainer.querySelectorAll("button").forEach((d) => d.classList.remove("is-active"));
+    testimonialBlocks[index].classList.add("is-visible");
+    dotsContainer.children[index].classList.add("is-active");
+    testimonialIndex = index;
+    resetTestimonialTimer();
+  };
+
+  const resetTestimonialTimer = () => {
+    clearInterval(testimonialTimer);
+    testimonialTimer = setInterval(() => {
+      showTestimonial((testimonialIndex + 1) % testimonialBlocks.length);
+    }, 5000);
+  };
+
+  resetTestimonialTimer();
+}
+
+const cursor = document.querySelector("[data-cursor]");
+
+if (cursor && window.matchMedia("(pointer: fine)").matches) {
+  const moveCursor = (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  };
+
+  document.addEventListener("mousemove", moveCursor, { passive: true });
+
+  document.querySelectorAll("a, button, input, textarea, [data-lightbox-target]").forEach((el) => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("is-hovering"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("is-hovering"));
+  });
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+  switch (e.key.toLowerCase()) {
+    case "w":
+      e.preventDefault();
+      document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
+      break;
+    case "s":
+      e.preventDefault();
+      document.querySelector("#studio")?.scrollIntoView({ behavior: "smooth" });
+      break;
+    case "c":
+      e.preventDefault();
+      document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+      break;
+    case "p":
+      e.preventDefault();
+      window.open("/assets/urbanmistrii-portfolio.pdf", "_blank");
+      break;
+  }
+});

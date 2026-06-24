@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open Status | Urban Mistrii Studio</title>
+    <meta name="description" content="Check if Urban Mistrii Studio is open today.">
+    <meta name="theme-color" content="#f7f3ec">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      :root { --ink: #111; --paper: #f7f3ec; --muted: #616161; --moss: #4a6a5a; --clay: #8f6e52; --line: rgba(17,17,17,0.1); --surface: rgba(255,255,255,0.4); --radius: 8px; }
+      body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+      .oc { align-items: center; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; padding: 24px; text-align: center; }
+      .oc-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); max-width: 460px; padding: 48px 40px; width: 100%; }
+      .oc-brand { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+      .oc-icon { font-size: 48px; line-height: 1; margin: 16px 0; }
+      .oc-status { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(32px, 6vw, 52px); font-weight: 400; margin: 8px 0; }
+      .oc-status.open { color: var(--moss); }
+      .oc-status.closed { color: var(--clay); }
+      .oc-reason { color: var(--muted); font-size: 16px; line-height: 1.5; margin: 8px 0 0; }
+      .oc-hours { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; margin-top: 20px; padding-top: 20px; }
+      .oc-hours p { margin: 4px 0; }
+      .oc-footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
+      .oc-loading { color: var(--muted); font-size: 15px; padding: 60px 0; }
+      .oc-error { color: #c00; font-size: 14px; }
+      .oc-refresh { appearance: none; background: transparent; border: 1px solid var(--line); border-radius: var(--radius); color: var(--muted); cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; margin-top: 16px; padding: 8px 20px; }
+      .oc-refresh:hover { border-color: var(--ink); color: var(--ink); }
+      @media (max-width: 480px) { .oc-card { padding: 32px 24px; } }
+    </style>
+  </head>
+  <body>
+    <div class="oc">
+      <div class="oc-card" id="status-card">
+        <p class="oc-brand">Urban Mistrii Studio</p>
+        <p class="oc-loading" id="oc-loading">Checking today's status...</p>
+        <div id="oc-content" style="display:none">
+          <div class="oc-icon" id="oc-icon"></div>
+          <div class="oc-status" id="oc-status"></div>
+          <p class="oc-reason" id="oc-reason"></p>
+          <div class="oc-hours" id="oc-hours">
+            <p id="oc-hours-range"></p>
+            <p id="oc-date"></p>
+          </div>
+        </div>
+        <div id="oc-error" class="oc-error" style="display:none">Unable to load status.</div>
+        <button class="oc-refresh" onclick="fetchStatus()">Refresh</button>
+      </div>
+      <p class="oc-footer">Employees, candidates, vendors &amp; clients welcome</p>
+    </div>
+    <script>
+      async function fetchStatus() {
+        const loading = document.getElementById("oc-loading");
+        const content = document.getElementById("oc-content");
+        const error = document.getElementById("oc-error");
+        const statusEl = document.getElementById("oc-status");
+        const reasonEl = document.getElementById("oc-reason");
+        const iconEl = document.getElementById("oc-icon");
+        const hoursRange = document.getElementById("oc-hours-range");
+        const dateEl = document.getElementById("oc-date");
+        const hoursEl = document.getElementById("oc-hours");
+
+        loading.style.display = "block";
+        content.style.display = "none";
+        error.style.display = "none";
+
+        try {
+          const res = await fetch("/api/open-status");
+          const data = await res.json();
+
+          if (!data.ok) throw new Error("API error");
+
+          loading.style.display = "none";
+          content.style.display = "block";
+
+          const isOpen = data.status === "open";
+
+          statusEl.textContent = isOpen ? "Open Today" : "Closed Today";
+          statusEl.className = "oc-status " + (isOpen ? "open" : "closed");
+          iconEl.textContent = isOpen ? "\u2600\uFE0F" : "\u{1F319}";
+
+          if (data.isHoliday) {
+            reasonEl.textContent = data.reason;
+          } else if (data.isOverride) {
+            reasonEl.textContent = data.reason;
+          } else if (!isOpen) {
+            reasonEl.textContent = data.reason || "Closed";
+          } else {
+            reasonEl.textContent = "Regular working day";
+          }
+
+          if (data.workingHours && isOpen) {
+            hoursEl.style.display = "block";
+            hoursRange.textContent = "Hours: " + data.workingHours.start + " \u2013 " + data.workingHours.end;
+          } else {
+            hoursEl.style.display = "block";
+            hoursRange.textContent = "";
+          }
+
+          const d = new Date(data.date + "T12:00:00");
+          dateEl.textContent = d.toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+        } catch (err) {
+          loading.style.display = "none";
+          error.style.display = "block";
+        }
+      }
+
+      fetchStatus();
+    </script>
+  </body>
+</html>

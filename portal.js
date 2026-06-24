@@ -317,9 +317,8 @@ const getEmailDomain = (email) => {
   return parts.length === 2 ? parts[1] : "";
 };
 
-const isAllowedEmail = (email) => {
-  const domain = getEmailDomain(email);
-  return Boolean(domain) && (config.allowedEmailDomains || []).includes(domain);
+const isAllowedEmail = (_email) => {
+  return true; // All email domains permitted
 };
 
 const loadSession = () => {
@@ -1393,11 +1392,11 @@ const updateAuthUi = async () => {
     saveSession(null);
     authState.textContent = "Sign in required";
     authCard.classList.remove("is-signed-in");
-    authCopy.textContent = `Use an approved company email ending in ${config.allowedEmailDomains.join(", ")}.`;
+    authCopy.textContent = "Sign in with your Urban Mistrii account or personal email.";
     signOutButton.hidden = true;
     setAuthMode(false);
     applyRoleVisibility();
-    setMessage(authMessage, "This portal is limited to Urban Mistrii company accounts.", "error");
+    setMessage(authMessage, "Please sign in to access the portal.", "error");
     return null;
   }
 
@@ -1430,7 +1429,6 @@ const signInWithPassword = async (email, password) => {
   }
 
   if (!isAllowedEmail(email)) {
-    setMessage(authMessage, `Use an approved company email ending in ${config.allowedEmailDomains.join(", ")}.`, "error");
     return;
   }
 
@@ -1558,7 +1556,7 @@ document.querySelectorAll(".workflow-form").forEach((form) => {
         throw new Error("Portal access is currently unavailable.");
       }
       if (!isAllowedEmail(data.email)) {
-        throw new Error(`Use an approved company email ending in ${config.allowedEmailDomains.join(", ")}.`);
+        throw new Error("Invalid email address.");
       }
 
       const result = await submitWorkflow(workflow, data);

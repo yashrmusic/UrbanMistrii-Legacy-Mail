@@ -43,11 +43,15 @@
       </div>
       <div class="nav-shell" id="site-nav" data-nav-shell>
         <nav class="nav" aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#studio">Studio</a>
-          <a href="#services">Services</a>
-          <a href="#press">Press</a>
-          <a href="#contact">Contact</a>
+          <a href="/#work">Work</a>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/process">Process</a>
+          <a href="/faq">FAQ</a>
+          <a href="/press">Press</a>
+          <a href="/journal">Journal</a>
+          <a href="/careers">Careers</a>
+          <a href="/#contact">Contact</a>
         </nav>
         <div class="header-actions">
           <a class="header-utility" href="/portal">Team login</a>
@@ -90,38 +94,45 @@
           <span>Selected work</span>
           <a href="/projects/case-studies">Case studies</a>
         </div>
+        <div class="mf-project-filters">
+          <button class="is-active" data-filter="all">All</button>
+          <button data-filter="residential">Residential</button>
+          <button data-filter="hospitality">Hospitality</button>
+          <button data-filter="workplace">Workplace</button>
+          <button data-filter="commercial">Commercial</button>
+        </div>
         <div class="mf-project-list">
-          <a class="mf-project-row" href="/projects/case-studies#padmanabham">
+          <a class="mf-project-row" href="/projects/case-studies#padmanabham" style="--i: 0" data-category="hospitality">
             <span>01</span>
             <strong>Padmanabham</strong>
             <em>Restaurant / New Delhi</em>
             <img src="assets/work-padmanabham.webp" alt="Padmanabham restaurant interior" width="1920" height="1280" loading="lazy" decoding="async">
           </a>
-          <a class="mf-project-row" href="/projects/case-studies#ivory-house">
+          <a class="mf-project-row" href="/projects/case-studies#ivory-house" style="--i: 1" data-category="residential">
             <span>02</span>
             <strong>Ivory House</strong>
             <em>Residence / Interior</em>
             <img src="assets/work-ivory-house.webp" alt="Ivory House residence interior" width="1920" height="1280" loading="lazy" decoding="async">
           </a>
-          <a class="mf-project-row" href="/projects/case-studies#mad">
+          <a class="mf-project-row" href="/projects/case-studies#mad" style="--i: 2" data-category="hospitality">
             <span>03</span>
             <strong>MAD</strong>
             <em>Hospitality / Experience</em>
             <img src="assets/work-mad.webp" alt="MAD hospitality interior" width="1920" height="1280" loading="lazy" decoding="async">
           </a>
-          <a class="mf-project-row" href="/projects/case-studies#metro-infrasys">
+          <a class="mf-project-row" href="/projects/case-studies#metro-infrasys" style="--i: 3" data-category="workplace">
             <span>04</span>
             <strong>Metro Infrasys</strong>
             <em>Workplace / Commercial</em>
             <img src="assets/work-metro.webp" alt="Metro Infrasys workplace interior" width="1530" height="1920" loading="lazy" decoding="async">
           </a>
-          <a class="mf-project-row" href="/projects/case-studies#hill-house">
+          <a class="mf-project-row" href="/projects/case-studies#hill-house" style="--i: 4" data-category="residential">
             <span>05</span>
             <strong>The Hill House</strong>
             <em>Architecture / Residence</em>
             <img src="assets/work-hill-house.webp" alt="The Hill House architecture project" width="1077" height="1920" loading="lazy" decoding="async">
           </a>
-          <a class="mf-project-row" href="/projects/case-studies#installation">
+          <a class="mf-project-row" href="/projects/case-studies#installation" style="--i: 5" data-category="commercial">
             <span>06</span>
             <strong>Installation</strong>
             <em>Spatial / Experiential</em>
@@ -199,6 +210,48 @@
         </div>
       </section>
 
+      <section class="mf-testimonial-strip" aria-label="Client testimonials">
+        <div class="mf-section-label">
+          <span>Testimonials</span>
+        </div>
+        <div class="mf-testimonial-list" data-testimonials>
+          <blockquote class="mf-testimonial is-visible">
+            <p>"Urban Mistrii brought a level of precision to our restaurant that we did not think was possible in this timeline. Every detail was considered."</p>
+            <footer>
+              <strong>Bar Bar, Varanasi</strong>
+              <span>Hospitality client</span>
+            </footer>
+          </blockquote>
+          <blockquote class="mf-testimonial">
+            <p>"They understand how spaces actually get built. The drawings are detailed, but they also show up on site and make sure it holds together."</p>
+            <footer>
+              <strong>Ivory House</strong>
+              <span>Residential client</span>
+            </footer>
+          </blockquote>
+          <blockquote class="mf-testimonial">
+            <p>"Working with Urban Mistrii felt collaborative from day one. The result is a home that genuinely works for how we live."</p>
+            <footer>
+              <strong>The Hill House</strong>
+              <span>Residential client</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="mf-testimonial-dots" data-testimonial-dots></div>
+      </section>
+
+      <section class="mf-proof-strip" aria-label="Publications">
+        <div class="mf-section-label">
+          <span>Publications</span>
+        </div>
+        <div class="mf-proof-list">
+          <a href="https://www.architecturaldigest.in/" target="_blank" rel="noreferrer">Architectural Digest India</a>
+          <a href="https://elledecor.in/" target="_blank" rel="noreferrer">Elle Decor India</a>
+          <a href="https://www.goodhomes.co.in/" target="_blank" rel="noreferrer">GoodHomes</a>
+          <a href="https://hospitalitysnapshots.com/" target="_blank" rel="noreferrer">Hospitality Snapshots</a>
+        </div>
+      </section>
+
       <section class="mf-contact-index" id="contact">
         <div class="mf-section-label">
           <span>Contact</span>
@@ -213,6 +266,49 @@
             <a href="/assets/urbanmistrii-portfolio.pdf" download>Portfolio PDF</a>
             <a href="/portal">Team login</a>
           </div>
+          <form class="mf-contact-form" action="https://formsubmit.co/mail@urbanmistrii.com" method="POST">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required>
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" required></textarea>
+            </label>
+            <button type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+      <section class="mf-instagram-strip" aria-label="Instagram">
+        <div class="mf-section-label">
+          <span>Instagram</span>
+          <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">@urbanmistrii</a>
+        </div>
+        <div class="mf-instagram-grid">
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #b8a99a;">
+            <span class="mf-instagram-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            </span>
+          </a>
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #9a8b7a;">
+            <span class="mf-instagram-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            </span>
+          </a>
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #7a8b72;">
+            <span class="mf-instagram-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            </span>
+          </a>
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #8b7a6a;">
+            <span class="mf-instagram-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            </span>
+          </a>
         </div>
       </section>
     </main>
@@ -221,7 +317,37 @@
       <span>Urban Mistrii Studio</span>
       <span>Architecture / Interiors / Hospitality / Urban Development</span>
       <span>Delhi, India</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://in.linkedin.com/company/urbanmistriistudio" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:mail@urbanmistrii.com" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Email</span>
+        </a>
+      </div>
     </footer>
+
+    <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <div class="lightbox" data-lightbox hidden role="dialog" aria-label="Image lightbox">
+      <button class="lightbox-close" type="button" aria-label="Close lightbox">&times;</button>
+      <button class="lightbox-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+      <button class="lightbox-next" type="button" aria-label="Next image">&rsaquo;</button>
+      <div class="lightbox-content">
+        <img class="lightbox-img" src="" alt="">
+        <div class="lightbox-caption"></div>
+      </div>
+    </div>
+
+    <div class="cursor" data-cursor></div>
 
     <script src="script.js"></script>
     <script type="application/ld+json">

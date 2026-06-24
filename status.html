@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Candidate Portal | Urban Mistrii Studio</title>
+    <meta name="description" content="Track your Urban Mistrii application status using your Application ID or email address.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#f7f3ec">
+    <link rel="canonical" href="https://urbanmistrii.com/status">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-bar">
+        <a class="brand" href="/#top" aria-label="Urban Mistrii home">
+          <span class="brand-logo" aria-hidden="true"><img src="assets/urbanmistrii-logo-clean.png" alt=""></span>
+          <span class="brand-text">Urban Mistrii Studio</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
+      </div>
+      <div class="nav-shell" id="site-nav" data-nav-shell>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/#work">Work</a>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/process">Process</a>
+          <a href="/faq">FAQ</a>
+          <a href="/press">Press</a>
+          <a href="/journal">Journal</a>
+          <a href="/careers">Careers</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-utility" href="/portal">Team login</a>
+          <a class="header-link secondary" href="/assets/urbanmistrii-portfolio.pdf" download>Portfolio</a>
+          <a class="header-link" href="/start-project">Start a project</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="editorial-main" id="main-content">
+      <section class="editorial-hero">
+        <p class="section-kicker">Candidate Portal</p>
+        <h1>Track your application</h1>
+        <p>Enter your Application ID or email address to check the current status of your application to Urban Mistrii Studio.</p>
+      </section>
+
+      <section class="status-lookup" id="lookup">
+        <div class="status-lookup-inner">
+          <div class="status-search">
+            <div class="status-tabs">
+              <button class="status-tab is-active" data-tab="id">Application ID</button>
+              <button class="status-tab" data-tab="email">Email Address</button>
+            </div>
+            <form class="status-form" id="status-form">
+              <div class="status-input-group" id="input-id">
+                <label for="application-id">Application ID</label>
+                <input id="application-id" name="applicationId" type="text" placeholder="e.g. UM-0001" autocomplete="off">
+              </div>
+              <div class="status-input-group is-hidden" id="input-email">
+                <label for="email-address">Email Address</label>
+                <input id="email-address" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+              </div>
+              <button class="submit" type="submit">Search</button>
+            </form>
+          </div>
+          <div class="status-result is-hidden" id="status-result">
+            <div class="status-card">
+              <div class="status-card-header">
+                <span class="status-badge" id="status-badge">Applied</span>
+              </div>
+              <div class="status-card-body">
+                <div class="status-field">
+                  <span class="status-label">Name</span>
+                  <span class="status-value" id="result-name">—</span>
+                </div>
+                <div class="status-field">
+                  <span class="status-label">Position</span>
+                  <span class="status-value" id="result-position">—</span>
+                </div>
+                <div class="status-field">
+                  <span class="status-label">Application Date</span>
+                  <span class="status-value" id="result-date">—</span>
+                </div>
+                <div class="status-field">
+                  <span class="status-label">Last Updated</span>
+                  <span class="status-value" id="result-updated">—</span>
+                </div>
+              </div>
+              <div class="status-card-footer">
+                <p id="result-description">Your application has been received.</p>
+              </div>
+            </div>
+            <div class="status-error is-hidden" id="status-error">
+              <p>No application found with the provided details. Please check your Application ID or email address and try again.</p>
+              <p>If you believe this is an error, contact the studio at <a href="mailto:hr@urbanmistrii.com">hr@urbanmistrii.com</a>.</p>
+            </div>
+          </div>
+          <div class="status-loading is-hidden" id="status-loading">
+            <p>Searching...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-help">
+        <div class="status-help-inner">
+          <h2>Questions?</h2>
+          <p>If you are unable to find your application status, please email <a href="mailto:hr@urbanmistrii.com">hr@urbanmistrii.com</a> with your Application ID.</p>
+          <p>Due to the volume of applications received, individual status requests submitted via WhatsApp or phone will not receive a response. Please use this portal as your primary status check method.</p>
+          <a class="submit" href="/careers">Back to careers</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Urban Mistrii Studio</span>
+      <span>Candidate Portal / Recruitment</span>
+      <span>Delhi, India</span>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const form = document.getElementById("status-form");
+      const result = document.getElementById("status-result");
+      const error = document.getElementById("status-error");
+      const loading = document.getElementById("status-loading");
+      const tabs = document.querySelectorAll(".status-tab");
+      const inputId = document.getElementById("input-id");
+      const inputEmail = document.getElementById("input-email");
+      const idInput = document.getElementById("application-id");
+      const emailInput = document.getElementById("email-address");
+
+      let activeTab = "id";
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          activeTab = tab.dataset.tab;
+          inputId.classList.toggle("is-hidden", activeTab !== "id");
+          inputEmail.classList.toggle("is-hidden", activeTab !== "email");
+          result.classList.add("is-hidden");
+          error.classList.add("is-hidden");
+        });
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        result.classList.add("is-hidden");
+        error.classList.add("is-hidden");
+        loading.classList.remove("is-hidden");
+
+        const params = new URLSearchParams();
+        if (activeTab === "id") {
+          params.set("applicationId", idInput.value.trim());
+        } else {
+          params.set("email", emailInput.value.trim());
+        }
+
+        try {
+          const response = await fetch(`/api/candidates?${params.toString()}`);
+          const data = await response.json();
+
+          loading.classList.add("is-hidden");
+
+          if (!data.ok) {
+            error.classList.remove("is-hidden");
+            return;
+          }
+
+          const c = data.candidate;
+          document.getElementById("result-name").textContent = c.name;
+          document.getElementById("result-position").textContent = c.position;
+          document.getElementById("result-date").textContent = formatDate(c.applicationDate);
+          document.getElementById("result-updated").textContent = formatDate(c.lastUpdated);
+          document.getElementById("result-description").textContent = c.description;
+
+          const badge = document.getElementById("status-badge");
+          badge.textContent = c.status;
+          badge.className = "status-badge";
+          if (c.status) {
+            const slug = c.status.toLowerCase().replace(/\s+/g, "-");
+            badge.classList.add("status-badge--" + slug);
+          }
+
+          result.classList.remove("is-hidden");
+        } catch (err) {
+          loading.classList.add("is-hidden");
+          error.classList.remove("is-hidden");
+        }
+      });
+
+      function formatDate(dateStr) {
+        if (!dateStr) return "—";
+        try {
+          const d = new Date(dateStr);
+          return d.toLocaleDateString("en-IN", { year: "numeric", month: "short", day: "numeric" });
+        } catch {
+          return dateStr;
+        }
+      }
+    </script>
+  </body>
+</html>

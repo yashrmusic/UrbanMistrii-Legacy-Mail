@@ -1,12 +1,12 @@
 {
-  "portalEnabled": true,
-  "provider": "supabase",
-  "supabaseUrl": "https://xcbpmntovmzdjbphivzt.supabase.co",
-  "supabaseAnonKey": "sb_publishable_XsE5hKxS3XCTgpYIY2Cdkg_376eKe7h",
+  "portalEnabled": false,
+  "provider": "draft",
+  "supabaseUrl": "",
+  "supabaseAnonKey": "",
   "emailRedirectTo": "https://urbanmistrii.com/portal",
   "supportEmail": "hr@urbanmistrii.com",
   "allowedEmailDomains": [
-    "urbanmistrii.com"
+    "*"
   ],
-  "portalMode": "live"
+  "portalMode": "closed"
 }

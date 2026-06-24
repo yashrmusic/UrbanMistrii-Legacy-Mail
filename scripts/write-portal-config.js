@@ -11,7 +11,7 @@ const config = {
   supabaseAnonKey: process.env.SUPABASE_ANON_KEY || "",
   emailRedirectTo: process.env.PORTAL_EMAIL_REDIRECT_TO || "https://urbanmistrii.com/portal",
   supportEmail: process.env.PORTAL_SUPPORT_EMAIL || "hr@urbanmistrii.com",
-  allowedEmailDomains: (process.env.PORTAL_ALLOWED_EMAIL_DOMAINS || "urbanmistrii.com").split(",").map((value) => value.trim().toLowerCase()).filter(Boolean),
+  allowedEmailDomains: (process.env.PORTAL_ALLOWED_EMAIL_DOMAINS || "*").split(",").map((value) => value.trim().toLowerCase()).filter(Boolean),
   portalMode: process.env.PORTAL_MODE || "closed"
 };
 
@@ -21,6 +21,7 @@ const copyTargets = [
   "about.html",
   "assets",
   "careers.html",
+  "status.html",
   "faq.html",
   "humans.txt",
   "index.html",
@@ -33,6 +34,7 @@ const copyTargets = [
   "press.html",
   "projects",
   "robots.txt",
+  "open.html",
   "script.js",
   "sectors.html",
   "sitemap.xml",

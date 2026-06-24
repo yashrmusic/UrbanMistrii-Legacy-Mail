@@ -5,12 +5,16 @@
     "apps/*",
     "packages/*"
   ],
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  },
   "scripts": {
-    "build": "npm run build:site && npm --workspace @urbanmistrii/payroll-app run build && npm --workspace @urbanmistrii/studio-tools run build",
+    "build": "npm run build:site && npm --workspace @urbanmistrii/payroll-app run build && npm --workspace @urbanmistrii/studio-tools run build && npm --workspace @urbanmistrii/recruitment-admin run build",
     "build:site": "node scripts/write-portal-config.js",
     "dev:payroll": "npm --workspace @urbanmistrii/payroll-app run dev",
     "dev:studio": "npm --workspace @urbanmistrii/studio-tools run dev",
-    "typecheck": "npm --workspace @urbanmistrii/payroll-core run typecheck && npm --workspace @urbanmistrii/payroll-app run typecheck && npm --workspace @urbanmistrii/studio-tools run typecheck",
+"dev:recruitment": "npm --workspace @urbanmistrii/recruitment-admin run dev",
+    "typecheck": "npm --workspace @urbanmistrii/payroll-core run typecheck && npm --workspace @urbanmistrii/payroll-app run typecheck && npm --workspace @urbanmistrii/studio-tools run typecheck && npm --workspace @urbanmistrii/recruitment-admin run typecheck",
     "vercel-build": "npm run build"
   }
 }
