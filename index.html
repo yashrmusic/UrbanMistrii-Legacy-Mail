@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body class="modus-home" data-no-assistant="true">
+  <body class="modus-home progressive-home" data-no-assistant="true">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header" data-header>
       <div class="header-bar">
@@ -44,12 +44,9 @@
       <div class="nav-shell" id="site-nav" data-nav-shell>
         <nav class="nav" aria-label="Main navigation">
           <a href="/#work">Work</a>
-          <a href="/about">About</a>
+          <a href="/#studio">Studio</a>
           <a href="/services">Services</a>
-          <a href="/process">Process</a>
-          <a href="/faq">FAQ</a>
           <a href="/press">Press</a>
-          <a href="/journal">Journal</a>
           <a href="/careers">Careers</a>
           <a href="/#contact">Contact</a>
         </nav>
@@ -62,29 +59,48 @@
     </header>
 
     <main id="main-content">
-      <section class="mf-hero" id="top" aria-label="Urban Mistrii Studio">
+      <section class="mf-hero progressive-hero" id="top" aria-label="Urban Mistrii Studio">
         <div class="mf-time">
           <span>Delhi</span>
           <span data-local-time>IST</span>
         </div>
-        <div class="mf-hero-grid">
-          <div class="mf-hero-statement">
-            <p>Urban Mistrii Studio</p>
-            <h1>Architecture,<br>interiors and<br>hospitality.</h1>
-            <a href="#work">View work</a>
+        <div class="progressive-hero-grid">
+          <div class="progressive-hero-copy">
+            <p class="progressive-kicker">Delhi-based architecture and interior design studio</p>
+            <h1>Urban Mistrii Studio</h1>
+            <p class="progressive-lede">Spatial work for homes, restaurants, workplaces and cultural interiors, built with atmosphere, technical clarity and sharper studio systems.</p>
+            <div class="progressive-actions" aria-label="Primary actions">
+              <a href="/start-project">Start a project</a>
+              <a href="#work">Explore work</a>
+            </div>
+            <dl class="progressive-signals" aria-label="Studio signals">
+              <div>
+                <dt>2018</dt>
+                <dd>Founded in Delhi</dd>
+              </div>
+              <div>
+                <dt>4</dt>
+                <dd>Core typologies</dd>
+              </div>
+              <div>
+                <dt>AD / Elle</dt>
+                <dd>Published work</dd>
+              </div>
+            </dl>
           </div>
-          <a class="mf-hero-project mf-hero-project-large" href="/projects/case-studies#pool-house">
-            <img src="assets/work-pool-house.webp" alt="The Pool House by Urban Mistrii Studio" width="1920" height="1280" fetchpriority="high" decoding="async">
-            <span>The Pool House</span>
-            <small>Architecture, Residential</small>
-          </a>
-          <a class="mf-hero-project" href="/projects/case-studies#padmanabham">
-            <img src="assets/work-padmanabham.webp" alt="Padmanabham restaurant interior by Urban Mistrii Studio" width="1920" height="1280" decoding="async">
-            <span>Padmanabham</span>
-            <small>Hospitality, Interior</small>
-          </a>
-          <div class="mf-hero-note">
-            <p>Urban Mistrii works across homes, restaurants, workplaces and development-led sites. The studio is interested in atmosphere, precision and the discipline required to make a space hold together after it is built.</p>
+          <div class="progressive-hero-media" aria-label="Featured projects">
+            <a class="progressive-feature" href="/projects/case-studies#pool-house">
+              <img src="assets/work-pool-house.webp" alt="The Pool House by Urban Mistrii Studio" width="1920" height="1280" fetchpriority="high" decoding="async">
+              <span>The Pool House / Residential architecture</span>
+            </a>
+            <a class="progressive-feature progressive-feature-small" href="/projects/case-studies#padmanabham">
+              <img src="assets/work-padmanabham.webp" alt="Padmanabham restaurant interior by Urban Mistrii Studio" width="1920" height="1280" decoding="async">
+              <span>Padmanabham / Hospitality interior</span>
+            </a>
+            <div class="progressive-hero-note">
+              <span>Current studio language</span>
+              <p>Warm minimalism, rooted material palettes, operationally aware hospitality, and homes that feel deeply lived in.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -154,6 +170,30 @@
           <img src="assets/work-pool-house.webp" alt="The Pool House exterior architecture" width="1920" height="1280" loading="lazy" decoding="async">
           <figcaption>The Pool House, Chhatarpur</figcaption>
         </figure>
+      </section>
+
+      <section class="progressive-method" aria-label="Studio method">
+        <div class="mf-section-label">
+          <span>Method</span>
+          <a href="/process">Process</a>
+        </div>
+        <div class="progressive-method-grid">
+          <article>
+            <span>01</span>
+            <h2>Context before style.</h2>
+            <p>We map the site, circulation, rituals, service flow and constraints before deciding what the space wants to become.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h2>Material intelligence.</h2>
+            <p>Finishes, light, furniture and detail are treated as one system, so the visual atmosphere survives procurement and site execution.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h2>Studio operations.</h2>
+            <p>Project boards, Gantt planning, documentation and internal reviews keep clients, architects and site teams moving in the same direction.</p>
+          </article>
+        </div>
       </section>
 
       <section class="mf-studio-index" id="studio" aria-label="Studio profile">
@@ -289,22 +329,26 @@
           <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">@urbanmistrii</a>
         </div>
         <div class="mf-instagram-grid">
-          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #b8a99a;">
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">
+            <img src="assets/work-mad.webp" alt="MAD hospitality interior by Urban Mistrii Studio" width="1920" height="1280" loading="lazy" decoding="async">
             <span class="mf-instagram-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
             </span>
           </a>
-          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #9a8b7a;">
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">
+            <img src="assets/work-ivory-house.webp" alt="Ivory House residential interior by Urban Mistrii Studio" width="1920" height="1280" loading="lazy" decoding="async">
             <span class="mf-instagram-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
             </span>
           </a>
-          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #7a8b72;">
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">
+            <img src="assets/work-metro.webp" alt="Metro Infrasys workplace interior by Urban Mistrii Studio" width="1530" height="1920" loading="lazy" decoding="async">
             <span class="mf-instagram-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
             </span>
           </a>
-          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" style="background: #8b7a6a;">
+          <a class="mf-instagram-post" href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer">
+            <img src="assets/work-installation.webp" alt="Urban Mistrii installation project" width="1281" height="1920" loading="lazy" decoding="async">
             <span class="mf-instagram-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
             </span>

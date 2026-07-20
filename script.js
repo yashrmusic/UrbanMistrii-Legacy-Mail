@@ -66,7 +66,7 @@ if (navToggle && header && navShell) {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 720) {
+    if (window.innerWidth > 900) {
       closeMenu();
     }
   });
@@ -96,7 +96,7 @@ const revealTargets = document.querySelectorAll(
   ".section-grid, .project, .studio-copy, .process > div, .service-grid article, .press-cards article, .contact-panel, .case-study"
     + ", .updates, .update-list article"
     + ", .mf-hero, .mf-project-index, .mf-image-field, .mf-studio-index, .mf-service-index, .mf-press-strip"
-    + ", .mf-contact-index, .mf-proof-strip, .mf-testimonial-strip, .mf-instagram-strip, .mf-project-row"
+    + ", .mf-contact-index, .mf-proof-strip, .mf-testimonial-strip, .mf-instagram-strip, .mf-project-row, .progressive-method"
 );
 
 revealTargets.forEach((target) => target.setAttribute("data-reveal", ""));
@@ -123,7 +123,7 @@ document.querySelectorAll("img").forEach((img) => {
   }
 });
 
-document.querySelectorAll(".mf-hero-project").forEach((card) => {
+document.querySelectorAll(".mf-hero-project[data-tilt]").forEach((card) => {
   card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
