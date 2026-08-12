@@ -27,6 +27,7 @@ const copyTargets = [
   "index.html",
   "journal",
   "journal.html",
+  "llms.txt",
   "process.html",
   "portal.css",
   "portal.html",
@@ -41,6 +42,7 @@ const copyTargets = [
   "services.html",
   "start-project.html",
   "styles.css",
+  "bd83858e8934102cb7f3af2f7d2f92d2.txt",
   "thank-you.html"
 ];
 

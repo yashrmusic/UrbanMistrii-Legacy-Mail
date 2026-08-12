@@ -1,8 +1,17 @@
 User-agent: OAI-SearchBot
-Allow: /
-
+User-agent: ChatGPT-User
 User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
 Allow: /
+Disallow: /portal
+Disallow: /portal.html
+Disallow: /admin
+Disallow: /admin/
 
 User-agent: *
 Allow: /
