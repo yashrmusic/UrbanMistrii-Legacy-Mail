@@ -25,6 +25,7 @@ const copyTargets = [
   "faq.html",
   "humans.txt",
   "index.html",
+  "restaurant-architects-delhi.html",
   "journal",
   "journal.html",
   "llms.txt",
