@@ -1,6 +1,14 @@
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /portal
 Disallow: /portal.html
+Disallow: /admin
+Disallow: /admin/
 
 Sitemap: https://urbanmistrii.com/sitemap.xml
