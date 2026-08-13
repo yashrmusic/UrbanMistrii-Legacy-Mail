@@ -17,6 +17,6 @@
     "dev:studio": "npm --workspace @urbanmistrii/studio-tools run dev",
     "dev:recruitment": "npm --workspace @urbanmistrii/recruitment-admin run dev",
     "typecheck": "npm --workspace @urbanmistrii/payroll-core run typecheck && npm --workspace @urbanmistrii/payroll-app run typecheck && npm --workspace @urbanmistrii/studio-tools run typecheck && npm --workspace @urbanmistrii/recruitment-admin run typecheck",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build && node scripts/vercel-indexnow.js"
   }
 }

@@ -84,6 +84,10 @@
   width: 100%;
 }
 
+.project-detail-media--portrait img {
+  object-position: center 54%;
+}
+
 .project-detail-media figcaption {
   background: #11120f;
   color: rgba(244, 243, 238, 0.58);

@@ -375,4 +375,9 @@ body {
   .cover h1 {
     font-size: 72px;
   }
+
+  .contact-band {
+    align-content: center;
+    height: 285mm;
+  }
 }

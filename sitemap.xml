@@ -56,6 +56,60 @@
     </image:image>
   </url>
   <url>
+    <loc>https://urbanmistrii.com/projects/seoul-new-delhi</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-seoul.jpg</image:loc>
+      <image:caption>SEOUL Korean restaurant interior in Saket, New Delhi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/projects/clinque-noida</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-clinque.jpg</image:loc>
+      <image:caption>Clinque microbrewery and restro-bar interior in Noida</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/projects/ivory-house</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-ivory-house.jpg</image:loc>
+      <image:caption>Ivory House residential interior by Urban Mistrii Studio</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/projects/hill-house</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-hill-house.jpg</image:loc>
+      <image:caption>The Hill House 2019 residential renovation near Shimla by Urban Mistrii Studio</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/projects/metro-infrasys</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-metro.jpg</image:loc>
+      <image:caption>Metro Infrasys workplace interior by Urban Mistrii Studio</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/projects/mahagun-residence</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-mahagun.jpg</image:loc>
+      <image:caption>Mahagun Residence interior by Urban Mistrii Studio</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://urbanmistrii.com/about</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
@@ -79,8 +133,8 @@
     <lastmod>2026-08-13</lastmod>
     <priority>0.85</priority>
     <image:image>
-      <image:loc>https://urbanmistrii.com/assets/work-installation.jpg</image:loc>
-      <image:caption>Spatial installation showing display, scale, and audience movement by Urban Mistrii Studio</image:caption>
+      <image:loc>https://urbanmistrii.com/assets/work-metro.jpg</image:loc>
+      <image:caption>Metro Infrasys commercial workplace interior by Urban Mistrii Studio</image:caption>
     </image:image>
   </url>
   <url>
@@ -98,7 +152,7 @@
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://urbanmistrii.com/assets/work-hill-house.jpg</image:loc>
-      <image:caption>The Hill House residential architecture by Urban Mistrii Studio</image:caption>
+      <image:caption>The Hill House 2019 residential renovation near Shimla by Urban Mistrii Studio</image:caption>
     </image:image>
   </url>
   <url>

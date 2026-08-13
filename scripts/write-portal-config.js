@@ -128,7 +128,9 @@ function injectObservability(directory) {
 injectObservability(output);
 
 const serialized = `${JSON.stringify(config, null, 2)}\n`;
+const buildId = process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || "local";
 fs.writeFileSync(path.join(root, "portal-config.json"), serialized);
 fs.writeFileSync(path.join(output, "portal-config.json"), serialized);
+fs.writeFileSync(path.join(output, "build-id.txt"), `${buildId}\n`);
 
 console.log(`Portal config written in ${config.provider} mode.`);
