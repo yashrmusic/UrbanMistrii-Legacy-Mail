@@ -25,7 +25,10 @@ const copyTargets = [
   "faq.html",
   "humans.txt",
   "index.html",
+  "commercial-interior-designers-delhi.html",
+  "group-housing-architects-delhi.html",
   "restaurant-architects-delhi.html",
+  "retail-interior-designers-delhi.html",
   "journal",
   "journal.html",
   "llms.txt",
@@ -39,6 +42,7 @@ const copyTargets = [
   "robots.txt",
   "open.html",
   "script.js",
+  "sector-pages.css",
   "sectors.html",
   "sitemap.xml",
   "services.html",
@@ -59,6 +63,35 @@ for (const target of copyTargets) {
     fs.cpSync(source, destination, { recursive: true });
   }
 }
+
+const observabilitySnippet = `
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>`;
+
+function injectObservability(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const filePath = path.join(directory, entry.name);
+    const relativePath = path.relative(output, filePath);
+
+    if (entry.isDirectory()) {
+      if (relativePath === "admin" || relativePath === "portal") continue;
+      injectObservability(filePath);
+      continue;
+    }
+
+    if (!entry.isFile() || path.extname(entry.name) !== ".html" || relativePath === "portal.html") continue;
+
+    const html = fs.readFileSync(filePath, "utf8");
+    if (html.includes("/_vercel/insights/script.js") || !html.includes("</head>")) continue;
+    fs.writeFileSync(filePath, html.replace("</head>", `${observabilitySnippet}\n  </head>`));
+  }
+}
+
+injectObservability(output);
 
 const serialized = `${JSON.stringify(config, null, 2)}\n`;
 fs.writeFileSync(path.join(root, "portal-config.json"), serialized);
