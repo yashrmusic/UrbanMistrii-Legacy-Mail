@@ -4728,28 +4728,6 @@ a.project-button {
   min-height: 310px;
 }
 
-.progressive-hero-note {
-  background: var(--forest);
-  color: var(--paper);
-  display: grid;
-  gap: 10px;
-  grid-column: 2;
-  padding: 18px;
-}
-
-.progressive-hero-note span {
-  color: var(--citrus);
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.progressive-hero-note p {
-  color: rgba(244, 243, 238, 0.82);
-  font-size: 14px;
-  line-height: 1.45;
-  margin: 0;
-}
-
 .progressive-home .mf-section-label {
   align-items: end;
   border-top: 1px solid var(--line);
@@ -5232,10 +5210,6 @@ a.project-button {
 
   .progressive-feature-small {
     padding-top: 0;
-  }
-
-  .progressive-hero-note {
-    grid-column: auto;
   }
 
   .progressive-home .mf-section-label {
