@@ -3,3 +3,17 @@
     margin-top: 14px;
   }
 }
+
+.sector-page .media-kit figure img {
+  aspect-ratio: 4 / 5;
+  height: min(72vh, 780px) !important;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 740px) {
+  .sector-page .media-kit figure img {
+    aspect-ratio: 4 / 5;
+    height: auto !important;
+  }
+}

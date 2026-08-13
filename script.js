@@ -97,6 +97,7 @@ const revealTargets = document.querySelectorAll(
     + ", .updates, .update-list article"
     + ", .mf-hero, .mf-project-index, .mf-image-field, .mf-studio-index, .mf-service-index, .mf-press-strip"
     + ", .mf-contact-index, .mf-proof-strip, .mf-testimonial-strip, .mf-instagram-strip, .mf-project-row, .progressive-method"
+    + ", .progressive-case-files, .case-file"
 );
 
 revealTargets.forEach((target) => target.setAttribute("data-reveal", ""));

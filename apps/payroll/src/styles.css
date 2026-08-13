@@ -702,6 +702,12 @@ td small {
     padding: 18px;
   }
 
+  .payroll-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   .payroll-topbar,
   .section-toolbar,
   .surface-header {
@@ -714,7 +720,6 @@ td small {
     flex-wrap: wrap;
   }
 
-  .nav-stack,
   .metric-grid,
   .payroll-summary,
   .detail-grid,
@@ -722,6 +727,15 @@ td small {
   .form-grid,
   .run-composer {
     grid-template-columns: 1fr;
+  }
+
+  .nav-stack,
+  .payroll-shell.is-employee .nav-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .session-box {
+    grid-column: auto;
   }
 
   .nav-button {
