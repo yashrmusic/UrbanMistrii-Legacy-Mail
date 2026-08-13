@@ -10,5 +10,5 @@ export const loadPortalConfig = async (): Promise<PortalConfig> => {
   }
 };
 
-export const hasSupabaseConfig = (config: PortalConfig | undefined) =>
+export const hasSupabaseConfig = (config: PortalConfig | null | undefined) =>
   Boolean(config?.provider === "supabase" && config.supabaseUrl && config.supabaseAnonKey);

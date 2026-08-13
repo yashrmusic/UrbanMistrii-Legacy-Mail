@@ -413,11 +413,11 @@ export default function App() {
               <div className="detail-section">
                 <h2 className="section-title">Documents</h2>
                 <div className="detail-card">
-                  {[
+                  {([
                     ["Resume", selectedCandidate.resume_url],
                     ["Portfolio", selectedCandidate.portfolio_url],
                     ["LinkedIn", selectedCandidate.linkedin_url],
-                  ].map(([label, url], i) => (
+                  ] as const).map(([label, url], i) => (
                     <div key={label} className={`detail-row ${i === 0 ? "first" : ""}`}>
                       <span className="detail-label">{label}</span>
                       {url ? <a href={url} target="_blank" rel="noopener noreferrer" className="detail-link">View {label.toLowerCase()}</a> : <span className="cell-muted">Not provided</span>}
