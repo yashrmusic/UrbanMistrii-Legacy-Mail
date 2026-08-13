@@ -9,14 +9,13 @@
     "@supabase/supabase-js": "^2.50.0"
   },
   "scripts": {
-    "build": "npm run build:site && npm run seo:validate && npm --workspace @urbanmistrii/payroll-app run build && npm --workspace @urbanmistrii/studio-tools run build && npm --workspace @urbanmistrii/recruitment-admin run build",
+    "build": "npm run build:site && npm run seo:validate && npm --workspace @urbanmistrii/payroll-app run build && npm --workspace @urbanmistrii/studio-tools run build && npm --workspace @urbanmistrii/recruitment-admin run build && node scripts/vercel-indexnow.js",
     "build:site": "node scripts/write-portal-config.js",
     "seo:validate": "node scripts/validate-seo.js",
     "seo:indexnow": "node scripts/submit-indexnow.js",
     "dev:payroll": "npm --workspace @urbanmistrii/payroll-app run dev",
     "dev:studio": "npm --workspace @urbanmistrii/studio-tools run dev",
     "dev:recruitment": "npm --workspace @urbanmistrii/recruitment-admin run dev",
-    "typecheck": "npm --workspace @urbanmistrii/payroll-core run typecheck && npm --workspace @urbanmistrii/payroll-app run typecheck && npm --workspace @urbanmistrii/studio-tools run typecheck && npm --workspace @urbanmistrii/recruitment-admin run typecheck",
-    "vercel-build": "npm run build && node scripts/vercel-indexnow.js"
+    "typecheck": "npm --workspace @urbanmistrii/payroll-core run typecheck && npm --workspace @urbanmistrii/payroll-app run typecheck && npm --workspace @urbanmistrii/studio-tools run typecheck && npm --workspace @urbanmistrii/recruitment-admin run typecheck"
   }
 }
