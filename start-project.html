@@ -196,5 +196,28 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ContactPage",
+            "@id": "https://urbanmistrii.com/start-project#page",
+            "url": "https://urbanmistrii.com/start-project",
+            "name": "Start a Project with Urban Mistrii Studio",
+            "description": "Project enquiry page for architecture, interiors, hospitality, workplace, retail, and development briefs.",
+            "isPartOf": {"@id": "https://urbanmistrii.com/#website"},
+            "about": {"@id": "https://urbanmistrii.com/#studio"}
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://urbanmistrii.com/"},
+              {"@type": "ListItem", "position": 2, "name": "Start a Project", "item": "https://urbanmistrii.com/start-project"}
+            ]
+          }
+        ]
+      }
+    </script>
   </body>
 </html>

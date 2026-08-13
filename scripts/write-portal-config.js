@@ -30,6 +30,7 @@ const copyTargets = [
   "journal.html",
   "llms.txt",
   "process.html",
+  "ritika-rakhiani.html",
   "portal.css",
   "portal.html",
   "portal.js",
@@ -44,6 +45,7 @@ const copyTargets = [
   "start-project.html",
   "styles.css",
   "bd83858e8934102cb7f3af2f7d2f92d2.txt",
+  "5b8f1689cff8ce83e94fc70e7f7e8bc4.txt",
   "thank-you.html"
 ];
 

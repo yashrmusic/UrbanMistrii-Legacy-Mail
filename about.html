@@ -90,6 +90,9 @@
         <div>
           <p>Urban Mistrii is shaped by a multidisciplinary point of view that moves comfortably between residential calm, hospitality energy, commercial clarity, and urban-scale thinking. The work aims to feel composed rather than over-designed, and generous rather than generic.</p>
           <p>The studio collaborates with clients, consultants, vendors, and execution teams with an emphasis on follow-through. Ideas matter, but they are only useful when they survive the realities of site, timelines, and built detail.</p>
+          <div class="contact-shortcuts">
+            <a class="text-link dark" href="/ritika-rakhiani">Read Ritika Rakhiani's profile</a>
+          </div>
         </div>
       </section>
 
@@ -165,9 +168,13 @@
         "@graph": [
           {
             "@type": "AboutPage",
+            "@id": "https://urbanmistrii.com/about#page",
             "name": "About Urban Mistrii Studio",
             "url": "https://urbanmistrii.com/about",
-            "description": "About the practice, founder perspective, sectors, and design approach of Urban Mistrii Studio."
+            "description": "About the practice, founder perspective, sectors, and design approach of Urban Mistrii Studio.",
+            "isPartOf": {"@id": "https://urbanmistrii.com/#website"},
+            "about": {"@id": "https://urbanmistrii.com/#studio"},
+            "mainEntity": {"@id": "https://urbanmistrii.com/ritika-rakhiani#person"}
           },
           {
             "@type": "BreadcrumbList",

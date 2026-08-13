@@ -239,7 +239,7 @@
           <a href="/about">About</a>
         </div>
         <div class="mf-studio-copy">
-          <h2>Founded by Ritika Rakhiani, Urban Mistrii is a multidisciplinary design practice working between architecture, interiors, hospitality and urban development.</h2>
+          <h2>Founded by <a href="/ritika-rakhiani">Ritika Rakhiani</a>, Urban Mistrii is a multidisciplinary design practice working between architecture, interiors, hospitality and urban development.</h2>
           <p>Each project starts with a close read of context: site, movement, mood, client ambition and the realities of execution. The work is built through plans, material studies, light, furniture, detail and the quiet adjustments that make a space feel inevitable.</p>
         </div>
         <div class="mf-stats">
@@ -481,10 +481,7 @@
             "image": "https://urbanmistrii.com/assets/work-padmanabham.jpg",
             "description": "Delhi-based architecture and interior design studio for residences, restaurants, hospitality spaces, workplaces, installations, and urban development projects across India.",
             "foundingDate": "2018",
-            "founder": {
-              "@type": "Person",
-              "name": "Ritika Rakhiani"
-            },
+            "founder": {"@id": "https://urbanmistrii.com/ritika-rakhiani#person"},
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Delhi",
@@ -495,13 +492,20 @@
             "email": "mail@urbanmistrii.com",
             "telephone": "+91 99536 68560",
             "priceRange": "$$",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "project enquiries",
+              "email": "mail@urbanmistrii.com",
+              "telephone": "+91 99536 68560",
+              "areaServed": "IN"
+            },
             "sameAs": [
-              "https://urbanmistrii.com/",
               "https://www.instagram.com/urbanmistrii/",
               "https://in.linkedin.com/company/urbanmistriistudio",
               "https://archidiaries.com/practices/urban-mistrii/",
               "https://architizer.com/firms/urban-mistrii-studio/",
-              "https://www.architectureartdesigns.com/author/urbanmistrii/"
+              "https://www.architectureartdesigns.com/author/urbanmistrii/",
+              "https://hospitalitysnapshots.com/firm/urban-mistrii/"
             ],
             "knowsAbout": [
               "Architecture",
@@ -510,9 +514,24 @@
               "Restaurant Architecture",
               "Residential Design",
               "Workplace Design",
-              "Architecture Jobs",
-              "Interior Design Careers",
               "Urban Development"
+            ],
+            "subjectOf": [
+              {
+                "@type": "Article",
+                "name": "A Korean Dining Experience Debuts in New Delhi",
+                "url": "https://hospitalitydesign.com/news/seoul-restaurant-new-delhi-india/183624/"
+              },
+              {
+                "@type": "Article",
+                "name": "Bar Bar is a stunning homage to the River Ganga",
+                "url": "https://www.architecturaldigest.in/story/this-bar-in-varanasi-is-a-stunning-homage-to-the-river-ganga/"
+              },
+              {
+                "@type": "Article",
+                "name": "Ritika Rakhiani of Urban Mistrii creates Padmanabham in New Delhi",
+                "url": "https://elledecor.in/ritika-rakhiani-of-urban-mistrii-creates-padmanabham-in-new-delhi-as-a-gateway-to-tamil-nadu-and-we-cant-wait-to-visit/"
+              }
             ],
             "potentialAction": {
               "@type": "ViewAction",
@@ -531,11 +550,20 @@
             }
           },
           {
+            "@type": "Person",
+            "@id": "https://urbanmistrii.com/ritika-rakhiani#person",
+            "name": "Ritika Rakhiani",
+            "url": "https://urbanmistrii.com/ritika-rakhiani",
+            "jobTitle": "Founder and Principal Architect",
+            "worksFor": {"@id": "https://urbanmistrii.com/#studio"}
+          },
+          {
             "@type": "WebSite",
             "@id": "https://urbanmistrii.com/#website",
             "url": "https://urbanmistrii.com/",
             "name": "Urban Mistrii Studio",
             "description": "Delhi architecture, interiors and hospitality design studio.",
+            "inLanguage": "en-IN",
             "publisher": {
               "@id": "https://urbanmistrii.com/#studio"
             }

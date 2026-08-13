@@ -1,38 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://urbanmistrii.com/</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Padmanabham restaurant interior in New Delhi by Urban Mistrii Studio</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/projects/case-studies</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-pool-house.jpg</image:loc>
+      <image:caption>The Pool House architecture project in Chhatarpur, Delhi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/projects/pool-house-chhatarpur</loc>
     <lastmod>2026-08-12</lastmod>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-pool-house.jpg</image:loc>
+      <image:caption>The Pool House prefabricated farmhouse extension in Chhatarpur, Delhi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/projects/padmanabham-new-delhi</loc>
     <lastmod>2026-08-12</lastmod>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Padmanabham South Indian restaurant interior in Janpath, New Delhi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/projects/mad-bar-new-delhi</loc>
     <lastmod>2026-08-12</lastmod>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-mad.jpg</image:loc>
+      <image:caption>MAD bar and restaurant interior in New Delhi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/projects/bar-bar-varanasi</loc>
     <lastmod>2026-08-12</lastmod>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-ombre.jpg</image:loc>
+      <image:caption>Bar Bar rooftop hospitality interior in Varanasi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/about</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -44,6 +69,19 @@
     <loc>https://urbanmistrii.com/restaurant-architects-delhi</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Restaurant interior design in Delhi by Urban Mistrii Studio</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://urbanmistrii.com/ritika-rakhiani</loc>
+    <lastmod>2026-08-13</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Selected hospitality work led by Urban Mistrii founder Ritika Rakhiani</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/process</loc>
@@ -54,6 +92,10 @@
     <loc>https://urbanmistrii.com/journal/how-to-hire-restaurant-architects-delhi</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Padmanabham restaurant interior referenced in the Urban Mistrii hiring guide</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/faq</loc>
@@ -67,7 +109,7 @@
   </url>
   <url>
     <loc>https://urbanmistrii.com/press</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -77,27 +119,39 @@
   </url>
   <url>
     <loc>https://urbanmistrii.com/journal/prefabricated-farmhouse-extension-delhi</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-pool-house.jpg</image:loc>
+      <image:caption>The Pool House prefabricated farmhouse extension in Delhi NCR</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/journal/restaurant-design-ritual-arrival-memory</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-padmanabham.jpg</image:loc>
+      <image:caption>Padmanabham restaurant interior used to discuss ritual and arrival</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/journal/calm-home-structure-storage-circulation</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://urbanmistrii.com/assets/work-ivory-house.jpg</image:loc>
+      <image:caption>Ivory House residential interior by Urban Mistrii Studio</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://urbanmistrii.com/careers</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://urbanmistrii.com/start-project</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
