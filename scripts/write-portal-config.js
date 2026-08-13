@@ -64,13 +64,47 @@ for (const target of copyTargets) {
   }
 }
 
+function readObservabilityConfig() {
+  try {
+    return JSON.parse(process.env.VERCEL_OBSERVABILITY_CLIENT_CONFIG || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function escapeAttribute(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function dataAttributes(config, names) {
+  return names
+    .filter((name) => config[name] !== undefined && config[name] !== null)
+    .map((name) => {
+      const attribute = name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+      return ` data-${attribute}="${escapeAttribute(config[name])}"`;
+    })
+    .join("");
+}
+
+const observabilityConfig = readObservabilityConfig();
+const analyticsConfig = observabilityConfig.analytics || {};
+const speedInsightsConfig = observabilityConfig.speedInsights || {};
+const analyticsScriptSrc = analyticsConfig.scriptSrc || "/_vercel/insights/script.js";
+const speedInsightsScriptSrc = speedInsightsConfig.scriptSrc || "/_vercel/speed-insights/script.js";
+const analyticsAttributes = dataAttributes(analyticsConfig, ["dsn", "endpoint", "viewEndpoint", "eventEndpoint", "sessionEndpoint"]);
+const speedInsightsAttributes = dataAttributes(speedInsightsConfig, ["dsn", "endpoint"]);
+
 const observabilitySnippet = `
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
       window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>`;
+    <script defer src="${escapeAttribute(analyticsScriptSrc)}"${analyticsAttributes}></script>
+    <script defer src="${escapeAttribute(speedInsightsScriptSrc)}"${speedInsightsAttributes}></script>`;
 
 function injectObservability(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
