@@ -37,7 +37,10 @@ const copyTargets = [
   "portal.css",
   "portal.html",
   "portal.js",
+  "portfolio.css",
+  "portfolio.html",
   "press.html",
+  "privacy.html",
   "projects",
   "robots.txt",
   "open.html",
@@ -50,7 +53,9 @@ const copyTargets = [
   "styles.css",
   "bd83858e8934102cb7f3af2f7d2f92d2.txt",
   "5b8f1689cff8ce83e94fc70e7f7e8bc4.txt",
-  "thank-you.html"
+  "thank-you.html",
+  "um-motion.css",
+  "um-motion.js"
 ];
 
 fs.rmSync(output, { recursive: true, force: true });
