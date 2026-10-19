@@ -21,6 +21,7 @@ const copyTargets = [
   "about.html",
   "assets",
   "careers.html",
+  "contact.html",
   "status.html",
   "faq.html",
   "humans.txt",
