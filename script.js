@@ -542,7 +542,8 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
 }
 
 document.addEventListener("keydown", (e) => {
-  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
 
   switch (e.key.toLowerCase()) {
     case "w":
