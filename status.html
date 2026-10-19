@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Candidate Portal | Urban Mistrii Studio</title>
-    <meta name="description" content="Track your Urban Mistrii application status using your Application ID or email address.">
+    <meta name="description" content="Track your Urban Mistrii application status using your Application ID and email address.">
     <meta name="robots" content="noindex, follow">
     <meta name="theme-color" content="#f7f3ec">
     <link rel="canonical" href="https://urbanmistrii.com/status">
@@ -48,24 +48,20 @@
       <section class="editorial-hero">
         <p class="section-kicker">Candidate Portal</p>
         <h1>Track your application</h1>
-        <p>Enter your Application ID or email address to check the current status of your application to Urban Mistrii Studio.</p>
+        <p>Enter your Application ID and the email address you used on your application to check its current status at Urban Mistrii Studio.</p>
       </section>
 
       <section class="status-lookup" id="lookup">
         <div class="status-lookup-inner">
           <div class="status-search">
-            <div class="status-tabs">
-              <button class="status-tab is-active" data-tab="id">Application ID</button>
-              <button class="status-tab" data-tab="email">Email Address</button>
-            </div>
             <form class="status-form" id="status-form">
               <div class="status-input-group" id="input-id">
                 <label for="application-id">Application ID</label>
-                <input id="application-id" name="applicationId" type="text" placeholder="e.g. UM-0001" autocomplete="off">
+                <input id="application-id" name="applicationId" type="text" placeholder="Your application ID" autocomplete="off" required>
               </div>
-              <div class="status-input-group is-hidden" id="input-email">
-                <label for="email-address">Email Address</label>
-                <input id="email-address" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+              <div class="status-input-group" id="input-email">
+                <label for="email-address">Email Address (as on your application)</label>
+                <input id="email-address" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
               </div>
               <button class="submit" type="submit">Search</button>
             </form>
@@ -161,25 +157,8 @@
       const result = document.getElementById("status-result");
       const error = document.getElementById("status-error");
       const loading = document.getElementById("status-loading");
-      const tabs = document.querySelectorAll(".status-tab");
-      const inputId = document.getElementById("input-id");
-      const inputEmail = document.getElementById("input-email");
       const idInput = document.getElementById("application-id");
       const emailInput = document.getElementById("email-address");
-
-      let activeTab = "id";
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) => t.classList.remove("is-active"));
-          tab.classList.add("is-active");
-          activeTab = tab.dataset.tab;
-          inputId.classList.toggle("is-hidden", activeTab !== "id");
-          inputEmail.classList.toggle("is-hidden", activeTab !== "email");
-          result.classList.add("is-hidden");
-          error.classList.add("is-hidden");
-        });
-      });
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -188,11 +167,8 @@
         loading.classList.remove("is-hidden");
 
         const params = new URLSearchParams();
-        if (activeTab === "id") {
-          params.set("applicationId", idInput.value.trim());
-        } else {
-          params.set("email", emailInput.value.trim());
-        }
+        params.set("applicationId", idInput.value.trim());
+        params.set("email", emailInput.value.trim());
 
         try {
           const response = await fetch(`/api/candidates?${params.toString()}`);
