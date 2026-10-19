@@ -38,7 +38,7 @@
           <a href="/about">Studio</a>
           <a href="/process">Process</a>
           <a href="/press">Press</a>
-          <a href="/#contact">Contact</a>
+          <a href="/contact">Contact</a>
         </nav>
         <div class="header-actions">
           <a class="header-link" href="/start-project">Start a project</a>
@@ -52,14 +52,21 @@
         <h1>Selected work, told through brief, atmosphere, and design response.</h1>
         <p>These concise case studies give future clients a clearer sense of Urban Mistrii's thinking across hospitality, residential architecture, workplace, and spatial experiences.</p>
       </section>
+      <div class="case-filters" role="group" aria-label="Filter case studies by sector">
+        <button type="button" data-case-filter="all" class="is-active" aria-pressed="true">All</button>
+        <button type="button" data-case-filter="hospitality" aria-pressed="false">Hospitality</button>
+        <button type="button" data-case-filter="residential" aria-pressed="false">Residential</button>
+        <button type="button" data-case-filter="workplace" aria-pressed="false">Workplace</button>
+        <button type="button" data-case-filter="healthcare" aria-pressed="false">Healthcare</button>
+      </div>
 
-      <section class="case-study" id="pool-house">
+      <section class="editorial-case case-study" id="pool-house" data-category="residential">
         <div class="case-image">
-          <img src="../assets/work-pool-house.webp" alt="The Pool House in Chhatarpur by Urban Mistrii" width="1920" height="1280" loading="lazy" decoding="async">
+          <a href="/projects/pool-house-chhatarpur"><img src="../assets/work-pool-house.webp" alt="The Pool House in Chhatarpur by Urban Mistrii" width="1920" height="1280" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Residential / Architecture</p>
-          <h2>The Pool House</h2>
+          <h2><a href="/projects/pool-house-chhatarpur">The Pool House</a></h2>
           <p>A 1,800 sq ft prefabricated farmhouse extension in Chhatarpur, Delhi, shaped as a retreat for a multigenerational family. The project uses LGSF construction, a glass-and-metal envelope, a tapering cantilevered roof, and warm interior finishes to connect pool, garden, and family life.</p>
           <dl class="case-facts">
             <div><dt>Location</dt><dd>Chhatarpur, Delhi</dd></div>
@@ -70,13 +77,13 @@
         </div>
       </section>
 
-      <section class="case-study" id="padmanabham">
+      <section class="editorial-case case-study" id="padmanabham" data-category="hospitality">
         <div class="case-image">
-          <img src="../assets/work-padmanabham.webp" alt="Padmanabham hospitality interior" width="1920" height="1280" loading="lazy" decoding="async">
+          <a href="/projects/padmanabham-new-delhi"><img src="../assets/work-padmanabham.webp" alt="Padmanabham hospitality interior" width="1920" height="1280" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Hospitality / Restaurant</p>
-          <h2>Padmanabham</h2>
+          <h2><a href="/projects/padmanabham-new-delhi">Padmanabham</a></h2>
           <p>A restaurant environment built around warmth, ritual, and a memorable sense of arrival. The design uses layered lighting, carved surfaces, deep seating, and brass-toned details to create a dining room that feels rooted yet contemporary.</p>
           <dl class="case-facts">
             <div><dt>Scope</dt><dd>Interior design, material palette, lighting intent</dd></div>
@@ -87,13 +94,13 @@
         </div>
       </section>
 
-      <section class="case-study reverse" id="ivory-house">
+      <section class="editorial-case case-study reverse" id="ivory-house" data-category="residential">
         <div class="case-image">
-          <img src="../assets/work-ivory-house.webp" alt="Ivory House residential interior" width="1920" height="1280" loading="lazy" decoding="async">
+          <a href="/projects/ivory-house"><img src="../assets/work-ivory-house.webp" alt="Ivory House residential interior" width="1920" height="1280" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Residential / Interior</p>
-          <h2>Ivory House</h2>
+          <h2><a href="/projects/ivory-house">Ivory House</a></h2>
           <p>A soft residential interior shaped for everyday comfort. The palette is restrained, with light-toned surfaces, warm accents, and balanced storage so the home feels open without losing utility.</p>
           <dl class="case-facts">
             <div><dt>Scope</dt><dd>Interior planning, finishes, furniture direction</dd></div>
@@ -104,13 +111,13 @@
         </div>
       </section>
 
-      <section class="case-study" id="mahagun-residence">
+      <section class="editorial-case case-study" id="mahagun-residence" data-category="residential">
         <div class="case-image">
-          <img src="../assets/work-mahagun.webp" alt="Mahagun Residence living room interior" width="1920" height="1280" loading="lazy" decoding="async">
+          <a href="/projects/mahagun-residence"><img src="../assets/work-mahagun.webp" alt="Mahagun Residence living room interior" width="1920" height="1280" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Residential / Interior</p>
-          <h2>Mahagun Residence</h2>
+          <h2><a href="/projects/mahagun-residence">Mahagun Residence</a></h2>
           <p>A shared living room composed through pale moulded walls, warm timber, balanced seating, graphic pattern, and planting. The palette stays restrained while the room remains personal and easy to inhabit.</p>
           <dl class="case-facts">
             <div><dt>Scope</dt><dd>Residential interior, furniture, lighting</dd></div>
@@ -121,13 +128,13 @@
         </div>
       </section>
 
-      <section class="case-study" id="mad">
+      <section class="editorial-case case-study" id="mad" data-category="hospitality">
         <div class="case-image">
-          <img src="../assets/work-mad.webp" alt="MAD hospitality interior" width="1920" height="1280" loading="lazy" decoding="async">
+          <a href="/projects/mad-bar-new-delhi"><img src="../assets/work-mad.webp" alt="MAD hospitality interior" width="1920" height="1280" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Hospitality / Experience</p>
-          <h2>MAD</h2>
+          <h2><a href="/projects/mad-bar-new-delhi">MAD</a></h2>
           <p>A bolder hospitality project with a sharper visual tempo. The design prioritizes guest movement, high-recognition moments, and a spirited material language suited to a social dining experience.</p>
           <dl class="case-facts">
             <div><dt>Scope</dt><dd>Concept, interiors, spatial experience</dd></div>
@@ -138,13 +145,13 @@
         </div>
       </section>
 
-      <section class="case-study reverse" id="bar-bar">
+      <section class="editorial-case case-study reverse" id="bar-bar" data-category="hospitality">
         <div class="case-image">
-          <img src="../assets/work-ombre.webp" alt="Bar Bar rooftop hospitality interior in Varanasi by Urban Mistrii" width="1278" height="1916" loading="lazy" decoding="async">
+          <a href="/projects/bar-bar-varanasi"><img src="../assets/work-ombre.webp" alt="Bar Bar rooftop hospitality interior in Varanasi by Urban Mistrii" width="1278" height="1916" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Hospitality / Rooftop Bar</p>
-          <h2>Bar Bar</h2>
+          <h2><a href="/projects/bar-bar-varanasi">Bar Bar</a></h2>
           <p>A 1,300 sq ft rooftop bar at The India Benaras in Varanasi, shaped by blue ombre walls, metal arches, flexible seating, and a ceiling installation created with Hookkapani Studios.</p>
           <dl class="case-facts">
             <div><dt>Location</dt><dd>Varanasi, Uttar Pradesh</dd></div>
@@ -155,13 +162,13 @@
         </div>
       </section>
 
-      <section class="case-study" id="seoul">
+      <section class="editorial-case case-study" id="seoul" data-category="hospitality">
         <div class="case-image">
-          <img src="../assets/work-seoul.webp" alt="SEOUL Korean restaurant interior in Saket, New Delhi" width="1600" height="1998" loading="lazy" decoding="async">
+          <a href="/projects/seoul-new-delhi"><img src="../assets/work-seoul.webp" alt="SEOUL Korean restaurant interior in Saket, New Delhi" width="1600" height="1998" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Hospitality / Korean Restaurant</p>
-          <h2>SEOUL</h2>
+          <h2><a href="/projects/seoul-new-delhi">SEOUL</a></h2>
           <p>A 1,850 sq ft restaurant in Saket planned around communal Korean dining, integrated table extraction, durable materials, group seating, and a culturally rooted guest experience.</p>
           <dl class="case-facts">
             <div><dt>Location</dt><dd>Saket, New Delhi</dd></div>
@@ -172,13 +179,13 @@
         </div>
       </section>
 
-      <section class="case-study reverse" id="hill-house">
+      <section class="editorial-case case-study reverse" id="hill-house" data-category="residential">
         <div class="case-image">
-          <img src="../assets/work-hill-house.webp" alt="The Hill House residential renovation near Shimla" width="1077" height="1920" loading="lazy" decoding="async">
+          <a href="/projects/hill-house"><img src="../assets/work-hill-house.webp" alt="The Hill House residential renovation near Shimla" width="1077" height="1920" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Residential / Renovation</p>
-          <h2>The Hill House</h2>
+          <h2><a href="/projects/hill-house">The Hill House</a></h2>
           <p>A 2019 family summer-home renovation near Shimla. A relocated light-well stair, reworked floor plans, completed attic, and revived neo-gothic details bring daylight, ventilation, and stronger connection across the house.</p>
           <dl class="case-facts">
             <div><dt>Location</dt><dd>Shimla, Himachal Pradesh</dd></div>
@@ -189,13 +196,13 @@
         </div>
       </section>
 
-      <section class="case-study" id="metro-infrasys">
+      <section class="editorial-case case-study" id="metro-infrasys" data-category="workplace">
         <div class="case-image">
-          <img src="../assets/work-metro.webp" alt="Metro Infrasys workplace interior" width="1530" height="1920" loading="lazy" decoding="async">
+          <a href="/projects/metro-infrasys"><img src="../assets/work-metro.webp" alt="Metro Infrasys workplace interior" width="1530" height="1920" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Workplace / Commercial</p>
-          <h2>Metro Infrasys</h2>
+          <h2><a href="/projects/metro-infrasys">Metro Infrasys</a></h2>
           <p>A workplace designed for clarity and repeated use. The intent is professional without becoming cold, using efficient circulation, composed surfaces, and a focused material palette.</p>
           <dl class="case-facts">
             <div><dt>Scope</dt><dd>Commercial interiors, planning, finishes</dd></div>
@@ -206,13 +213,13 @@
         </div>
       </section>
 
-      <section class="case-study reverse" id="clinque">
+      <section class="editorial-case case-study reverse" id="clinque" data-category="hospitality">
         <div class="case-image">
-          <img src="../assets/work-clinque.webp" alt="Clinque microbrewery and restaurant interior in Noida" width="1281" height="1920" loading="lazy" decoding="async">
+          <a href="/projects/clinque-noida"><img src="../assets/work-clinque.webp" alt="Clinque microbrewery and restaurant interior in Noida" width="1281" height="1920" loading="lazy" decoding="async"></a>
         </div>
         <div class="case-copy">
           <p class="section-kicker">Hospitality / Microbrewery</p>
-          <h2>Clinque / T-Groove</h2>
+          <h2><a href="/projects/clinque-noida">Clinque / T-Groove</a></h2>
           <p>A Noida microbrewery and restro-bar designed as a transition from tropical outdoor dining into a denser, theatrical interior with its own visual tempo.</p>
           <dl class="case-facts">
             <div><dt>Location</dt><dd>Noida, Uttar Pradesh</dd></div>
@@ -230,7 +237,7 @@
           <p>These editorial notes add context to the studio's range across hospitality, healthcare, and highly personal residential briefs.</p>
         </div>
         <div class="editorial-case-grid">
-          <article class="editorial-case" id="echoes-editorial">
+          <article class="editorial-case" id="echoes-editorial" data-category="hospitality">
             <p class="section-kicker">Editorial Case Study</p>
             <h3>Echoes</h3>
             <p class="editorial-case-lead">A 1,200 sq ft café-bar in Kailash Colony that trades overstimulated nightlife tropes for warmth, intimacy, and a more collected hospitality mood.</p>
@@ -247,7 +254,7 @@
               <a class="text-link dark" href="https://www.architectandinteriorsindia.com/projects/rediscover-what-nightlife-feels-like-when-comfort-meets-craft-in-the-heart-of-this-south-delhi-cafe-bar" target="_blank" rel="noreferrer">Open publication</a>
             </div>
           </article>
-          <article class="editorial-case" id="plug-and-play-editorial">
+          <article class="editorial-case" id="plug-and-play-editorial" data-category="healthcare">
             <p class="section-kicker">Editorial Case Study</p>
             <h3>Plug and Play</h3>
             <p class="editorial-case-lead">A paediatric clinic in Gurugram designed to make care feel expert, positive, and emotionally easier for children and families.</p>
@@ -264,7 +271,7 @@
               <a class="text-link dark" href="https://www.indiadesignworld.com/2024/07/25/this-paediatric-clinic-in-gurgaon-brims-with-whimsical-patterns-curvaceous-furniture-and-tactile-surfaces/" target="_blank" rel="noreferrer">Open publication</a>
             </div>
           </article>
-          <article class="editorial-case" id="house-for-one-editorial">
+          <article class="editorial-case" id="house-for-one-editorial" data-category="residential">
             <p class="section-kicker">Editorial Case Study</p>
             <h3>House for One</h3>
             <p class="editorial-case-lead">A compact 3BHK in Patparganj reworked as a sharply personal home for an independently living doctor, balancing function, character, and everyday ease.</p>
@@ -281,7 +288,7 @@
               <a class="text-link dark" href="https://www.architectandinteriorsindia.com/projects/dip-into-all-things-unapologetically-tasteful-modernly-functional-and-playfully-eclectic-at-this-3bhk-in-delhi" target="_blank" rel="noreferrer">Open publication</a>
             </div>
           </article>
-          <article class="editorial-case" id="the-box-editorial">
+          <article class="editorial-case" id="the-box-editorial" data-category="hospitality">
             <p class="section-kicker">Editorial Case Study</p>
             <h3>The Box</h3>
             <p class="editorial-case-lead">A Goa sports bar concept designed to hold entertainment energy without dropping the local, laid-back social ease that makes all-day hospitality work.</p>
@@ -298,7 +305,7 @@
               <a class="text-link dark" href="https://www.architectandinteriorsindia.com/projects/this-goa-sports-bar-is-designed-to-reflect-the-locals-relaxed-yet-fun-vibe" target="_blank" rel="noreferrer">Open publication</a>
             </div>
           </article>
-          <article class="editorial-case" id="positive-pediatrics-editorial">
+          <article class="editorial-case" id="positive-pediatrics-editorial" data-category="healthcare">
             <p class="section-kicker">Editorial Case Study</p>
             <h3>Positive Pediatrics</h3>
             <p class="editorial-case-lead">A children’s clinic designed as a brighter, more confidence-building care environment, where emotional ease is treated as part of the healthcare brief.</p>
@@ -385,11 +392,23 @@
           <a href="/portal">Team login</a>
         </nav>
       </div>
+            <nav class="footer-sitemap" aria-label="Site map">
+        <a href="/services">Services</a>
+        <a href="/restaurant-architects-delhi">Restaurants</a>
+        <a href="/group-housing-architects-delhi">Group housing</a>
+        <a href="/commercial-interior-designers-delhi">Workplaces</a>
+        <a href="/retail-interior-designers-delhi">Retail</a>
+        <a href="/projects/case-studies">Case studies</a>
+        <a href="/journal">Journal</a>
+        <a href="/contact">Contact</a>
+        <a href="/start-project">Start a project</a>
+      </nav>
+      <p class="footer-response">We reply to every serious enquiry within 2 working days.</p>
       <div class="footer-meta">
         <a href="mailto:mail@urbanmistrii.com">mail@urbanmistrii.com</a>
         <a href="tel:+919953668560">+91 99536 68560</a>
         <a href="https://wa.me/919953668560" target="_blank" rel="noreferrer">WhatsApp</a>
-        <span>Delhi, India</span>
+        <span>Saket, New Delhi, India</span>
       </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" aria-label="Instagram">
