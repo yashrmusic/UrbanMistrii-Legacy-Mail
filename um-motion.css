@@ -28,18 +28,21 @@
   will-change: transform, opacity;
 }
 
-/* --- 3. Vesper: large case file pins while the column scrolls, then docks --- */
+/* --- 3. Vesper: large case file pins while the column scrolls, then docks ---
+   Pin travel is kept to a small margin (96px): the card is only slightly
+   shorter than its grid area, so no large blank block opens up under it.
+   The smaller cards keep their base min-height from styles.css — inflating
+   them only stretched the grid and added dead scroll length. */
 .case-file-grid { grid-template-rows: auto auto; }
 .case-file-large {
   grid-row: 1 / span 2;
-  height: calc(100% - 180px);
+  height: calc(100% - 96px);
   min-height: 420px;
   position: sticky;
   top: 88px;
   align-self: start;
   will-change: transform;
 }
-.case-file-grid .case-file:not(.case-file-large) { min-height: 380px; }
 
 @media (max-width: 760px) {
   .case-file-large { position: relative; top: auto; height: auto; grid-row: auto; }

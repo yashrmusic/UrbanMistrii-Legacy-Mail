@@ -4645,7 +4645,11 @@ html.js .mf-testimonial.is-visible {
 }
 
 .progressive-home main {
-  overflow: hidden;
+  /* overflow: clip (not hidden): hidden turns main into a scroll container,
+     which silently disables every position: sticky inside it — the case-file
+     pin and the sticky section labels. clip keeps the same clipping without
+     creating a scroll container. */
+  overflow: clip;
 }
 
 .progressive-home .mf-hero,
@@ -5996,7 +6000,13 @@ h2 {
 }
 
 /* #13 — homepage contact CTA spacing and the honest Instagram block */
+/* Defect fix: .mf-contact-copy a paints links var(--ink) at higher specificity
+   than .submit's color, which made this button's label ink-on-ink (invisible).
+   Restate the .submit pattern here so the label is legible. */
 .mf-contact-copy .submit {
+  border-bottom: 0;
+  color: var(--white);
+  font-size: 16px;
   margin-top: 22px;
 }
 
