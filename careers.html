@@ -188,7 +188,7 @@
               <p>Due to the volume of applications received, individual status requests submitted via email, WhatsApp, LinkedIn, or phone will not receive a response. Please use the Candidate Portal for all status inquiries.</p>
             </div>
           </div>
-          <form class="career-form-fields" id="apply-form">
+          <form class="career-form-fields" id="apply-form" method="post">
             <div class="career-field">
               <label for="cf-name">Full Name *</label>
               <input id="cf-name" name="full_name" type="text" class="career-input" placeholder="e.g. Ananya Sharma" required>
@@ -308,15 +308,19 @@
       const SUPABASE_URL = "https://xcbpmntovmzdjbphivzt.supabase.co";
       const SUPABASE_ANON_KEY = "sb_publishable_XsE5hKxS3XCTgpYIY2Cdkg_376eKe7h";
 
+      const RESUME_CONTENT_TYPES = { pdf: "application/pdf", doc: "application/msword", docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
+
       async function uploadResume(file) {
         const fileName = `resume-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
         const uploadUrl = `${SUPABASE_URL}/storage/v1/object/resumes/${fileName}`;
+        const ext = file.name.split(".").pop().toLowerCase();
+        const contentType = file.type || RESUME_CONTENT_TYPES[ext] || "application/octet-stream";
 
         const res = await fetch(uploadUrl, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-            "Content-Type": file.type || "application/octet-stream",
+            "Content-Type": contentType,
           },
           body: file,
         });
@@ -347,7 +351,9 @@
             if (file.size > 10 * 1024 * 1024) {
               throw new Error("Resume must be under 10 MB");
             }
-            if (!["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"].includes(file.type)) {
+            const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+            const ext = file.name.split(".").pop().toLowerCase();
+            if (!allowedTypes.includes(file.type) && !["pdf", "doc", "docx"].includes(ext)) {
               throw new Error("Resume must be PDF or Word document");
             }
           }
