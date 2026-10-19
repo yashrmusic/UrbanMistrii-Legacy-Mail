@@ -355,14 +355,14 @@ async function handleLookup(req, res) {
   try {
     const { applicationId, email } = req.query;
 
-    if (!applicationId && !email) {
+    if (!applicationId || !email) {
       return res.status(400).json({
         ok: false,
-        error: 'Provide applicationId or email',
+        error: 'Provide both your application ID and the email address used on the application',
       });
     }
 
-    const queryType = applicationId ? 'application_id' : 'email';
+    const queryType = 'application_id';
 
     const rateLimitError = await rateLimitCheck(req);
     if (rateLimitError) {
@@ -374,17 +374,14 @@ async function handleLookup(req, res) {
     if (hasSupabaseConfig()) {
       try {
         const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
-        let query = supabase
+        const { data, error } = await supabase
           .from('candidates')
-          .select('full_name, position, application_date, status, updated_at, application_id');
-
-        if (applicationId) {
-          query = query.eq('application_id', applicationId.toUpperCase().trim());
-        } else {
-          query = query.eq('email', email.toLowerCase().trim());
-        }
-
-        const { data, error } = await query.order('application_date', { ascending: false }).limit(1).single();
+          .select('full_name, position, application_date, status, updated_at, application_id')
+          .eq('application_id', applicationId.toUpperCase().trim())
+          .eq('email', email.toLowerCase().trim())
+          .order('application_date', { ascending: false })
+          .limit(1)
+          .single();
 
         if (!error && data) {
           return res.status(200).json({
@@ -404,9 +401,9 @@ async function handleLookup(req, res) {
       }
     }
 
-    return res.status(404).json({ ok: false, error: 'Candidate not found' });
+    return res.status(404).json({ ok: false, error: 'No application found with the provided details' });
   } catch (error) {
     console.error('handleLookup error:', error);
-    return res.status(500).json({ ok: false, error: error.message });
+    return res.status(500).json({ ok: false, error: 'Status lookup failed. Please try again.' });
   }
 }
