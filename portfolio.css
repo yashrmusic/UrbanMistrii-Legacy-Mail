@@ -1,10 +1,10 @@
 :root {
   --ink: #181411;
   --muted: #6f655e;
-  --paper: #f3ede4;
-  --soft: #e7dccd;
+  --paper: #f6f6f3;
+  --soft: #ecece7;
   --line: rgba(24, 20, 17, 0.14);
-  --accent: #9a5d44;
+  --accent: #8a4f38;
   --forest: #4d6050;
   --panel: #fffaf3;
   --deep: #231f1c;
@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, "Inter Fallback", system-ui, sans-serif;
 }
 
 img {
@@ -40,7 +40,7 @@ dd {
 h1,
 h2,
 h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-weight: 400;
   line-height: 0.98;
 }
@@ -58,13 +58,13 @@ body {
 .cover,
 .section,
 .contact-band {
-  padding-left: 38px;
-  padding-right: 38px;
+  padding-left: max(38px, calc((100% - 1180px) / 2));
+  padding-right: max(38px, calc((100% - 1180px) / 2));
 }
 
 .cover {
   align-items: stretch;
-  background: linear-gradient(135deg, rgba(231, 220, 205, 0.8), rgba(243, 237, 228, 1));
+  background: linear-gradient(135deg, rgba(236, 236, 231, 0.85), rgba(246, 246, 243, 1));
   display: grid;
   gap: 22px;
   grid-template-columns: 1.1fr 0.9fr;
@@ -144,7 +144,7 @@ body {
 }
 
 .section-head h2 {
-  font-size: 56px;
+  font-size: 44px;
   max-width: 920px;
 }
 
@@ -211,6 +211,7 @@ body {
 
 .project-feature,
 .project-pair {
+  align-items: start;
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr 1fr;
@@ -219,7 +220,9 @@ body {
 }
 
 .project-feature {
-  align-items: center;
+  align-items: start;
+  background: var(--panel);
+  border: 1px solid var(--line);
 }
 
 .project-card,
@@ -234,12 +237,12 @@ body {
 }
 
 .project-media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
 .project-media.wide {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 4 / 5;
 }
 
 .project-media.tall {
@@ -283,7 +286,7 @@ body {
 
 .facts dt {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -294,9 +297,8 @@ body {
 }
 
 .accent {
-  background: linear-gradient(135deg, rgba(154, 93, 68, 0.08), rgba(77, 96, 80, 0.08));
-  border: 1px solid var(--line);
-  padding: 24px;
+  background: var(--panel);
+  padding: 0;
 }
 
 .press-band {
@@ -341,10 +343,33 @@ body {
 }
 
 .contact-row {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 14px 22px;
   justify-content: center;
+}
+
+.contact-row a {
+  color: #f7f0e7;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-band .submit {
+  align-items: center;
+  background: #f6f6f3;
+  color: #111111;
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.contact-band .submit:hover {
+  background: #ffffff;
+}
+
+.cover-logo {
+  background: transparent;
 }
 
 @page {
@@ -352,7 +377,18 @@ body {
   size: A4;
 }
 
+@media screen {
+  .portfolio-shell {
+    padding-top: 84px;
+  }
+}
+
 @media print {
+  .site-header,
+  .footer {
+    display: none !important;
+  }
+
   .cover {
     min-height: 0;
   }
@@ -380,4 +416,9 @@ body {
     align-content: center;
     height: 285mm;
   }
+}
+
+/* #18 — label on the dark contact band uses the audit's dark-bg colour */
+.contact-band .kicker {
+  color: #d08a6c;
 }

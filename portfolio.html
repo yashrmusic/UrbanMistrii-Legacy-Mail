@@ -9,19 +9,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/portfolio.css">
+    <script>document.documentElement.classList.add("js");</script>
   </head>
   <body>
-    <main class="portfolio-shell">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-bar">
+        <a class="brand" href="/#top">
+          <span class="brand-logo" aria-hidden="true"><img src="/assets/urbanmistrii-logo-clean.png" alt=""></span>
+          <span class="brand-text">Urban Mistrii Studio</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
+      </div>
+      <div class="nav-shell" id="site-nav" data-nav-shell>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/#work">Work</a>
+          <a href="/services">Services</a>
+          <a href="/about">Studio</a>
+          <a href="/process">Process</a>
+          <a href="/press">Press</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-link" href="/start-project">Start a project</a>
+        </div>
+      </div>
+    </header>
+    <main class="portfolio-shell" id="main-content">
       <section class="cover">
         <div class="cover-image">
           <img src="/assets/work-padmanabham.webp" alt="Urban Mistrii Studio hospitality project">
         </div>
         <div class="cover-copy">
           <img class="cover-logo" src="/assets/urbanmistrii-logo-clean.png" alt="Urban Mistrii Studio">
-          <p class="kicker">Architecture / Interiors / Hospitality / Urban Development</p>
+          <p class="kicker">Architecture / Interiors / Hospitality / Group Housing</p>
           <h1>Urban Mistrii Studio Portfolio</h1>
-          <p class="lead">A Delhi-based multidisciplinary design practice shaping residences, restaurants, workplaces, installations, and civic environments through atmosphere, clarity, and detail.</p>
+          <p class="lead">A Delhi-based multidisciplinary design practice shaping residences, restaurants, workplaces, installations, and group housing through atmosphere, clarity, and detail.</p>
           <div class="cover-meta">
             <span>Delhi NCR / India</span>
             <span>mail@urbanmistrii.com</span>
@@ -60,7 +88,7 @@
             <p>Restaurants, cafes, bars, hotels, and experience-led environments designed around memory, movement, and mood.</p>
           </article>
           <article>
-            <h3>Execution Support</h3>
+            <h3>Execution support</h3>
             <p>Vendor coordination, finish schedules, and on-site decisions that keep the final space aligned with the concept.</p>
           </article>
         </div>
@@ -79,10 +107,10 @@
           <div class="project-copy">
             <p class="kicker">Residential / Architecture</p>
             <h3>The Pool House</h3>
-            <p>A 1,800 sq ft prefabricated farmhouse extension in Chhatarpur, Delhi, shaped as a retreat for a multigenerational family. The project uses LGSF construction, a glass-and-metal envelope, a tapering cantilevered roof, and warm interior finishes to connect pool, garden, and family life.</p>
+            <p>A 1,800 sq ft prefabricated farmhouse extension in Chhatarpur, Delhi, shaped as a retreat for a multigenerational family. The project uses light-gauge steel frame (LGSF) construction, a glass-and-metal envelope, a tapering cantilevered roof, and warm interior finishes to connect pool, garden, and family life.</p>
             <dl class="facts">
               <div><dt>Location</dt><dd>Chhatarpur, Delhi</dd></div>
-              <div><dt>Area</dt><dd>1,800 sq ft / 167 m2</dd></div>
+              <div><dt>Area</dt><dd>1,800 sq ft / 167 m²</dd></div>
               <div><dt>Focus</dt><dd>Prefabrication, sustainability, family retreat</dd></div>
             </dl>
           </div>
@@ -101,7 +129,7 @@
           </article>
           <article class="project-card">
             <div class="project-media">
-              <img src="/assets/work-ivory-house.webp" alt="Ivory House residential interior">
+              <img src="/assets/work-ivory-house.webp" alt="Ivory House residential interior" style="object-position: center 62%">
             </div>
             <div class="project-copy">
               <p class="kicker">Residential / Interior</p>
@@ -137,7 +165,7 @@
         <div class="project-pair">
           <article class="project-card">
             <div class="project-media tall">
-              <img src="/assets/work-metro.webp" alt="Metro Infrasys workplace interior">
+              <img src="/assets/work-metro.webp" alt="Metro Infrasys workplace interior" style="object-position: center 68%">
             </div>
             <div class="project-copy">
               <p class="kicker">Workplace / Commercial</p>
@@ -167,7 +195,7 @@
             <p>A 1,850 sq ft Korean restaurant in Saket designed around communal dining, integrated table extraction, durable materials, group seating, and culturally rooted gathering.</p>
             <dl class="facts">
               <div><dt>Location</dt><dd>Saket, New Delhi</dd></div>
-              <div><dt>Area</dt><dd>1,850 sq ft</dd></div>
+              <div><dt>Area</dt><dd>1,850 sq ft / 172 m²</dd></div>
               <div><dt>Focus</dt><dd>Communal dining, extraction, durable materials</dd></div>
             </dl>
           </div>
@@ -180,8 +208,8 @@
           <h2>Featured by leading design and architecture publications.</h2>
         </div>
         <div class="press-grid">
-          <span>Architectural Digest</span>
-          <span>Elle Decor</span>
+          <span>Architectural Digest India</span>
+          <span>Elle Decor India</span>
           <span>GoodHomes</span>
           <span>Hospitality Snapshots</span>
         </div>
@@ -191,12 +219,49 @@
         <p class="kicker">Contact</p>
         <h2>Bring us a site, a brief, or just the beginning of an idea.</h2>
         <div class="contact-row">
-          <span>mail@urbanmistrii.com</span>
-          <span>media@urbanmistrii.com</span>
-          <span>+91 99536 68560</span>
-          <span>urbanmistrii.com</span>
+          <a class="submit" href="/start-project">Start a project</a>
+          <a href="/assets/urbanmistrii-portfolio.pdf" download>Download PDF (2.5 MB)</a>
+          <a href="mailto:mail@urbanmistrii.com">mail@urbanmistrii.com</a>
+          <a href="tel:+919953668560">+91 99536 68560</a>
         </div>
       </section>
     </main>
+    <footer class="footer">
+      <div class="footer-top">
+        <span class="footer-brand">Urban Mistrii Studio</span>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/careers">Careers</a>
+          <a href="/journal">Journal</a>
+          <a href="/faq">FAQ</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/portal">Team login</a>
+        </nav>
+      </div>
+      <div class="footer-meta">
+        <a href="mailto:mail@urbanmistrii.com">mail@urbanmistrii.com</a>
+        <a href="tel:+919953668560">+91 99536 68560</a>
+        <a href="https://wa.me/919953668560" target="_blank" rel="noreferrer">WhatsApp</a>
+        <span>Delhi, India</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://in.linkedin.com/company/urbanmistriistudio" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:mail@urbanmistrii.com" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Email</span>
+        </a>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 Urban Mistrii Studio. All rights reserved.</span>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </footer>
+    <script src="/script.js"></script>
   </body>
 </html>

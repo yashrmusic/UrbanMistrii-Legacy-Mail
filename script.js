@@ -3,27 +3,9 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const navShell = document.querySelector("[data-nav-shell]");
 const filters = document.querySelectorAll(".filter");
 const projects = document.querySelectorAll(".project");
-const localTime = document.querySelector("[data-local-time]");
 
-const updateLocalTime = () => {
-  if (!localTime) return;
-
-  localTime.textContent = new Intl.DateTimeFormat("en-IN", {
-    timeZone: "Asia/Kolkata",
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false
-  }).format(new Date());
-};
-
-if (localTime) {
-  updateLocalTime();
-  window.setInterval(updateLocalTime, 1000);
-}
+/* #27 — the ticking clock strip was removed from the homepage;
+   no live clock is rendered anywhere on the site. */
 
 const updateHeader = () => {
   if (header) {
@@ -41,6 +23,8 @@ const closeMenu = () => {
 
   header.classList.remove("is-open");
   navToggle.setAttribute("aria-expanded", "false");
+  const toggleLabel = navToggle.querySelector(".nav-toggle-label");
+  if (toggleLabel) toggleLabel.textContent = "Menu";
   document.body.classList.remove("menu-open");
 };
 
@@ -48,6 +32,8 @@ if (navToggle && header && navShell) {
   navToggle.addEventListener("click", () => {
     const isOpen = header.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    const toggleLabel = navToggle.querySelector(".nav-toggle-label");
+    if (toggleLabel) toggleLabel.textContent = isOpen ? "Close" : "Menu";
     document.body.classList.toggle("menu-open", isOpen);
   });
 
@@ -82,8 +68,12 @@ filters.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    filters.forEach((item) => item.classList.remove("is-active"));
+    filters.forEach((item) => {
+      item.classList.remove("is-active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("is-active");
+    button.setAttribute("aria-pressed", "true");
 
     projects.forEach((project) => {
       const shouldShow = filter === "all" || project.dataset.category === filter;
@@ -111,10 +101,18 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.14 }
+  { threshold: 0 }
 );
 
 revealTargets.forEach((target) => observer.observe(target));
+
+/* Failsafe (audit fix #1): if anything has not been revealed shortly after
+   load — no-scroll renders, full-page captures, crawlers, slow scripts —
+   reveal all content and mark images loaded so nothing stays blank. */
+window.setTimeout(() => {
+  revealTargets.forEach((target) => target.classList.add("is-visible"));
+  document.querySelectorAll("img").forEach((img) => img.classList.add("loaded"));
+}, 1500);
 
 document.querySelectorAll("img").forEach((img) => {
   if (img.complete) {
@@ -244,7 +242,7 @@ const createAssistant = () => {
   const root = document.createElement("div");
   root.className = "site-assistant";
   root.innerHTML = `
-    <button class="assistant-trigger" type="button" aria-expanded="false" aria-controls="site-assistant-panel">
+    <button class="assistant-trigger" type="button" aria-label="Ask Urban Mistrii" aria-expanded="false" aria-controls="site-assistant-panel">
       <span class="assistant-trigger-label">Ask Urban Mistrii</span>
     </button>
     <section class="assistant-panel" id="site-assistant-panel" hidden aria-label="Website assistant">
@@ -387,8 +385,12 @@ projectFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    projectFilterButtons.forEach((b) => b.classList.remove("is-active"));
+    projectFilterButtons.forEach((b) => {
+      b.classList.remove("is-active");
+      b.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("is-active");
+    button.setAttribute("aria-pressed", "true");
 
     projectRows.forEach((row) => {
       const shouldShow = filter === "all" || row.dataset.category === filter;

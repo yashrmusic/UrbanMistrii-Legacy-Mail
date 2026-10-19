@@ -1,3 +1,17 @@
+/* #17 — metric-matched local fallbacks, so a failed webfont load
+   does not shift the layout while fonts swap in. */
+@font-face {
+  font-family: "Instrument Serif Fallback";
+  src: local("Georgia");
+  size-adjust: 97%;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+}
+
 :root {
   --ink: #111111;
   --muted: #616161;
@@ -31,7 +45,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, "Inter Fallback", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -41,12 +55,17 @@ body.menu-open {
 }
 
 img {
+  background-color: #e7dfd0;
   display: block;
   max-width: 100%;
   transition: opacity 0.5s ease;
 }
 
-img:not(.loaded) {
+.brand-logo img {
+  background: transparent;
+}
+
+html.js img:not(.loaded) {
   opacity: 0;
 }
 
@@ -74,7 +93,7 @@ textarea {
   display: grid;
   gap: 12px;
   left: 0;
-  padding: 14px clamp(20px, 3vw, 44px);
+  padding: 14px clamp(18px, 4vw, 56px);
   position: fixed;
   right: 0;
   top: 0;
@@ -187,7 +206,7 @@ textarea {
   flex: 0 0 auto;
   gap: 10px;
   justify-content: flex-end;
-  padding-right: clamp(12px, 2.5vw, 40px);
+  padding-right: 0;
 }
 
 .header-utility {
@@ -519,15 +538,20 @@ p {
 
 h1,
 h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.04;
 }
 
 h1 {
   font-size: clamp(52px, 8vw, 118px);
   margin: 0;
   max-width: 860px;
+  padding-bottom: 0.1em;
+}
+
+h1 + p {
+  margin-top: clamp(20px, 2.5vw, 36px);
 }
 
 h2 {
@@ -589,10 +613,10 @@ p {
 .text-link {
   border-bottom: 1px solid currentColor;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   justify-self: start;
   padding-bottom: 5px;
-  text-transform: uppercase;
+  text-transform: none;
   transition: color 160ms ease, border-color 160ms ease;
 }
 
@@ -856,7 +880,7 @@ a.project-button {
 }
 
 .project-meta span:first-child {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(28px, 3vw, 44px);
 }
 
@@ -905,7 +929,7 @@ a.project-button {
 }
 
 .proof-band strong {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(26px, 2.8vw, 38px);
   font-weight: 400;
   line-height: 1.05;
@@ -942,7 +966,7 @@ a.project-button {
 }
 
 .seo-columns h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 400;
   margin: 0;
@@ -988,7 +1012,7 @@ a.project-button {
 }
 
 .update-list h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 400;
   margin: 0;
@@ -1026,7 +1050,7 @@ a.project-button {
 }
 
 .experience-grid h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 400;
   margin: 0;
@@ -1074,7 +1098,7 @@ a.project-button {
 }
 
 .published-list h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 400;
   margin: 0;
@@ -1128,7 +1152,7 @@ a.project-button {
 }
 
 .stats dt {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: 42px;
 }
 
@@ -1193,7 +1217,7 @@ a.project-button {
 }
 
 .service-grid h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: 34px;
   font-weight: 400;
 }
@@ -1258,7 +1282,7 @@ a.project-button {
 
 .press-cards span {
   display: block;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: 34px;
   margin-bottom: 34px;
 }
@@ -1515,7 +1539,17 @@ a.project-button {
 }
 
 .case-contact .submit {
+  background: var(--paper);
+  color: var(--ink);
   display: inline-flex;
+}
+
+.case-contact .submit:hover {
+  background: var(--white);
+}
+
+.case-contact .contact-shortcuts {
+  justify-content: center;
 }
 
 .published-case-band {
@@ -1548,7 +1582,7 @@ a.project-button {
 }
 
 .editorial-case h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(34px, 3.2vw, 44px);
   font-weight: 400;
   margin: 0;
@@ -1596,7 +1630,7 @@ a.project-button {
 
 .editorial-hero h1 {
   color: var(--ink);
-  font-size: clamp(52px, 8vw, 118px);
+  font-size: clamp(40px, 5vw, 72px);
   max-width: 1120px;
 }
 
@@ -1637,7 +1671,7 @@ a.project-button {
 }
 
 .feature-list span {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(30px, 3.5vw, 46px);
 }
 
@@ -1925,12 +1959,18 @@ a.project-button {
 }
 
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 700ms ease, transform 700ms ease;
 }
 
-[data-reveal].is-visible {
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+[data-reveal].is-visible,
+html.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1938,12 +1978,53 @@ a.project-button {
 .footer {
   border-top: 1px solid var(--line);
   color: var(--muted);
+  display: grid;
+  gap: 16px;
+  padding: 30px clamp(18px, 4vw, 56px) 26px;
+}
+
+.footer-top,
+.footer-meta,
+.footer-legal {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 34px;
+  gap: 10px 28px;
   justify-content: space-between;
-  padding-bottom: 26px;
-  padding-top: 26px;
+}
+
+.footer-brand {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.footer-nav a,
+.footer-meta a,
+.footer-legal a {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-nav a:hover,
+.footer-meta a:hover,
+.footer-legal a:hover {
+  color: var(--ink);
+}
+
+.footer-legal {
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  padding-top: 16px;
 }
 
 .project-dialog {
@@ -2616,7 +2697,7 @@ a.project-button {
 }
 
 .mf-hero-statement h1 {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, "Inter Fallback", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: clamp(38px, 3.8vw, 64px);
   font-weight: 500;
   line-height: 1;
@@ -2714,7 +2795,7 @@ a.project-button {
   border-top: 1px solid var(--line);
   display: grid;
   gap: clamp(14px, 2vw, 28px);
-  grid-template-columns: 54px minmax(0, 1fr) minmax(160px, 0.42fr) minmax(150px, 220px);
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.42fr) minmax(150px, 220px);
   padding: 18px 0;
 }
 
@@ -2722,7 +2803,7 @@ a.project-button {
   border-bottom: 1px solid var(--line);
 }
 
-.mf-project-row strong {
+.mf-project-row h3 {
   font-size: clamp(32px, 5vw, 78px);
   font-weight: 500;
   line-height: 0.98;
@@ -2809,8 +2890,9 @@ a.project-button {
 }
 
 .mf-studio-copy h2,
+.mf-studio-copy .studio-lede,
 .mf-contact-copy h2 {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, "Inter Fallback", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: clamp(34px, 4.8vw, 82px);
   font-weight: 500;
   line-height: 1;
@@ -3026,7 +3108,7 @@ a.project-button {
   }
 
   .mf-project-row {
-    grid-template-columns: 46px minmax(0, 1fr) minmax(130px, 0.44fr) minmax(130px, 180px);
+    grid-template-columns: minmax(0, 1fr) minmax(130px, 0.44fr) minmax(130px, 180px);
   }
 }
 
@@ -3144,13 +3226,13 @@ a.project-button {
   }
 
   .mf-project-row {
-    grid-template-columns: 36px 1fr;
+    grid-template-columns: 1fr;
     min-height: 0;
     padding: 18px 0;
   }
 
   .mf-project-row em {
-    grid-column: 2;
+    grid-column: 1;
   }
 
   .mf-project-row img {
@@ -3437,17 +3519,21 @@ a.project-button {
   grid-column: 1;
   grid-row: 1;
   margin: 0;
-  opacity: 0;
   padding: 28px 0 22px;
   transition: opacity 500ms ease;
 }
 
-.mf-testimonial.is-visible {
+html.js .mf-testimonial {
+  opacity: 0;
+}
+
+.mf-testimonial.is-visible,
+html.js .mf-testimonial.is-visible {
   opacity: 1;
 }
 
 .mf-testimonial p {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(22px, 2.8vw, 36px);
   font-style: italic;
   line-height: 1.3;
@@ -3722,11 +3808,7 @@ a.project-button {
   }
 }
 
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-
+@media (hover: hover) and (pointer: fine) {
   .cursor {
     background: rgba(17, 17, 17, 0.12);
     border-radius: 999px;
@@ -3815,7 +3897,7 @@ a.project-button {
 }
 
 .career-values-grid span {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.1;
 }
@@ -4120,7 +4202,7 @@ a.project-button {
 }
 
 .career-form-success h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 400;
   line-height: 1.1;
@@ -4143,7 +4225,7 @@ a.project-button {
 }
 
 .career-id-value {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: 32px;
   font-weight: 400;
   margin: 0;
@@ -4489,7 +4571,7 @@ a.project-button {
   --forest: #17342f;
   --forest-soft: #dfe9df;
   --citrus: #d7ff4f;
-  --terracotta: #b96645;
+  --terracotta: #8a4f38;
   background:
     linear-gradient(90deg, rgba(16, 17, 15, 0.035) 1px, transparent 1px) 0 0 / 25% 100%,
     var(--paper);
@@ -4739,7 +4821,8 @@ a.project-button {
   top: auto;
 }
 
-.progressive-home .mf-section-label span {
+.progressive-home .mf-section-label span,
+.progressive-home .mf-section-label h2 {
   color: var(--terracotta);
   font-weight: 650;
 }
@@ -4769,12 +4852,12 @@ a.project-button {
 }
 
 .progressive-home .mf-project-row {
-  grid-template-columns: 64px minmax(0, 1fr) minmax(190px, 0.42fr) minmax(190px, 270px);
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr) minmax(190px, 270px);
   min-height: 148px;
   padding: 18px 0;
 }
 
-.progressive-home .mf-project-row strong {
+.progressive-home .mf-project-row h3 {
   font-size: 64px;
   line-height: 0.95;
   overflow-wrap: anywhere;
@@ -4848,9 +4931,9 @@ a.project-button {
   font-weight: 650;
 }
 
-.case-file h2 {
+.case-file h3 {
   font-size: 34px;
-  font-weight: 540;
+  font-weight: 400;
   line-height: 1;
   margin: 0;
 }
@@ -4940,7 +5023,7 @@ a.project-button {
   color: var(--citrus);
 }
 
-.progressive-method-grid h2 {
+.progressive-method-grid h3 {
   font-size: 38px;
   font-weight: 540;
   line-height: 1;
@@ -4960,6 +5043,7 @@ a.project-button {
 }
 
 .progressive-home .mf-studio-copy h2,
+.progressive-home .mf-studio-copy .studio-lede,
 .progressive-home .mf-contact-copy h2 {
   font-size: 58px;
   line-height: 1.02;
@@ -5061,11 +5145,10 @@ a.project-button {
 }
 
 .progressive-home .footer {
-  align-items: center;
   display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr auto auto;
-  padding: 22px 32px;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  padding: 30px 32px 26px;
 }
 
 .progressive-home .footer-social {
@@ -5225,32 +5308,25 @@ a.project-button {
 
   .progressive-home .mf-project-row {
     align-items: center;
-    grid-template-columns: 30px minmax(0, 1fr) clamp(104px, 26vw, 190px);
+    grid-template-columns: minmax(0, 1fr) clamp(104px, 26vw, 190px);
     grid-template-rows: auto auto;
     min-height: 132px;
     padding: 14px 0;
   }
 
-  .progressive-home .mf-project-row > span {
-    align-self: start;
-    grid-column: 1;
-    grid-row: 1 / -1;
-    padding-top: 5px;
-  }
-
-  .progressive-home .mf-project-row strong {
+  .progressive-home .mf-project-row h3 {
     font-size: clamp(30px, 5vw, 38px);
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
   }
 
   .progressive-home .mf-project-row em {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
   }
 
   .progressive-home .mf-project-row img {
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 1 / -1;
     height: clamp(82px, 18vw, 128px);
     margin-top: 0;
@@ -5296,12 +5372,13 @@ a.project-button {
     border-left: 0;
   }
 
-  .progressive-method-grid h2,
+  .progressive-method-grid h3,
   .progressive-home .mf-service-list span {
     font-size: 32px;
   }
 
   .progressive-home .mf-studio-copy h2,
+  .progressive-home .mf-studio-copy .studio-lede,
   .progressive-home .mf-contact-copy h2 {
     font-size: 40px;
   }
@@ -5344,10 +5421,10 @@ a.project-button {
 
   .progressive-home .mf-project-row {
     column-gap: 10px;
-    grid-template-columns: 24px minmax(0, 1fr) 92px;
+    grid-template-columns: minmax(0, 1fr) 92px;
   }
 
-  .progressive-home .mf-project-row strong {
+  .progressive-home .mf-project-row h3 {
     font-size: 27px;
     overflow-wrap: normal;
   }
@@ -5368,11 +5445,11 @@ a.project-button {
 @media (max-width: 360px) {
   .progressive-home .mf-project-row {
     column-gap: 8px;
-    grid-template-columns: 20px minmax(0, 1fr) 70px;
+    grid-template-columns: minmax(0, 1fr) 70px;
     min-height: 112px;
   }
 
-  .progressive-home .mf-project-row strong {
+  .progressive-home .mf-project-row h3 {
     font-size: 23px;
   }
 
@@ -5381,6 +5458,7 @@ a.project-button {
   }
 
   .progressive-home .mf-studio-copy h2,
+  .progressive-home .mf-studio-copy .studio-lede,
   .progressive-home .mf-contact-copy h2 {
     font-size: 34px;
   }
@@ -5502,5 +5580,477 @@ a.project-button {
 
   .editorial-case {
     padding: 20px;
+  }
+}
+
+/* ============================================================
+   UM AUDIT FIXES — 2026-10-19 (high-severity items #1,#2,#3,#5,#6)
+   Appended so these rules win the cascade over earlier blocks.
+   ============================================================ */
+
+/* #1 — print / no-scroll renders must never show a blank page */
+@media print {
+  html.js [data-reveal],
+  html.js img:not(.loaded),
+  html.js .mf-testimonial {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* #5 — with the slimmer unified header there is room for the CTA at mid widths */
+@media (min-width: 721px) and (max-width: 1280px) {
+  .header-actions .header-link:not(.secondary) {
+    display: inline-flex;
+  }
+}
+
+/* #5 — homepage header CTA: filled, same as every other page */
+.progressive-home .header-link {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* #3 — start-project: compact H1 in the intro column, form beside it */
+.start-project-intro h1 {
+  font-size: clamp(36px, 4.6vw, 60px);
+  line-height: 1.04;
+  max-width: 10ch;
+}
+
+/* #6 — toggle lines animate into an X */
+.nav-toggle-lines span {
+  transition: transform 200ms ease;
+}
+
+/* #2 — assistant becomes a round icon button on small screens */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 80px;
+  }
+
+  .site-assistant {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: auto;
+    right: 16px;
+  }
+
+  .assistant-trigger {
+    border-radius: 50%;
+    height: 48px;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0;
+    width: 48px;
+  }
+
+  .assistant-trigger::after {
+    content: "?";
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .assistant-trigger-label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .assistant-panel {
+    bottom: 60px;
+    left: auto;
+    right: 0;
+    width: min(380px, calc(100vw - 32px));
+  }
+}
+
+/* #3 — start-project on mobile: tighten the intro column so the first
+   form field lands within the first 450px (audit prescription) */
+@media (max-width: 720px) {
+  .lead-section {
+    gap: 22px;
+    padding-top: 16px;
+  }
+
+  .start-project-intro h1 {
+    max-width: none;
+  }
+
+  .start-project-intro .contact-details {
+    flex-wrap: nowrap;
+    font-size: 13px;
+    gap: 12px;
+  }
+}
+
+/* #6 — mobile menu: full-screen sheet, full-width tap targets, CTA pinned to the bottom */
+@media (max-width: 720px) {
+  .site-header.is-open .header-bar {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* homepage (progressive) variants carry one extra class of specificity
+     in the older blocks, so they are matched explicitly here */
+  .progressive-home .site-header.is-open .header-bar {
+    position: relative;
+    z-index: 3;
+  }
+
+  .site-header.is-open .nav-toggle-lines span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  .site-header.is-open .nav-toggle-lines span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+
+  .site-header.is-open .nav-shell,
+  .progressive-home .site-header.is-open .nav-shell {
+    align-items: stretch;
+    background: var(--paper);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100dvh;
+    left: 0;
+    margin: 0;
+    overflow-y: auto;
+    padding: 96px 20px 24px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .site-header.is-open .nav,
+  .progressive-home .site-header.is-open .nav {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .site-header.is-open .nav a,
+  .progressive-home .site-header.is-open .nav a {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    display: block;
+    font-size: 16px;
+    min-height: 48px;
+    padding: 13px 2px;
+    width: 100%;
+  }
+
+  .site-header.is-open .header-actions,
+  .progressive-home .site-header.is-open .header-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .site-header.is-open .header-actions .header-link,
+  .progressive-home .site-header.is-open .header-actions .header-link {
+    min-height: 54px;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   Medium + low audit fixes — 2026-10-19 (audit items #9–#31)
+   ============================================================ */
+
+/* #17 — balanced headings; serif at regular weight only (no faux bold) */
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+.progressive-hero-copy h1 {
+  font-size: clamp(38px, 5.4vw, 84px);
+  font-weight: 400;
+  line-height: 1.04;
+}
+
+.case-file h3,
+.progressive-method-grid h3 {
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
+}
+
+/* #17/#18 — one label colour and size on light backgrounds;
+   the audit's lighter colour on dark bands */
+.section-kicker {
+  color: #8a4f38;
+}
+
+.case-contact .section-kicker,
+.studio-band .section-kicker {
+  color: #d08a6c;
+}
+
+/* #18 — footer social links at the audit's passing colour */
+.footer-social a {
+  color: #5f5e59;
+  opacity: 1;
+}
+
+/* #19 — current page marked with a 2px underline, not a filled chip */
+.nav a[aria-current="page"] {
+  background: transparent;
+  box-shadow: inset 0 -2px 0 var(--ink);
+}
+
+/* #19 — header items in sentence case */
+.header-link,
+.nav-toggle-label {
+  text-transform: none;
+}
+
+/* #21 — semantic headings inside homepage section labels and rows */
+.mf-section-label h2 {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+.mf-project-row h3 {
+  font-weight: 700;
+  margin: 0;
+}
+
+/* #14 — hero photos shown in their native 3:2, tops aligned */
+.progressive-hero-grid {
+  align-items: start;
+}
+
+.progressive-hero-media {
+  align-items: start;
+}
+
+.progressive-feature img {
+  aspect-ratio: 3 / 2;
+  height: auto;
+  min-height: 0;
+}
+
+.progressive-feature-small {
+  padding-top: 0;
+}
+
+.progressive-feature-small img {
+  aspect-ratio: 3 / 2;
+  height: auto;
+  min-height: 0;
+}
+
+/* #10 — enquiry form: readable labels, visible borders, real focus ring,
+   custom dropdown arrows, grey placeholder options */
+.inquiry-form span {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.inquiry-form .optional {
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea {
+  border-color: #8a8a8a;
+}
+
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+  border-color: var(--ink);
+  box-shadow: none;
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.inquiry-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23111111' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right 16px center;
+  background-repeat: no-repeat;
+  background-size: 12px 8px;
+  padding-right: 44px;
+}
+
+.inquiry-form select:has(> option[value=""]:checked) {
+  color: #767676;
+}
+
+.inquiry-form select option {
+  color: var(--ink);
+}
+
+/* #10/#11 — reply-time note and the brief checklist helper */
+.form-note {
+  color: var(--muted);
+  font-size: 13px;
+  grid-column: 1 / -1;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.brief-helper {
+  background: rgba(17, 17, 17, 0.03);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.brief-helper p {
+  color: var(--ink);
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.brief-helper ul {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 600px) {
+  .application-form button.submit {
+    width: 100%;
+  }
+}
+
+/* #16 — services: plain service names at a readable size in a ~300px column */
+.services-main .feature-list article {
+  grid-template-columns: 0.62fr 1fr;
+}
+
+.services-main .feature-list span {
+  font-size: clamp(28px, 2.6vw, 32px);
+  line-height: 1.15;
+}
+
+/* #16 — services FAQ: questions quieter than before, answers readable */
+.services-main .faq-list span {
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.services-main .faq-list p {
+  color: #333333;
+  font-size: 16.5px;
+  line-height: 1.55;
+}
+
+.service-photo {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius);
+  height: auto;
+  margin-top: 4px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.services-main .model-facts {
+  grid-column: 2;
+}
+
+/* #16 — left-hand section headings stay in view; body text at a readable measure */
+@media (min-width: 1025px) {
+  .editorial-split > div:first-child,
+  .media-kit > div:first-child,
+  .application-section > div:first-child {
+    align-self: start;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.media-kit p {
+  max-width: 65ch;
+}
+
+.media-kit div p + p {
+  margin-top: 1em;
+}
+
+/* #13 — homepage contact CTA spacing and the honest Instagram block */
+.mf-contact-copy .submit {
+  margin-top: 22px;
+}
+
+.mf-instagram-note {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 20px 0 12px;
+  max-width: 560px;
+}
+
+.mf-instagram-link {
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* #12 — mobile homepage: lead photo directly after the H1,
+   stats in one three-column row */
+@media (max-width: 900px) {
+  .progressive-hero-copy {
+    display: contents;
+  }
+
+  .progressive-kicker {
+    order: 1;
+  }
+
+  .progressive-hero-copy h1 {
+    order: 2;
+  }
+
+  .progressive-hero-media {
+    order: 3;
+  }
+
+  .progressive-lede {
+    order: 4;
+  }
+
+  .progressive-actions {
+    order: 5;
+  }
+
+  .progressive-home .progressive-signals {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    order: 6;
+  }
+
+  .progressive-signals dt {
+    font-size: 15px;
+  }
+
+  .progressive-signals dd {
+    font-size: 11px;
   }
 }

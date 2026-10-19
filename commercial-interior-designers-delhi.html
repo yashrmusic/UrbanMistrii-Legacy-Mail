@@ -27,17 +27,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="sector-pages.css">
+      <script>document.documentElement.classList.add("js");</script>
   </head>
   <body class="sector-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header" data-header>
       <div class="header-bar">
-        <a class="brand" href="/#top" aria-label="Urban Mistrii home"><span class="brand-logo" aria-hidden="true"><img src="assets/urbanmistrii-logo-clean.png" alt=""></span><span class="brand-text">Urban Mistrii Studio</span></a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span><span class="nav-toggle-label">Menu</span></button>
+        <a class="brand" href="/#top">
+          <span class="brand-logo" aria-hidden="true"><img src="assets/urbanmistrii-logo-clean.png" alt=""></span>
+          <span class="brand-text">Urban Mistrii Studio</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
       </div>
       <div class="nav-shell" id="site-nav" data-nav-shell>
-        <nav class="nav" aria-label="Main navigation"><a href="/#work">Work</a><a href="/about">About</a><a href="/services" aria-current="page">Services</a><a href="/process">Process</a><a href="/faq">FAQ</a><a href="/press">Press</a><a href="/journal">Journal</a><a href="/careers">Careers</a><a href="/#contact">Contact</a></nav>
-        <div class="header-actions"><a class="header-utility" href="/portal">Team login</a><a class="header-link secondary" href="/assets/urbanmistrii-portfolio.pdf" download>Portfolio</a><a class="header-link" href="/start-project">Start a project</a></div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/#work">Work</a>
+          <a href="/services" aria-current="page">Services</a>
+          <a href="/about">Studio</a>
+          <a href="/process">Process</a>
+          <a href="/press">Press</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-link" href="/start-project">Start a project</a>
+        </div>
       </div>
     </header>
 
@@ -114,7 +130,42 @@
       </section>
     </main>
 
-    <footer class="footer"><span>Urban Mistrii Studio</span><span>Commercial Interiors / Workplaces / Delhi NCR</span><span>Delhi, India</span></footer>
+    <footer class="footer">
+      <div class="footer-top">
+        <span class="footer-brand">Urban Mistrii Studio</span>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/careers">Careers</a>
+          <a href="/journal">Journal</a>
+          <a href="/faq">FAQ</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/portal">Team login</a>
+        </nav>
+      </div>
+      <div class="footer-meta">
+        <a href="mailto:mail@urbanmistrii.com">mail@urbanmistrii.com</a>
+        <a href="tel:+919953668560">+91 99536 68560</a>
+        <a href="https://wa.me/919953668560" target="_blank" rel="noreferrer">WhatsApp</a>
+        <span>Delhi, India</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/urbanmistrii/" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://in.linkedin.com/company/urbanmistriistudio" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:mail@urbanmistrii.com" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Email</span>
+        </a>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 Urban Mistrii Studio. All rights reserved.</span>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </footer>
     <script src="script.js"></script>
     <script type="application/ld+json">
       {
