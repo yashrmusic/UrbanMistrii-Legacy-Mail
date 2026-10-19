@@ -122,22 +122,8 @@ document.querySelectorAll("img").forEach((img) => {
   }
 });
 
-document.querySelectorAll(".mf-hero-project[data-tilt]").forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / centerY * -6;
-    const rotateY = (x - centerX) / centerX * 6;
-    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "perspective(600px) rotateX(0) rotateY(0)";
-  });
-});
+/* Card tilt removed 2026-10-19 (feature round): motion is cut to the
+   single hero letter reveal; hover states live in CSS. */
 
 window.addEventListener("pageshow", () => {
   if (window.location.hash) {
@@ -495,9 +481,19 @@ if (backToTop) {
 const testimonialBlocks = document.querySelectorAll("[data-testimonials] blockquote");
 const dotsContainer = document.querySelector("[data-testimonial-dots]");
 let testimonialIndex = 0;
-let testimonialTimer;
 
+/* Testimonials are manual-only since 2026-10-19 (feature round):
+   no auto-rotation, so nothing moves under the reader and
+   prefers-reduced-motion is respected by default. */
 if (testimonialBlocks.length && dotsContainer) {
+  const showTestimonial = (index) => {
+    testimonialBlocks.forEach((b) => b.classList.remove("is-visible"));
+    dotsContainer.querySelectorAll("button").forEach((d) => d.classList.remove("is-active"));
+    testimonialBlocks[index].classList.add("is-visible");
+    dotsContainer.children[index].classList.add("is-active");
+    testimonialIndex = index;
+  };
+
   testimonialBlocks.forEach((_, i) => {
     const dot = document.createElement("button");
     dot.setAttribute("aria-label", `Testimonial ${i + 1}`);
@@ -505,24 +501,6 @@ if (testimonialBlocks.length && dotsContainer) {
     dot.addEventListener("click", () => showTestimonial(i));
     dotsContainer.append(dot);
   });
-
-  const showTestimonial = (index) => {
-    testimonialBlocks.forEach((b) => b.classList.remove("is-visible"));
-    dotsContainer.querySelectorAll("button").forEach((d) => d.classList.remove("is-active"));
-    testimonialBlocks[index].classList.add("is-visible");
-    dotsContainer.children[index].classList.add("is-active");
-    testimonialIndex = index;
-    resetTestimonialTimer();
-  };
-
-  const resetTestimonialTimer = () => {
-    clearInterval(testimonialTimer);
-    testimonialTimer = setInterval(() => {
-      showTestimonial((testimonialIndex + 1) % testimonialBlocks.length);
-    }, 5000);
-  };
-
-  resetTestimonialTimer();
 }
 
 const cursor = document.querySelector("[data-cursor]");
@@ -541,26 +519,163 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
   });
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey || e.metaKey || e.altKey) return;
-  if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
+/* Single-key shortcuts (W/S/C/P) removed 2026-10-19 (feature round):
+   pressing P used to open the 2.5 MB portfolio PDF unprompted, and the
+   keys collided with normal typing expectations. Navigation is via the
+   header, footer and the mobile action bar. */
 
-  switch (e.key.toLowerCase()) {
-    case "w":
-      e.preventDefault();
-      document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
-      break;
-    case "s":
-      e.preventDefault();
-      document.querySelector("#studio")?.scrollIntoView({ behavior: "smooth" });
-      break;
-    case "c":
-      e.preventDefault();
-      document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-      break;
-    case "p":
-      e.preventDefault();
-      window.open("/assets/urbanmistrii-portfolio.pdf", "_blank");
-      break;
+/* --- Mobile action bar (feature round) ---
+   A slim bottom bar on small screens so the next step is always one
+   tap away. Hidden on the enquiry form and confirmation pages, where
+   the primary action is already on screen. */
+(function () {
+  var path = window.location.pathname;
+  if (path.indexOf("start-project") !== -1 || path.indexOf("thank-you") !== -1) return;
+  if (document.querySelector(".mobile-action-bar")) return;
+  var bar = document.createElement("div");
+  bar.className = "mobile-action-bar";
+  document.body.classList.add("has-mab");
+  bar.innerHTML =
+    '<a class="mab-primary" href="/start-project">Start a project</a>' +
+    '<a class="mab-whatsapp" href="https://wa.me/919953668560?text=Hello%20Urban%20Mistrii%2C%20I%20have%20a%20project%20enquiry." target="_blank" rel="noreferrer">WhatsApp</a>';
+  document.body.appendChild(bar);
+})();
+
+/* --- Start-a-project brief wizard (feature round) ---
+   The enquiry form is one FormSubmit form; this controller groups its
+   fields into 4 steps, validates the current step before advancing,
+   keeps progress in localStorage, pre-selects the project type from
+   ?type=, and enriches the hidden lead_source with UTM + referrer so
+   the studio can see where each enquiry came from. */
+(function () {
+  var form = document.querySelector("[data-wizard]");
+  if (!form) return;
+  var steps = Array.prototype.slice.call(form.querySelectorAll("[data-wizard-step]"));
+  if (!steps.length) return;
+  var current = 0;
+  var KEY = "um-brief-v1";
+
+  var source = form.querySelector('input[name="lead_source"]');
+  if (source) {
+    var q = new URLSearchParams(window.location.search);
+    var bits = ["Website / Start Project page"];
+    ["utm_source", "utm_medium", "utm_campaign"].forEach(function (k) {
+      if (q.get(k)) bits.push(k + "=" + q.get(k));
+    });
+    if (document.referrer) {
+      try {
+        var host = new URL(document.referrer).hostname;
+        if (host && host !== window.location.hostname) bits.push("ref=" + host);
+      } catch (e) { /* ignore */ }
+    }
+    source.value = bits.join(" | ");
   }
-});
+
+  var typeParam = new URLSearchParams(window.location.search).get("type");
+  var typeSelect = form.querySelector('select[name="project_type"]');
+  if (typeParam && typeSelect) {
+    Array.prototype.forEach.call(typeSelect.options, function (opt) {
+      if (opt.value.toLowerCase() === typeParam.toLowerCase()) typeSelect.value = opt.value;
+    });
+  }
+
+  /* The brief guidance changes with the project type. */
+  var typeHint = form.querySelector("[data-type-hint]");
+  var HINTS = {
+    "Restaurant / Cafe": "Helpful in the brief: covers, kitchen size, bar, and your target opening month.",
+    "Bar / Nightlife": "Helpful in the brief: covers, bar length, licensing stage, and your target opening month.",
+    "Residence": "Helpful in the brief: plot or flat size, floors, who will live here, and your move-in target.",
+    "Farmhouse / Villa": "Helpful in the brief: plot size, floors, who will use it, and your move-in target.",
+    "Workplace / Office": "Helpful in the brief: headcount, floors, and your move-in date.",
+    "Retail": "Helpful in the brief: store size, frontage, and how many locations are planned.",
+    "Group housing / Residential development": "Helpful in the brief: plot size, unit mix, and the approvals stage."
+  };
+  function updateHint() {
+    if (typeHint && typeSelect) typeHint.textContent = HINTS[typeSelect.value] || "";
+  }
+  if (typeSelect) typeSelect.addEventListener("change", updateHint);
+  updateHint();
+
+  /* Enter inside a field must not submit a half-finished wizard. */
+  form.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && e.target.tagName !== "TEXTAREA" && e.target.type !== "submit") {
+      e.preventDefault();
+    }
+  });
+
+  try {
+    var saved = JSON.parse(window.localStorage.getItem(KEY) || "{}");
+    Object.keys(saved).forEach(function (name) {
+      var field = form.querySelector('[name="' + name + '"]');
+      if (field && !field.value) field.value = saved[name];
+    });
+  } catch (e) { /* ignore */ }
+
+  form.addEventListener("input", function () {
+    var data = {};
+    Array.prototype.forEach.call(form.querySelectorAll("input, select, textarea"), function (f) {
+      if (f.name && f.type !== "hidden" && f.name !== "_honey") data[f.name] = f.value;
+    });
+    try { window.localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* ignore */ }
+  });
+  form.addEventListener("submit", function () {
+    try { window.localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+  });
+
+  var progress = form.querySelector("[data-wizard-progress]");
+  var errorBox = form.querySelector("[data-wizard-error]");
+
+  function show(step) {
+    current = Math.max(0, Math.min(step, steps.length - 1));
+    steps.forEach(function (s, i) { s.hidden = i !== current; });
+    if (progress) {
+      progress.textContent = "Step " + (current + 1) + " of " + steps.length;
+      var fill = form.querySelector("[data-wizard-fill]");
+      if (fill) fill.style.width = ((current + 1) / steps.length) * 100 + "%";
+    }
+    if (errorBox) errorBox.textContent = "";
+    var first = steps[current].querySelector("input, select, textarea");
+    if (first) first.focus({ preventScroll: true });
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function stepValid() {
+    var required = steps[current].querySelectorAll("[required]");
+    for (var i = 0; i < required.length; i++) {
+      if (!required[i].value || !required[i].checkValidity()) {
+        if (errorBox) errorBox.textContent = "Please complete the required fields in this step before continuing.";
+        required[i].focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  form.querySelectorAll("[data-wizard-next]").forEach(function (btn) {
+    btn.addEventListener("click", function () { if (stepValid()) show(current + 1); });
+  });
+  form.querySelectorAll("[data-wizard-back]").forEach(function (btn) {
+    btn.addEventListener("click", function () { show(current - 1); });
+  });
+  show(0);
+})();
+
+/* Case-study sector filters (projects/case-studies) */
+(function () {
+  var btns = document.querySelectorAll('[data-case-filter]');
+  if (!btns.length) return;
+  var items = document.querySelectorAll('.editorial-case[data-category]');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-case-filter');
+      btns.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      items.forEach(function (el) {
+        el.classList.toggle('is-hidden', f !== 'all' && el.getAttribute('data-category') !== f);
+      });
+    });
+  });
+})();

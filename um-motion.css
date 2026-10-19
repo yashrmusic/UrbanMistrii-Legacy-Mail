@@ -1,12 +1,12 @@
 /* ============================================================
    Urban Mistrii — motion layer (um-motion.css)
-   Site animation styles, added 2026-10-19. Three techniques:
-   1. Loupe letter reveal      — motionin.design (free essay)
-   2. Mariana depth parallax   — scrolltide.co (free template description)
-   3. Vesper pin-and-dock      — scrolltide.co (free template description)
+   2026-10-19 (feature round): only the Loupe letter reveal remains.
+   The Mariana parallax layers and the Vesper pin-and-dock (with its
+   96px dead band) were removed — the case-file grid now flows as a
+   normal grid from styles.css.
    ============================================================ */
 
-/* --- 1. Loupe: hero headline letters rise, unblur and settle one at a time --- */
+/* --- Loupe: hero headline letters rise, unblur and settle one at a time --- */
 .lx-word { display: inline-block; white-space: nowrap; }
 .lx-letter {
   display: inline-block;
@@ -19,33 +19,6 @@
 }
 @keyframes lx-in {
   to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-/* --- 2. Mariana: hero layers drift at different depths on scroll + pointer --- */
-.progressive-hero-copy,
-.progressive-feature,
-.progressive-feature-small {
-  will-change: transform, opacity;
-}
-
-/* --- 3. Vesper: large case file pins while the column scrolls, then docks ---
-   Pin travel is kept to a small margin (96px): the card is only slightly
-   shorter than its grid area, so no large blank block opens up under it.
-   The smaller cards keep their base min-height from styles.css — inflating
-   them only stretched the grid and added dead scroll length. */
-.case-file-grid { grid-template-rows: auto auto; }
-.case-file-large {
-  grid-row: 1 / span 2;
-  height: calc(100% - 96px);
-  min-height: 420px;
-  position: sticky;
-  top: 88px;
-  align-self: start;
-  will-change: transform;
-}
-
-@media (max-width: 760px) {
-  .case-file-large { position: relative; top: auto; height: auto; grid-row: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
