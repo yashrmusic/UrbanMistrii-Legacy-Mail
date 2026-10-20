@@ -6148,7 +6148,8 @@ h2 {
 /* Contact page rows */
 .contact-rows { display: grid; gap: 0; margin-top: 10px; }
 .contact-row { padding: 18px 0; border-bottom: 1px solid rgba(127, 127, 127, 0.3); }
-.contact-row h3 { margin: 0 0 4px; font-size: 17px; }
+.contact-row h2,
+.contact-row h3 { margin: 0 0 4px; font-family: inherit; font-size: 17px; font-weight: 700; line-height: inherit; }
 .contact-row p { margin: 0; }
 .contact-row a { font-weight: 600; }
 
