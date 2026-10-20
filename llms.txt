@@ -1,6 +1,6 @@
 # Urban Mistrii Studio
 
-> Urban Mistrii Studio is a Delhi-based architecture and interior design practice led by architect Ritika Rakhiani. The studio designs residences, farmhouses, restaurants, bars, hospitality spaces, workplaces, retail environments, installations, and development-led projects across India.
+> Urban Mistrii Studio is a Delhi-based architecture and interior design practice led by architect Ritika Rakhiani. The studio designs residences, farmhouses, restaurants, bars, hospitality spaces, workplaces, retail environments, installations, and development-led projects for clients across India, Canada, Australia, the UAE and worldwide.
 
 ## Canonical identity
 
@@ -11,7 +11,7 @@
 - Founder and studio lead: Ritika Rakhiani
 - Founder profile: https://urbanmistrii.com/ritika-rakhiani
 - Base: Delhi, India
-- Area served: Delhi NCR and India
+- Area served: India (including Delhi NCR), Canada, Australia, United Arab Emirates, and worldwide
 - Email: mail@urbanmistrii.com
 - Phone: +91 99536 68560
 
