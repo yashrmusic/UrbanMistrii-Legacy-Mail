@@ -20,14 +20,10 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="project-detail.css">
     <style>
-      .project-list-group { margin: 0 auto 3rem; max-width: 1080px; padding: 0 1.25rem; }
-      .project-list-group h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.9rem; margin: 0 0 1rem; }
-      .project-list { list-style: none; margin: 0; padding: 0; }
-      .project-list li { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid #e7e1d6; font-size: 0.98rem; }
-      .project-list .pl-name { font-weight: 600; }
-      .project-list .pl-name a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-      .project-list .pl-type, .project-list .pl-loc { color: #55504a; }
-      @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; gap: 0.15rem; } }
+      .project-list-band { padding-top: 2.5rem; }
+      .pl-group-title { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(30px, 4vw, 44px); margin: 0 0 1.25rem; }
+      .published-list h3 a { color: inherit; text-decoration: none; }
+      .published-list h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
     </style>
       <script>document.documentElement.classList.add("js");</script>
   </head>
@@ -77,162 +73,817 @@
         </div>
       </header>
 
-      <section class="project-list-group">
-        <h2>Residences & Farmhouses</h2>
-        <ul class="project-list">
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Aligarh</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Haldwani</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Defence Colony, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">New Friends Colony, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">GK2, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Safdarjung, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Punjabi Bagh, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Vasant Vihar, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">DLF Phase 2, Gurugram</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Shivaji Park, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Greater Kailash, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Australia</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Farmhouse</span><span class="pl-type">Farmhouse</span><span class="pl-loc">Bijwasan, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">DLF, Gurugram</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Nehru Enclave, New Delhi</span></li>
-          <li><span class="pl-name">Villa</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Villa</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Goa</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Vasant Kunj, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Dwarka, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Sector 104, Noida</span></li>
-          <li><span class="pl-name">Townhouse</span><span class="pl-type">Residential</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Kailash Hills, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Patparganj, Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Kailash Hills, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Aligarh</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Sainik Farms, New Delhi</span></li>
-          <li><span class="pl-name">Terrace Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Sushant Lok, Gurugram</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Anupam Apartments, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">Anupam Apartments, New Delhi</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Private Residence</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Farmhouse</span><span class="pl-type">Farmhouse</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Farmhouse</span><span class="pl-type">Farmhouse</span><span class="pl-loc">Babatpur, Varanasi</span></li>
-          <li><span class="pl-name">Farmhouse</span><span class="pl-type">Farmhouse</span><span class="pl-loc">Tappal</span></li>
-          <li><span class="pl-name"><a href="/projects/hill-house">Hill House</a></span><span class="pl-type">Residence</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name"><a href="/projects/ivory-house">Ivory House</a></span><span class="pl-type">Residence</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name"><a href="/projects/mahagun-residence">Mahagun Residence</a></span><span class="pl-type">Residence</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name"><a href="/projects/padmanabham-new-delhi">Padmanabham</a></span><span class="pl-type">Residence</span><span class="pl-loc">New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/pool-house-chhatarpur">Pool House</a></span><span class="pl-type">Residence</span><span class="pl-loc">Chhatarpur, New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/chinmin-farms">Chinmin Farms</a></span><span class="pl-type">Farmhouse</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">House for One</span><span class="pl-type">Residence</span><span class="pl-loc">Patparganj, Delhi</span></li>
-        </ul>
+      <section class="published-case-band project-list-band">
+        <h2 class="pl-group-title">Residences & Farmhouses</h2>
+        <div class="published-list published-list-wide">
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Aligarh / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Haldwani / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Defence Colony, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>New Friends Colony, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>GK2, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Safdarjung, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Punjabi Bagh, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Vasant Vihar, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>DLF Phase 2, Gurugram / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Shivaji Park, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Greater Kailash, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Australia / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Bijwasan, New Delhi / Farmhouse</span>
+              <h3>Farmhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>DLF, Gurugram / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Nehru Enclave, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Villa</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Villa</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Goa / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Vasant Kunj, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Dwarka, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Sector 104, Noida / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Residential</span>
+              <h3>Townhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Kailash Hills, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Patparganj, Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Kailash Hills, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Aligarh / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Sainik Farms, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Sushant Lok, Gurugram / Residential</span>
+              <h3>Terrace Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Anupam Apartments, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Anupam Apartments, New Delhi / Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Private Residence</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Farmhouse</span>
+              <h3>Farmhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Babatpur, Varanasi / Farmhouse</span>
+              <h3>Farmhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Tappal / Farmhouse</span>
+              <h3>Farmhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residence</span>
+              <h3><a href="/projects/hill-house">Hill House</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/hill-house">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Residence</span>
+              <h3><a href="/projects/ivory-house">Ivory House</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/ivory-house">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Residence</span>
+              <h3><a href="/projects/mahagun-residence">Mahagun Residence</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/mahagun-residence">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>New Delhi / Residence</span>
+              <h3><a href="/projects/padmanabham-new-delhi">Padmanabham</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/padmanabham-new-delhi">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Chhatarpur, New Delhi / Residence</span>
+              <h3><a href="/projects/pool-house-chhatarpur">Pool House</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/pool-house-chhatarpur">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Farmhouse</span>
+              <h3><a href="/projects/chinmin-farms">Chinmin Farms</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/chinmin-farms">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Patparganj, Delhi / Residence</span>
+              <h3>House for One</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="project-list-group">
-        <h2>Cafés, Restaurants & Hospitality</h2>
-        <ul class="project-list">
-          <li><span class="pl-name"><a href="/projects/bar-bar-varanasi">Bar-Bar</a></span><span class="pl-type">Restaurant & Bar</span><span class="pl-loc">Varanasi</span></li>
-          <li><span class="pl-name"><a href="/projects/clinque-noida">Clinque / T-Groove</a></span><span class="pl-type">Microbrewery & Restro-Bar</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name"><a href="/projects/echoes-2-rohini">Echoes 2.0</a></span><span class="pl-type">Café & Kitchen</span><span class="pl-loc">Rohini, New Delhi</span></li>
-          <li><span class="pl-name">Echoes</span><span class="pl-type">Café</span><span class="pl-loc">Kailash Colony, New Delhi</span></li>
-          <li><span class="pl-name">Echoes</span><span class="pl-type">Café</span><span class="pl-loc">Dwarka, New Delhi</span></li>
-          <li><span class="pl-name">Echoes</span><span class="pl-type">Café</span><span class="pl-loc">Hauz Khas, New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/mad-bar-new-delhi">MAD</a></span><span class="pl-type">Bar</span><span class="pl-loc">New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/seoul-new-delhi">Seoul</a></span><span class="pl-type">Korean Restaurant</span><span class="pl-loc">New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/sangeetha-chennai">Sangeetha</a></span><span class="pl-type">Restaurant</span><span class="pl-loc">Chennai</span></li>
-          <li><span class="pl-name">Sangeeta</span><span class="pl-type">Restaurant</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name"><a href="/projects/unallome-goa">Unallome</a></span><span class="pl-type">Bed & Breakfast</span><span class="pl-loc">Morjim, Goa</span></li>
-          <li><span class="pl-name">The Box</span><span class="pl-type">Café</span><span class="pl-loc">Morjim, Goa</span></li>
-          <li><span class="pl-name">Dravidam</span><span class="pl-type">Café</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name">Skyro</span><span class="pl-type">Café</span><span class="pl-loc">Bengaluru</span></li>
-          <li><span class="pl-name">Food Workshop</span><span class="pl-type">Restaurant</span><span class="pl-loc">Ghaziabad</span></li>
-          <li><span class="pl-name">Food Workshop Club</span><span class="pl-type">Club & Restaurant</span><span class="pl-loc">Ghaziabad</span></li>
-          <li><span class="pl-name">Masala Mandi</span><span class="pl-type">Restaurant</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Qubitos</span><span class="pl-type">Café & Lounge</span><span class="pl-loc">Rajouri Garden, New Delhi</span></li>
-          <li><span class="pl-name">South Indian Café</span><span class="pl-type">Restaurant</span><span class="pl-loc">Calicut</span></li>
-          <li><span class="pl-name">South Indian Café</span><span class="pl-type">Restaurant</span><span class="pl-loc">Saharanpur</span></li>
-          <li><span class="pl-name">Café Half Seen</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Blanc and Churn</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">F&B Outlet — Epicuria</span><span class="pl-type">Food Court Outlet</span><span class="pl-loc">Nehru Place, New Delhi</span></li>
-          <li><span class="pl-name">Hotel Shubham</span><span class="pl-type">Hotel</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Banquet Hall</span><span class="pl-type">Banquet Hall</span><span class="pl-loc">Mussoorie</span></li>
-          <li><span class="pl-name">Indian Dragon</span><span class="pl-type">Restaurant</span><span class="pl-loc">Varanasi</span></li>
-          <li><span class="pl-name">Big Tree Café</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Tree Café</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Romeo Lane</span><span class="pl-type">Café</span><span class="pl-loc">Dehradun</span></li>
-          <li><span class="pl-name">Cirqle</span><span class="pl-type">Café & Lounge</span><span class="pl-loc">Dehradun</span></li>
-          <li><span class="pl-name">Suave</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Unwind</span><span class="pl-type">Café & Lounge</span><span class="pl-loc">Ansal Plaza, New Delhi</span></li>
-          <li><span class="pl-name">65th Avenue</span><span class="pl-type">Café</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Mandi Valley</span><span class="pl-type">Restaurant</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Resort</span><span class="pl-type">Hospitality</span><span class="pl-loc">Aligarh</span></li>
-          <li><span class="pl-name">House of Goth</span><span class="pl-type">Hospitality Concept</span><span class="pl-loc">Goa</span></li>
-        </ul>
+      <section class="published-case-band project-list-band">
+        <h2 class="pl-group-title">Cafés, Restaurants & Hospitality</h2>
+        <div class="published-list published-list-wide">
+          <article>
+            <div>
+              <span>Varanasi / Restaurant & Bar</span>
+              <h3><a href="/projects/bar-bar-varanasi">Bar-Bar</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/bar-bar-varanasi">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Microbrewery & Restro-Bar</span>
+              <h3><a href="/projects/clinque-noida">Clinque / T-Groove</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/clinque-noida">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Rohini, New Delhi / Café & Kitchen</span>
+              <h3><a href="/projects/echoes-2-rohini">Echoes 2.0</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/echoes-2-rohini">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Kailash Colony, New Delhi / Café</span>
+              <h3>Echoes</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Dwarka, New Delhi / Café</span>
+              <h3>Echoes</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Hauz Khas, New Delhi / Café</span>
+              <h3>Echoes</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>New Delhi / Bar</span>
+              <h3><a href="/projects/mad-bar-new-delhi">MAD</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/mad-bar-new-delhi">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>New Delhi / Korean Restaurant</span>
+              <h3><a href="/projects/seoul-new-delhi">Seoul</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/seoul-new-delhi">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Chennai / Restaurant</span>
+              <h3><a href="/projects/sangeetha-chennai">Sangeetha</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/sangeetha-chennai">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Restaurant</span>
+              <h3>Sangeeta</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Morjim, Goa / Bed & Breakfast</span>
+              <h3><a href="/projects/unallome-goa">Unallome</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/unallome-goa">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Morjim, Goa / Café</span>
+              <h3>The Box</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Café</span>
+              <h3>Dravidam</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Bengaluru / Café</span>
+              <h3>Skyro</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Ghaziabad / Restaurant</span>
+              <h3>Food Workshop</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Ghaziabad / Club & Restaurant</span>
+              <h3>Food Workshop Club</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Restaurant</span>
+              <h3>Masala Mandi</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rajouri Garden, New Delhi / Café & Lounge</span>
+              <h3>Qubitos</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Calicut / Restaurant</span>
+              <h3>South Indian Café</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Saharanpur / Restaurant</span>
+              <h3>South Indian Café</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>Café Half Seen</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>Blanc and Churn</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Nehru Place, New Delhi / Food Court Outlet</span>
+              <h3>F&B Outlet — Epicuria</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Hotel</span>
+              <h3>Hotel Shubham</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Mussoorie / Banquet Hall</span>
+              <h3>Banquet Hall</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Varanasi / Restaurant</span>
+              <h3>Indian Dragon</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>Big Tree Café</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>Tree Café</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Dehradun / Café</span>
+              <h3>Romeo Lane</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Dehradun / Café & Lounge</span>
+              <h3>Cirqle</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>Suave</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Ansal Plaza, New Delhi / Café & Lounge</span>
+              <h3>Unwind</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Café</span>
+              <h3>65th Avenue</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Restaurant</span>
+              <h3>Mandi Valley</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Aligarh / Hospitality</span>
+              <h3>Resort</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Goa / Hospitality Concept</span>
+              <h3>House of Goth</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="project-list-group">
-        <h2>Healthcare</h2>
-        <ul class="project-list">
-          <li><span class="pl-name"><a href="/projects/plug-and-play-gurgaon">Plug & Play</a></span><span class="pl-type">Paediatric Clinic</span><span class="pl-loc">Gurugram</span></li>
-          <li><span class="pl-name">Positive Pediatrics</span><span class="pl-type">Paediatric Clinic</span><span class="pl-loc">Gurugram</span></li>
-          <li><span class="pl-name">Clinic</span><span class="pl-type">Healthcare</span><span class="pl-loc">Vikaspuri, New Delhi</span></li>
-          <li><span class="pl-name">Dental Clinic</span><span class="pl-type">Dental Clinic</span><span class="pl-loc">—</span></li>
-        </ul>
+      <section class="published-case-band project-list-band">
+        <h2 class="pl-group-title">Healthcare</h2>
+        <div class="published-list published-list-wide">
+          <article>
+            <div>
+              <span>Gurugram / Paediatric Clinic</span>
+              <h3><a href="/projects/plug-and-play-gurgaon">Plug & Play</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/plug-and-play-gurgaon">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Gurugram / Paediatric Clinic</span>
+              <h3>Positive Pediatrics</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Vikaspuri, New Delhi / Healthcare</span>
+              <h3>Clinic</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Dental Clinic</span>
+              <h3>Dental Clinic</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="project-list-group">
-        <h2>Retail, Workplaces & Commercial</h2>
-        <ul class="project-list">
-          <li><span class="pl-name">Flaunt by Duty Free</span><span class="pl-type">Duty-Free Retail</span><span class="pl-loc">Udaipur</span></li>
-          <li><span class="pl-name">Dolce by Duty Free</span><span class="pl-type">Duty-Free Retail</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Duty Free</span><span class="pl-type">Duty-Free Retail</span><span class="pl-loc">Noida</span></li>
-          <li><span class="pl-name">Duty Free</span><span class="pl-type">Duty-Free Retail</span><span class="pl-loc">Ghaziabad</span></li>
-          <li><span class="pl-name">Dutyfree & Oscar</span><span class="pl-type">Duty-Free Retail</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Sunny Overseas</span><span class="pl-type">Exhibition Booth</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Marwar Couture</span><span class="pl-type">Fashion Retail</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Furnish India</span><span class="pl-type">Furniture Showroom</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Berlin Mall</span><span class="pl-type">Retail Mall</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Emaya Mall</span><span class="pl-type">Retail Mall</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Fine India</span><span class="pl-type">Retail</span><span class="pl-loc">Saket, New Delhi</span></li>
-          <li><span class="pl-name">Skyrider</span><span class="pl-type">Entertainment Centre</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">BSL Consulting</span><span class="pl-type">Office</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Corporate Office</span><span class="pl-type">Workplace</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Corporate Office</span><span class="pl-type">Workplace</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Corporate Office</span><span class="pl-type">Workplace</span><span class="pl-loc">Gurugram</span></li>
-          <li><span class="pl-name">Office</span><span class="pl-type">Workplace</span><span class="pl-loc">Vasant Vihar, New Delhi</span></li>
-          <li><span class="pl-name">RWA Office</span><span class="pl-type">Workplace</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Urban Mistrii Studio Office</span><span class="pl-type">Studio Office</span><span class="pl-loc">Saket, New Delhi</span></li>
-          <li><span class="pl-name"><a href="/projects/metro-infrasys">Metro Infrasys</a></span><span class="pl-type">Workplace</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Logistics Park</span><span class="pl-type">Industrial</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Industrial Facility</span><span class="pl-type">Industrial</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Fairytales</span><span class="pl-type">Children's Concept Store</span><span class="pl-loc">Paschim Vihar, New Delhi</span></li>
-          <li><span class="pl-name">Firozabad Highway Complex</span><span class="pl-type">Commercial Complex</span><span class="pl-loc">Firozabad</span></li>
-        </ul>
+      <section class="published-case-band project-list-band">
+        <h2 class="pl-group-title">Retail, Workplaces & Commercial</h2>
+        <div class="published-list published-list-wide">
+          <article>
+            <div>
+              <span>Udaipur / Duty-Free Retail</span>
+              <h3>Flaunt by Duty Free</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Duty-Free Retail</span>
+              <h3>Dolce by Duty Free</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Noida / Duty-Free Retail</span>
+              <h3>Duty Free</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Ghaziabad / Duty-Free Retail</span>
+              <h3>Duty Free</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Duty-Free Retail</span>
+              <h3>Dutyfree & Oscar</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Exhibition Booth</span>
+              <h3>Sunny Overseas</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Fashion Retail</span>
+              <h3>Marwar Couture</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Furniture Showroom</span>
+              <h3>Furnish India</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Retail Mall</span>
+              <h3>Berlin Mall</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Retail Mall</span>
+              <h3>Emaya Mall</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Saket, New Delhi / Retail</span>
+              <h3>Fine India</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Entertainment Centre</span>
+              <h3>Skyrider</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Office</span>
+              <h3>BSL Consulting</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Workplace</span>
+              <h3>Corporate Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Workplace</span>
+              <h3>Corporate Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Gurugram / Workplace</span>
+              <h3>Corporate Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Vasant Vihar, New Delhi / Workplace</span>
+              <h3>Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Workplace</span>
+              <h3>RWA Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Saket, New Delhi / Studio Office</span>
+              <h3>Urban Mistrii Studio Office</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Workplace</span>
+              <h3><a href="/projects/metro-infrasys">Metro Infrasys</a></h3>
+            </div>
+            <a class="text-link dark" href="/projects/metro-infrasys">Read the full project</a>
+          </article>
+          <article>
+            <div>
+              <span>Industrial</span>
+              <h3>Logistics Park</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Industrial</span>
+              <h3>Industrial Facility</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Paschim Vihar, New Delhi / Children's Concept Store</span>
+              <h3>Fairytales</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Firozabad / Commercial Complex</span>
+              <h3>Firozabad Highway Complex</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="project-list-group">
-        <h2>More Selected Work</h2>
-        <ul class="project-list">
-          <li><span class="pl-name">Residential Housing</span><span class="pl-type">Group Housing</span><span class="pl-loc">Firozabad</span></li>
-          <li><span class="pl-name">Himalayan Sports Centre</span><span class="pl-type">Sports Facility</span><span class="pl-loc">Rudrapur</span></li>
-          <li><span class="pl-name">Mixed-Use Development</span><span class="pl-type">Mixed Use</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Clubhouse</span><span class="pl-type">Amenity</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Landscape — Public Park</span><span class="pl-type">Landscape</span><span class="pl-loc">—</span></li>
-          <li><span class="pl-name">Residential Development</span><span class="pl-type">Residential</span><span class="pl-loc">—</span></li>
-        </ul>
+      <section class="published-case-band project-list-band">
+        <h2 class="pl-group-title">More Selected Work</h2>
+        <div class="published-list published-list-wide">
+          <article>
+            <div>
+              <span>Firozabad / Group Housing</span>
+              <h3>Residential Housing</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Rudrapur / Sports Facility</span>
+              <h3>Himalayan Sports Centre</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Mixed Use</span>
+              <h3>Mixed-Use Development</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Amenity</span>
+              <h3>Clubhouse</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Landscape</span>
+              <h3>Landscape — Public Park</h3>
+            </div>
+          </article>
+          <article>
+            <div>
+              <span>Residential</span>
+              <h3>Residential Development</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="project-detail-related"><div class="project-related-inner"><p class="section-kicker">Go deeper</p><div class="project-related-links"><a href="/projects/case-studies"><strong>Case Studies</strong><span>Published projects with photography</span></a><a href="/start-project"><strong>Start a Project</strong><span>Tell us about your site or brief</span></a></div></div></section>
