@@ -135,9 +135,9 @@ const assistantKnowledge = [
   {
     match: ["start project", "enquiry", "inquiry", "brief", "project brief", "contact", "hire"],
     title: "Start a project",
-    body: "The fastest route is the structured project enquiry form, where visitors can share project type, location, stage, budget, and timeline.",
+    body: "The fastest route is the structured project enquiry form, where you can share the project type, location, stage, budget, and timeline.",
     actions: [
-      { label: "Open lead form", href: "/start-project" },
+      { label: "Open enquiry form", href: "/start-project" },
       { label: "Review process", href: "/process" }
     ]
   },
@@ -162,7 +162,7 @@ const assistantKnowledge = [
   {
     match: ["portfolio", "work", "projects", "case studies", "published", "press"],
     title: "Work and press",
-    body: "Visitors can browse selected work on the homepage, deeper project notes in case studies, and publication coverage through the press page.",
+    body: "Browse selected work on the homepage, detailed project notes in the case studies, and publication coverage on the press page.",
     actions: [
       { label: "Case studies", href: "/projects/case-studies" },
       { label: "Press room", href: "/press" },
@@ -190,7 +190,7 @@ const assistantKnowledge = [
   {
     match: ["careers", "job", "internship", "join", "team"],
     title: "Careers and team",
-    body: "Careers information, application guidance, and the team entry point all live on the public site now.",
+    body: "Open roles, application guidance, and the team login are all available on the website.",
     actions: [
       { label: "View careers", href: "/careers" },
       { label: "Team login", href: "/portal" }
@@ -200,7 +200,7 @@ const assistantKnowledge = [
 
 const defaultAssistantResponse = {
   title: "How can I help?",
-  body: "I can guide visitors to case studies, services, process, FAQ, sectors, careers, press coverage, or the project enquiry form.",
+  body: "I can point you to case studies, services, process, FAQ, sectors, careers, press coverage, or the project enquiry form.",
   actions: [
     { label: "Start a project", href: "/start-project" },
     { label: "View services", href: "/services" },
