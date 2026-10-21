@@ -72,6 +72,7 @@ The full text of every public page is in one file: https://urbanmistrii.com/llms
 
 ## External profiles
 
+- Wikidata: https://www.wikidata.org/wiki/Q141802348
 - Instagram: https://www.instagram.com/urbanmistrii/
 - LinkedIn: https://in.linkedin.com/company/urbanmistriistudio
 - ArchiDiaries: https://archidiaries.com/practices/urban-mistrii/
