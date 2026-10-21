@@ -6115,11 +6115,21 @@ h2 {
 }
 
 .progressive-press {
+  border-left: 2px solid var(--terracotta);
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.45;
   margin: 0;
-  max-width: 420px;
+  max-width: 540px;
+  padding-left: 16px;
+}
+
+.progressive-press span {
+  color: var(--ink);
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
+  font-size: 1.4em;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 /* Hero: balanced imagery, no dead zone under the feature */
