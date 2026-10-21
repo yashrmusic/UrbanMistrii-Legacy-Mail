@@ -121,6 +121,32 @@ these threads often. Never post fake reviews or undisclosed promotion.
 - https://www.habitusliving.com/projects/urbanmistrii-chattarpur-pool-house/
 - https://www.commercialdesignindia.com/people/architecture-is-a-two-way-street-ritika-rakhiani-of-urbanmistri
 
+## Targets found 21 October 2026
+
+Pitched by email (drafts in Gmail, send from mail@urbanmistrii.com):
+
+- The Architects Diary, editor@thearchitectsdiary.com: Top 25 Architects in
+  Delhi (2023) and India's Top 30 Restaurant Interiors (2024)
+- Design Pataki, features@designpataki.com: Delhi restaurant design guides
+- ArchGyan, hello@archgyan.com: Top Architecture Firms in New Delhi (Jul 2026)
+
+Submit through their own forms:
+
+- The Decor Journal India: https://www.thedecorjournalindia.com/project-submission
+- Buildofy (homes and farmhouses): https://buildofy.com/submit-project
+- ArchDaily office profile: missing, create one and submit SEOUL first
+- Clutch and The Manifest: claim a vendor profile, then collect client reviews
+
+Contact page only (no editor email published):
+
+- Novatr: https://www.novatr.com/contact-us (two Delhi/India designer roundups)
+- AND Academy: +91 9289 281414 (two designer roundups)
+- Rethinking The Future: Best Architects in Delhi NCR (site blocked our check)
+- Housing.com: Best Interior Designers in Delhi (site blocked our check)
+
+Already listed: Houzz India (add reviews), Architizer, Archello. Justdial not
+confirmed; check by hand.
+
 ## Monthly check
 
 Ask ChatGPT, Claude, Perplexity and Gemini each of these, and note whether
