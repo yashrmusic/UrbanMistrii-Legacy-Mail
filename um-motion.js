@@ -34,6 +34,35 @@
     });
   }
 
+  /* --- Press credit: once the headline lands, the rule draws down and the
+     publication names arrive in turn. Timing lives in um-motion.css. --- */
+  var press = document.querySelector(".progressive-press");
+  if (press && !reduced) {
+    var headlineWords = h1 ? h1.querySelectorAll(".lx-word").length : 0;
+    press.style.setProperty("--press-delay", headlineWords * 70 + 200 + "ms");
+    Array.prototype.forEach.call(press.querySelectorAll("span"), function (name, i) {
+      name.style.setProperty("--n", i);
+    });
+    press.classList.add("is-sequenced");
+  }
+
+  /* --- Project hand-off: on a cross-document view transition, the image the
+     visitor clicked morphs into the project page hero, which carries the same
+     view-transition-name in styles.css. Browsers without support just navigate. */
+  var handoffImage = null;
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest('a[href^="/projects/"]');
+    handoffImage = link ? link.querySelector("img") : null;
+  });
+  window.addEventListener("pageswap", function (e) {
+    if (e.viewTransition && handoffImage) handoffImage.style.viewTransitionName = "project-hero";
+  });
+  /* Coming back through the back/forward cache: drop the name so it can't collide. */
+  window.addEventListener("pageshow", function () {
+    if (handoffImage) handoffImage.style.viewTransitionName = "";
+    handoffImage = null;
+  });
+
   /* --- Homepage: Lenis smooth scroll + GSAP ScrollTrigger reveals --- */
   var isHome = document.body.classList.contains("modus-home");
   if (!isHome || reduced || !window.gsap || !window.ScrollTrigger || !window.Lenis) return;
@@ -74,6 +103,36 @@
       scrollTrigger: { trigger: el, start: "top 88%", once: true }
     });
   });
+
+  /* Photographs unveil from the bottom edge while settling from a slight zoom.
+     The inset on the sides tracks the zoom so the image never spills past its
+     frame. CSS hover transitions are paused until the tween hands back. */
+  var unveilImages = Array.prototype.slice.call(document.querySelectorAll(".mf-project-row img, .case-file img"));
+  unveilImages.forEach(function (img) {
+    gsap.fromTo(img,
+      { clipPath: "inset(100% 3.7% 3.7% 3.7%)", scale: 1.08, transition: "none" },
+      {
+        clipPath: "inset(0% 0% 0% 0%)",
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        clearProps: "clipPath,transform,transition",
+        scrollTrigger: { trigger: img, start: "top 88%", once: true }
+      });
+  });
+
+  /* Hero photographs are the first paint, so they are never hidden: they open
+     from a slightly inset frame and settle as the headline arrives. */
+  gsap.fromTo(".progressive-feature img",
+    { clipPath: "inset(3% 3% 3% 3%)", scale: 1.06 },
+    {
+      clipPath: "inset(0% 0% 0% 0%)",
+      scale: 1,
+      duration: 1.6,
+      ease: "power2.out",
+      stagger: 0.15,
+      clearProps: "clipPath,transform"
+    });
 
   /* Layout can shift after images load; re-measure once everything is in. */
   window.addEventListener("load", function () { ScrollTrigger.refresh(); });

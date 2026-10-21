@@ -6364,3 +6364,29 @@ h2 {
   content: counter(step) ". ";
   font-weight: 700;
 }
+
+/* Page transitions: same-site navigations crossfade, and a project image
+   clicked on the homepage morphs into the project hero (um-motion.js names
+   the clicked image). Browsers without cross-document view transitions
+   simply navigate. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+.project-detail-hero .project-detail-media img {
+  view-transition-name: project-hero;
+}
+
+::view-transition-group(project-hero) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+::view-transition-old(project-hero),
+::view-transition-new(project-hero) {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}

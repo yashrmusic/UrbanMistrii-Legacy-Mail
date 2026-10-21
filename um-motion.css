@@ -24,6 +24,38 @@
   .lx-letter { animation: none; opacity: 1; transform: none; }
 }
 
+/* --- Press credit: the terracotta rule draws down, the sentence surfaces,
+   then each publication arrives in turn. um-motion.js adds .is-sequenced
+   (never under reduced motion) and sets --press-delay to follow the headline. --- */
+.progressive-press.is-sequenced {
+  animation: press-text 0.5s ease forwards;
+  animation-delay: calc(var(--press-delay) + 200ms);
+  border-left-color: transparent;
+  color: transparent;
+  position: relative;
+}
+.progressive-press.is-sequenced::before {
+  animation: press-rule 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--press-delay);
+  background: var(--terracotta);
+  bottom: 0;
+  content: "";
+  left: -2px;
+  position: absolute;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  width: 2px;
+}
+.progressive-press.is-sequenced span {
+  animation: press-name 0.6s ease forwards;
+  animation-delay: calc(var(--press-delay) + 350ms + var(--n) * 120ms);
+  opacity: 0;
+}
+@keyframes press-rule { to { transform: scaleY(1); } }
+@keyframes press-text { to { color: var(--muted); } }
+@keyframes press-name { to { opacity: 1; } }
+
 /* --- Lenis smooth scroll (homepage only; class added by lenis.min.js) --- */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
