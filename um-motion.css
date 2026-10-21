@@ -23,3 +23,8 @@
 @media (prefers-reduced-motion: reduce) {
   .lx-letter { animation: none; opacity: 1; transform: none; }
 }
+
+/* --- Lenis smooth scroll (homepage only; class added by lenis.min.js) --- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }

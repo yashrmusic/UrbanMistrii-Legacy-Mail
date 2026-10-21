@@ -56,7 +56,8 @@ const copyTargets = [
   "5b8f1689cff8ce83e94fc70e7f7e8bc4.txt",
   "thank-you.html",
   "um-motion.css",
-  "um-motion.js"
+  "um-motion.js",
+  "vendor"
 ];
 
 fs.rmSync(output, { recursive: true, force: true });
