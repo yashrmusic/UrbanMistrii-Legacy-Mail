@@ -396,7 +396,7 @@ const openLightbox = (img, caption) => {
   if (!lightbox || !lightboxImg) return;
 
   const allImages = document.querySelectorAll(
-    ".mf-hero-project img, .mf-project-row img, .mf-image-field img"
+    ".mf-hero-project img, .mf-image-field img"
   );
   lightboxImages = Array.from(allImages).map((i) => ({
     src: i.getAttribute("src"),
@@ -433,7 +433,7 @@ const navigateLightbox = (direction) => {
   showLightboxImage();
 };
 
-document.querySelectorAll(".mf-hero-project, .mf-project-row, .mf-image-field figure").forEach((el) => {
+document.querySelectorAll(".mf-hero-project, .mf-image-field figure").forEach((el) => {
   el.addEventListener("click", (e) => {
     if (e.target.tagName === "IMG") {
       e.preventDefault();
@@ -442,7 +442,7 @@ document.querySelectorAll(".mf-hero-project, .mf-project-row, .mf-image-field fi
   });
 });
 
-document.querySelectorAll(".mf-hero-project img, .mf-project-row img, .mf-image-field img").forEach((img) => {
+document.querySelectorAll(".mf-hero-project img, .mf-image-field img").forEach((img) => {
   img.setAttribute("data-lightbox-target", "");
 });
 

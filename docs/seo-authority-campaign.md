@@ -75,8 +75,8 @@ Ask existing publishers to add or update the studio link in their project credit
 | Interior Design | SEOUL | https://urbanmistrii.com/projects/seoul-new-delhi |
 | Architectural Digest India | SEOUL | https://urbanmistrii.com/projects/seoul-new-delhi |
 | Architectural Digest India | Bar Bar | https://urbanmistrii.com/projects/bar-bar-varanasi |
-| Elle Decor India | Padmanabham | https://urbanmistrii.com/projects/padmanabham-new-delhi |
-| Elle Decor India | Clinque / T-Groove | https://urbanmistrii.com/projects/clinque-noida |
+| ELLE DECOR India | Padmanabham | https://urbanmistrii.com/projects/padmanabham-new-delhi |
+| ELLE DECOR India | Clinque / T-Groove | https://urbanmistrii.com/projects/clinque-noida |
 | Architizer | The Hill House | https://urbanmistrii.com/projects/hill-house |
 
 ## Local search work

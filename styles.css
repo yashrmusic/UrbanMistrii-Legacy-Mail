@@ -5954,16 +5954,13 @@ h2 {
   }
 
   .progressive-hero-copy h1,
-  .progressive-press {
+  .progressive-press,
+  .progressive-lede {
     order: 2;
   }
 
   .progressive-hero-media {
     order: 3;
-  }
-
-  .progressive-lede {
-    order: 4;
   }
 
   .progressive-actions {
