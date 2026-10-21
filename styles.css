@@ -4596,6 +4596,7 @@ html.js .mf-testimonial.is-visible {
 
 .progressive-kicker {
   color: var(--terracotta);
+  font-family: inherit;
   font-size: 13px;
   font-weight: 650;
   line-height: 1.3;
@@ -4603,12 +4604,20 @@ html.js .mf-testimonial.is-visible {
   max-width: 360px;
 }
 
-.progressive-hero-copy h1 {
+.progressive-hero-copy .progressive-kicker {
+  padding-bottom: 0;
+}
+
+/* The brand line is a paragraph styled as the display headline; the h1 is
+   the kicker, so the page's main heading names what the studio does. */
+.progressive-hero-copy .progressive-headline {
+  font-family: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   font-size: 88px;
   font-weight: 560;
   line-height: 0.94;
   margin: 0;
   max-width: 720px;
+  padding-bottom: 0.1em;
 }
 
 .progressive-lede {
@@ -5098,7 +5107,7 @@ html.js .mf-testimonial.is-visible {
     max-width: 760px;
   }
 
-  .progressive-hero-copy h1 {
+  .progressive-hero-copy .progressive-headline {
     font-size: 72px;
   }
 
@@ -5182,7 +5191,7 @@ html.js .mf-testimonial.is-visible {
     gap: 18px;
   }
 
-  .progressive-hero-copy h1 {
+  .progressive-hero-copy .progressive-headline {
     font-size: 54px;
     line-height: 0.98;
   }
@@ -5337,7 +5346,7 @@ html.js .mf-testimonial.is-visible {
 }
 
 @media (max-width: 420px) {
-  .progressive-hero-copy h1 {
+  .progressive-hero-copy .progressive-headline {
     font-size: 46px;
   }
 
@@ -5701,7 +5710,7 @@ h2 {
   text-wrap: balance;
 }
 
-.progressive-hero-copy h1 {
+.progressive-hero-copy .progressive-headline {
   font-size: clamp(38px, 5.4vw, 84px);
   font-weight: 400;
   line-height: 1.04;
@@ -5953,7 +5962,7 @@ h2 {
     order: 1;
   }
 
-  .progressive-hero-copy h1,
+  .progressive-hero-copy .progressive-headline,
   .progressive-press,
   .progressive-lede {
     order: 2;

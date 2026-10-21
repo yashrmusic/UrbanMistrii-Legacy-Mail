@@ -12,11 +12,16 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* --- Loupe letter reveal: split the hero H1 into letters, staggered --- */
-  var h1 = document.querySelector(".progressive-hero-copy h1");
+  var h1 = document.querySelector(".progressive-hero-copy .progressive-headline");
   if (h1 && !reduced) {
     var words = h1.textContent.trim().split(/\s+/);
-    h1.setAttribute("aria-label", h1.textContent.trim());
+    /* The line is a paragraph, where aria-label is ignored, so screen readers
+       get a visually hidden copy of the text instead of the split letters. */
+    var spoken = document.createElement("span");
+    spoken.className = "lx-sr";
+    spoken.textContent = h1.textContent.trim();
     h1.textContent = "";
+    h1.appendChild(spoken);
     words.forEach(function (word, wi) {
       var w = document.createElement("span");
       w.className = "lx-word";

@@ -19,6 +19,15 @@
 @keyframes lx-in {
   to { opacity: 1; transform: translateY(0); }
 }
+.lx-sr {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .lx-letter { animation: none; opacity: 1; transform: none; }
