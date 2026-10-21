@@ -4934,8 +4934,8 @@ html.js .mf-testimonial.is-visible {
 .progressive-home .mf-studio-copy h2,
 .progressive-home .mf-studio-copy .studio-lede,
 .progressive-home .mf-contact-copy h2 {
-  font-size: 58px;
-  line-height: 1.02;
+  font-size: 40px;
+  line-height: 1.08;
 }
 
 .progressive-home .mf-service-list a {
@@ -6153,7 +6153,7 @@ h2 {
   color: var(--ink);
   flex: 1 1 100%;
   font-family: "Instrument Serif", Georgia, serif;
-  font-size: clamp(44px, 5.6vw, 84px);
+  font-size: clamp(40px, 4vw, 60px);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.95;
