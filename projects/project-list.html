@@ -26,37 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="project-detail.css">
-    <style>
-      .project-list-band { padding-top: 2.5rem; }
-      .pl-group-title { font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(30px, 4vw, 44px); margin: 0 0 1.25rem; }
-      .published-list h3 a { color: inherit; text-decoration: none; }
-      .published-list h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
-      .pl-group-lead { color: var(--muted); font-size: 17px; max-width: 680px; margin: 0 0 1.75rem; }
-      .pl-photo-case { align-content: start; }
-      .pl-photo-case .case-image { margin-bottom: 4px; }
-      .pl-photo-case h3 a { color: inherit; text-decoration: none; }
-      .pl-photo-case h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
-      .pl-photo-case .case-facts { margin-top: 0; }
-      .pl-filter-band { max-width: var(--max); margin: 0 auto; padding: 1.5rem clamp(18px, 4vw, 56px) 0; }
-      .pl-filter-band .case-filters { align-items: center; margin: 0; }
-      .pl-search { display: flex; align-items: center; gap: 10px; flex: 1 1 240px; margin-left: auto; max-width: 340px; }
-      .pl-search label { font-size: 14px; font-weight: 600; white-space: nowrap; }
-      .pl-search input { flex: 1 1 auto; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 15px; border-radius: 0; }
-      .pl-empty { margin: 1.25rem 0 0; color: var(--muted); font-size: 17px; }
-      .pl-hidden { display: none !important; }
-      @media (max-width: 767px) { .pl-search { margin-left: 0; max-width: none; } }
-      .project-list-page { background: var(--paper); color: var(--ink); }
-      .project-list-page .project-detail-hero { background: transparent; color: var(--ink); }
-      .project-list-page .project-detail-heading .section-kicker { color: var(--clay); }
-      .project-list-page .project-detail-facts,
-      .project-list-page .project-detail-facts div { border-color: var(--line); }
-      .project-list-page .project-detail-facts dt { color: var(--muted); }
-      .pl-index { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 4vw, 56px); border-top: 1px solid var(--line); }
-      .pl-index li { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-      .pl-index-name { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; color: var(--ink); }
-      .pl-index-meta { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
-      @media (max-width: 720px) { .pl-index { grid-template-columns: 1fr; } }
-    </style>
+        <link rel="stylesheet" href="project-list.css">
       <script>document.documentElement.classList.add("js");</script>
   </head>
   <body class="project-detail-page project-list-page">
