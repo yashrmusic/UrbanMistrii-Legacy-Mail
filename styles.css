@@ -5928,7 +5928,8 @@ h2 {
     order: 1;
   }
 
-  .progressive-hero-copy h1 {
+  .progressive-hero-copy h1,
+  .progressive-press {
     order: 2;
   }
 
@@ -6117,9 +6118,8 @@ h2 {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
-  margin: 14px 0 0;
+  margin: 0;
   max-width: 420px;
-  order: 7;
 }
 
 /* Hero: balanced imagery, no dead zone under the feature */
