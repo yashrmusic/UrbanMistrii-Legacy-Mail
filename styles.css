@@ -6257,3 +6257,53 @@ h2 {
   color: var(--paper);
   gap: 8px;
 }
+
+/* ============================================================
+   Homepage polish pass
+   One accent (ink), one display face (Instrument Serif) for titles,
+   filters in the section heading row, larger desktop logo.
+   ============================================================ */
+
+.progressive-home .mf-project-index .mf-section-label h2 {
+  flex: 0 1 auto;
+}
+
+.progressive-home .mf-project-index .mf-section-label .mf-project-filters {
+  margin: 0 0 0 auto;
+}
+
+.progressive-home .mf-project-filters button.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.progressive-home .mf-project-row h3,
+.progressive-home .case-file h3 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.progressive-home .case-file span {
+  color: var(--paper);
+  opacity: 0.85;
+}
+
+.progressive-signals dt {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@media (min-width: 761px) {
+  .brand-logo {
+    height: 54px;
+    width: 196px;
+  }
+
+  .brand-logo img {
+    height: 54px;
+    width: 196px;
+  }
+}
