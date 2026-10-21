@@ -336,3 +336,29 @@
     font-size: clamp(48px, 15.625vw, 52px);
   }
 }
+
+/* Photo gallery under the project story: a loose three-column grid that keeps
+   each frame at its own proportion, so portrait and landscape shots sit together. */
+.project-detail-gallery {
+  display: grid;
+  gap: clamp(12px, 1.6vw, 20px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: clamp(40px, 6vw, 72px) clamp(18px, 4vw, 56px);
+  align-items: start;
+}
+
+.project-detail-gallery figure {
+  margin: 0;
+}
+
+.project-detail-gallery img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .project-detail-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

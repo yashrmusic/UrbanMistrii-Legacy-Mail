@@ -6307,3 +6307,50 @@ h2 {
     width: 196px;
   }
 }
+
+/* ============================================================
+   UI audit pass: readability, mobile stacking, step numbering
+   ============================================================ */
+
+/* Long paragraphs: keep lines near 64 characters for comfortable reading. */
+.progressive-home .mf-studio-copy p,
+.feature-list p,
+.media-kit p,
+.application-section p {
+  max-width: 64ch;
+}
+
+/* Small labels on project pages: darken to clear WCAG AA contrast (4.5:1). */
+.project-note span {
+  color: #5a5d57;
+}
+
+/* Two-column editorial rows stack to one column on phones, so body copy
+   is not squeezed into a narrow column beside the heading. */
+@media (max-width: 720px) {
+  .editorial-split,
+  .media-kit,
+  .application-section,
+  .feature-list article {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* "What happens next": numbered steps, centred to match the heading. */
+.wizard-steps-note ol {
+  counter-reset: step;
+  list-style: none;
+  margin: 10px auto 0;
+  max-width: 640px;
+  padding: 0;
+  text-align: center;
+}
+
+.wizard-steps-note li {
+  counter-increment: step;
+}
+
+.wizard-steps-note li::before {
+  content: counter(step) ". ";
+  font-weight: 700;
+}
