@@ -537,7 +537,9 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
   document.body.classList.add("has-mab");
   bar.innerHTML =
     '<a class="mab-primary" href="/start-project">Start a project</a>' +
-    '<a class="mab-whatsapp" href="https://wa.me/919953668560?text=Hello%20Urban%20Mistrii%2C%20I%20have%20a%20project%20enquiry." target="_blank" rel="noreferrer">WhatsApp</a>';
+    '<a class="mab-whatsapp" href="https://wa.me/919953668560?text=Hello%20Urban%20Mistrii%2C%20I%20have%20a%20project%20enquiry." target="_blank" rel="noreferrer">' +
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21l1.6-4.7A9 9 0 1 1 8 19.5L3 21z"/></svg>' +
+    '<span>WhatsApp</span></a>';
   document.body.appendChild(bar);
 })();
 

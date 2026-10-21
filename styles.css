@@ -6093,3 +6093,167 @@ h2 {
 .subscribe-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; max-width: 520px; }
 .subscribe-form input[type="email"] { flex: 1 1 240px; min-height: 48px; padding: 0 14px; font: inherit; }
 .subscribe-form button { min-height: 48px; padding: 0 22px; font: inherit; font-weight: 700; cursor: pointer; }
+
+/* ============================================================
+   Homepage design pass (2026-10-21)
+   Editorial serif section titles, cleaner hero stats, balanced hero
+   imagery, project rows with thumbnails, press list, and one CTA system.
+   Kept at the end of the file so it overrides the earlier .progressive-home rules.
+   ============================================================ */
+
+/* Hero: stats and press line */
+.progressive-home .progressive-signals dt {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.progressive-home .progressive-signals dd {
+  font-size: 13px;
+}
+
+.progressive-press {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 14px 0 0;
+  max-width: 420px;
+  order: 7;
+}
+
+/* Hero: balanced imagery, no dead zone under the feature */
+.progressive-home .progressive-feature img {
+  height: clamp(420px, 66svh, 620px);
+  max-height: none;
+  min-height: 0;
+}
+
+.progressive-home .progressive-feature-small {
+  align-self: end;
+  padding-top: 0;
+}
+
+.progressive-home .progressive-feature-small img {
+  height: clamp(240px, 36svh, 340px);
+  min-height: 0;
+}
+
+/* Section titles: serif display headings instead of tiny labels */
+.progressive-home .mf-section-label {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  justify-content: flex-start;
+  padding-top: 18px;
+}
+
+.progressive-home .mf-section-label h2 {
+  color: var(--ink);
+  flex: 1 1 100%;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(44px, 5.6vw, 84px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+/* Project index: larger thumbnails, category and location under the title */
+.progressive-home .mf-project-row {
+  align-items: center;
+  column-gap: clamp(20px, 3vw, 48px);
+  grid-template-areas:
+    "title media"
+    "meta media";
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 24vw, 340px);
+  min-height: 0;
+  padding: 26px 0;
+  row-gap: 10px;
+}
+
+.progressive-home .mf-project-row h3 {
+  grid-area: title;
+}
+
+.progressive-home .mf-project-row em {
+  align-self: start;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: normal;
+  grid-area: meta;
+}
+
+.progressive-home .mf-project-row img {
+  aspect-ratio: 4 / 3;
+  grid-area: media;
+  height: auto;
+  width: 100%;
+}
+
+/* Press: serif list with an external-link mark */
+.progressive-home .mf-press-names {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.progressive-home .mf-press-list a {
+  align-items: baseline;
+  display: flex;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(26px, 3.6vw, 52px);
+  font-weight: 400;
+  gap: 16px;
+  justify-content: space-between;
+  line-height: 1.05;
+  padding: 22px 0;
+}
+
+.progressive-home .mf-press-list a::after {
+  color: var(--muted);
+  content: "\2197";
+  flex: 0 0 auto;
+  font-family: Inter, "Inter Fallback", system-ui, sans-serif;
+  font-size: 0.5em;
+}
+
+/* Back-to-top sits above the mobile action bar instead of on top of it */
+@media (max-width: 767px) {
+  body.has-mab .back-to-top {
+    bottom: 72px;
+  }
+
+  .progressive-home .mf-project-row {
+    grid-template-areas:
+      "title"
+      "meta"
+      "media";
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px 0;
+  }
+
+  .progressive-home .mf-project-row h3 {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  .progressive-home .mf-section-label h2 {
+    font-size: clamp(44px, 13vw, 64px);
+  }
+}
+
+/* One CTA system: paper primary and outlined WhatsApp on the mobile bar,
+   matching the ink primary button used in the header. */
+.mobile-action-bar .mab-primary {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.mobile-action-bar .mab-whatsapp {
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--paper);
+  gap: 8px;
+}

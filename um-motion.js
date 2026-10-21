@@ -12,7 +12,6 @@
   var h1 = document.querySelector(".progressive-hero-copy h1");
   if (h1 && !reduced) {
     var words = h1.textContent.trim().split(/\s+/);
-    var i = 0;
     h1.setAttribute("aria-label", h1.textContent.trim());
     h1.textContent = "";
     words.forEach(function (word, wi) {
@@ -22,7 +21,8 @@
       word.split("").forEach(function (ch) {
         var s = document.createElement("span");
         s.className = "lx-letter";
-        s.style.setProperty("--i", i++);
+        /* Stagger per word, not per letter: letters in one word rise together. */
+        s.style.setProperty("--i", wi);
         s.textContent = ch;
         w.appendChild(s);
       });
