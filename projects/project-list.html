@@ -45,10 +45,21 @@
       .pl-empty { margin: 1.25rem 0 0; color: var(--muted); font-size: 17px; }
       .pl-hidden { display: none !important; }
       @media (max-width: 767px) { .pl-search { margin-left: 0; max-width: none; } }
+      .project-list-page { background: var(--paper); color: var(--ink); }
+      .project-list-page .project-detail-hero { background: transparent; color: var(--ink); }
+      .project-list-page .project-detail-heading .section-kicker { color: var(--clay); }
+      .project-list-page .project-detail-facts,
+      .project-list-page .project-detail-facts div { border-color: var(--line); }
+      .project-list-page .project-detail-facts dt { color: var(--muted); }
+      .pl-index { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 4vw, 56px); border-top: 1px solid var(--line); }
+      .pl-index li { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+      .pl-index-name { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; color: var(--ink); }
+      .pl-index-meta { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+      @media (max-width: 720px) { .pl-index { grid-template-columns: 1fr; } }
     </style>
       <script>document.documentElement.classList.add("js");</script>
   </head>
-  <body class="project-detail-page">
+  <body class="project-detail-page project-list-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header" data-header>
       <div class="header-bar">
@@ -284,710 +295,132 @@
 
       <section class="published-case-band project-list-band" data-pl-group>
         <h2 class="pl-group-title">Residences & Farmhouses</h2>
-        <div class="published-list published-list-wide">
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence aligarh / residential">
-            <div>
-              <span>Aligarh / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence haldwani / residential">
-            <div>
-              <span>Haldwani / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence defence colony, new delhi / residential">
-            <div>
-              <span>Defence Colony, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence new friends colony, new delhi / residential">
-            <div>
-              <span>New Friends Colony, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence gk2, new delhi / residential">
-            <div>
-              <span>GK2, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence safdarjung, new delhi / residential">
-            <div>
-              <span>Safdarjung, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence punjabi bagh, new delhi / residential">
-            <div>
-              <span>Punjabi Bagh, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence vasant vihar, new delhi / residential">
-            <div>
-              <span>Vasant Vihar, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence dlf phase 2, gurugram / residential">
-            <div>
-              <span>DLF Phase 2, Gurugram / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence shivaji park, new delhi / residential">
-            <div>
-              <span>Shivaji Park, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence greater kailash, new delhi / residential">
-            <div>
-              <span>Greater Kailash, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence australia / residential">
-            <div>
-              <span>Australia / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="farmhouse bijwasan, new delhi / farmhouse">
-            <div>
-              <span>Bijwasan, New Delhi / Farmhouse</span>
-              <h3>Farmhouse</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence dlf, gurugram / residential">
-            <div>
-              <span>DLF, Gurugram / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence nehru enclave, new delhi / residential">
-            <div>
-              <span>Nehru Enclave, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="villa rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Villa</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="villa rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Villa</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence goa / residential">
-            <div>
-              <span>Goa / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence vasant kunj, new delhi / residential">
-            <div>
-              <span>Vasant Kunj, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence dwarka, new delhi / residential">
-            <div>
-              <span>Dwarka, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence sector 104, noida / residential">
-            <div>
-              <span>Sector 104, Noida / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="townhouse noida / residential">
-            <div>
-              <span>Noida / Residential</span>
-              <h3>Townhouse</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence kailash hills, new delhi / residential">
-            <div>
-              <span>Kailash Hills, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence patparganj, delhi / residential">
-            <div>
-              <span>Patparganj, Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence kailash hills, new delhi / residential">
-            <div>
-              <span>Kailash Hills, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence rudrapur / residential">
-            <div>
-              <span>Rudrapur / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence aligarh / residential">
-            <div>
-              <span>Aligarh / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence sainik farms, new delhi / residential">
-            <div>
-              <span>Sainik Farms, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="terrace residence sushant lok, gurugram / residential">
-            <div>
-              <span>Sushant Lok, Gurugram / Residential</span>
-              <h3>Terrace Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence anupam apartments, new delhi / residential">
-            <div>
-              <span>Anupam Apartments, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence anupam apartments, new delhi / residential">
-            <div>
-              <span>Anupam Apartments, New Delhi / Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="private residence residential">
-            <div>
-              <span>Residential</span>
-              <h3>Private Residence</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="farmhouse farmhouse">
-            <div>
-              <span>Farmhouse</span>
-              <h3>Farmhouse</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="farmhouse babatpur, varanasi / farmhouse">
-            <div>
-              <span>Babatpur, Varanasi / Farmhouse</span>
-              <h3>Farmhouse</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="farmhouse tappal / farmhouse">
-            <div>
-              <span>Tappal / Farmhouse</span>
-              <h3>Farmhouse</h3>
-            </div>
-          </article>
-          <article data-category="residential" data-search="house for one patparganj, delhi / residence">
-            <div>
-              <span>Patparganj, Delhi / Residence</span>
-              <h3>House for One</h3>
-            </div>
-          </article>
-        </div>
+        <ol class="pl-index">
+          <li data-category="residential" data-search="private residence aligarh / residential"><span class="pl-index-name">Aligarh</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence haldwani / residential"><span class="pl-index-name">Haldwani</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence defence colony, new delhi / residential"><span class="pl-index-name">Defence Colony, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence new friends colony, new delhi / residential"><span class="pl-index-name">New Friends Colony, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence gk2, new delhi / residential"><span class="pl-index-name">GK2, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence safdarjung, new delhi / residential"><span class="pl-index-name">Safdarjung, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence punjabi bagh, new delhi / residential"><span class="pl-index-name">Punjabi Bagh, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence vasant vihar, new delhi / residential"><span class="pl-index-name">Vasant Vihar, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence dlf phase 2, gurugram / residential"><span class="pl-index-name">DLF Phase 2, Gurugram</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence shivaji park, new delhi / residential"><span class="pl-index-name">Shivaji Park, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence greater kailash, new delhi / residential"><span class="pl-index-name">Greater Kailash, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence australia / residential"><span class="pl-index-name">Australia</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="farmhouse bijwasan, new delhi / farmhouse"><span class="pl-index-name">Bijwasan, New Delhi</span><span class="pl-index-meta">Farmhouse</span></li>
+          <li data-category="residential" data-search="private residence dlf, gurugram / residential"><span class="pl-index-name">DLF, Gurugram</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence nehru enclave, new delhi / residential"><span class="pl-index-name">Nehru Enclave, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="villa rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Villa</span></li>
+          <li data-category="residential" data-search="private residence rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="villa rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Villa</span></li>
+          <li data-category="residential" data-search="private residence rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence goa / residential"><span class="pl-index-name">Goa</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence vasant kunj, new delhi / residential"><span class="pl-index-name">Vasant Kunj, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence dwarka, new delhi / residential"><span class="pl-index-name">Dwarka, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence sector 104, noida / residential"><span class="pl-index-name">Sector 104, Noida</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="townhouse noida / residential"><span class="pl-index-name">Noida</span><span class="pl-index-meta">Townhouse</span></li>
+          <li data-category="residential" data-search="private residence kailash hills, new delhi / residential"><span class="pl-index-name">Kailash Hills, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence patparganj, delhi / residential"><span class="pl-index-name">Patparganj, Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence kailash hills, new delhi / residential"><span class="pl-index-name">Kailash Hills, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence rudrapur / residential"><span class="pl-index-name">Rudrapur</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence aligarh / residential"><span class="pl-index-name">Aligarh</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence sainik farms, new delhi / residential"><span class="pl-index-name">Sainik Farms, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="terrace residence sushant lok, gurugram / residential"><span class="pl-index-name">Sushant Lok, Gurugram</span><span class="pl-index-meta">Terrace Residence</span></li>
+          <li data-category="residential" data-search="private residence anupam apartments, new delhi / residential"><span class="pl-index-name">Anupam Apartments, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="private residence anupam apartments, new delhi / residential"><span class="pl-index-name">Anupam Apartments, New Delhi</span><span class="pl-index-meta">Private Residence</span></li>
+          <li data-category="residential" data-search="farmhouse babatpur, varanasi / farmhouse"><span class="pl-index-name">Babatpur, Varanasi</span><span class="pl-index-meta">Farmhouse</span></li>
+          <li data-category="residential" data-search="farmhouse tappal / farmhouse"><span class="pl-index-name">Tappal</span><span class="pl-index-meta">Farmhouse</span></li>
+          <li data-category="residential" data-search="house for one patparganj, delhi / residence"><span class="pl-index-name">Patparganj, Delhi</span><span class="pl-index-meta">House for One</span></li>
+          <li data-category="residential" data-search="private residence residential farmhouse farmhouse private client"><span class="pl-index-name">14 further homes</span><span class="pl-index-meta">Private clients, locations withheld</span></li>
+        </ol>
       </section>
 
       <section class="published-case-band project-list-band" data-pl-group>
         <h2 class="pl-group-title">Cafés, Restaurants & Hospitality</h2>
-        <div class="published-list published-list-wide">
-          <article data-category="hospitality" data-search="echoes kailash colony, new delhi / café">
-            <div>
-              <span>Kailash Colony, New Delhi / Café</span>
-              <h3>Echoes</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="echoes dwarka, new delhi / café">
-            <div>
-              <span>Dwarka, New Delhi / Café</span>
-              <h3>Echoes</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="echoes hauz khas, new delhi / café">
-            <div>
-              <span>Hauz Khas, New Delhi / Café</span>
-              <h3>Echoes</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="sangeeta noida / restaurant">
-            <div>
-              <span>Noida / Restaurant</span>
-              <h3>Sangeeta</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="the box morjim, goa / café">
-            <div>
-              <span>Morjim, Goa / Café</span>
-              <h3>The Box</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="dravidam noida / café">
-            <div>
-              <span>Noida / Café</span>
-              <h3>Dravidam</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="skyro bengaluru / café">
-            <div>
-              <span>Bengaluru / Café</span>
-              <h3>Skyro</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="food workshop ghaziabad / restaurant">
-            <div>
-              <span>Ghaziabad / Restaurant</span>
-              <h3>Food Workshop</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="food workshop club ghaziabad / club &amp; restaurant">
-            <div>
-              <span>Ghaziabad / Club & Restaurant</span>
-              <h3>Food Workshop Club</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="masala mandi restaurant">
-            <div>
-              <span>Restaurant</span>
-              <h3>Masala Mandi</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="qubitos rajouri garden, new delhi / café &amp; lounge">
-            <div>
-              <span>Rajouri Garden, New Delhi / Café & Lounge</span>
-              <h3>Qubitos</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="south indian café calicut / restaurant">
-            <div>
-              <span>Calicut / Restaurant</span>
-              <h3>South Indian Café</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="south indian café saharanpur / restaurant">
-            <div>
-              <span>Saharanpur / Restaurant</span>
-              <h3>South Indian Café</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="café half seen café">
-            <div>
-              <span>Café</span>
-              <h3>Café Half Seen</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="blanc and churn café">
-            <div>
-              <span>Café</span>
-              <h3>Blanc and Churn</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="f&amp;b outlet — epicuria nehru place, new delhi / food court outlet">
-            <div>
-              <span>Nehru Place, New Delhi / Food Court Outlet</span>
-              <h3>F&B Outlet — Epicuria</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="hotel shubham hotel">
-            <div>
-              <span>Hotel</span>
-              <h3>Hotel Shubham</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="banquet hall mussoorie / banquet hall">
-            <div>
-              <span>Mussoorie / Banquet Hall</span>
-              <h3>Banquet Hall</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="indian dragon varanasi / restaurant">
-            <div>
-              <span>Varanasi / Restaurant</span>
-              <h3>Indian Dragon</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="big tree café café">
-            <div>
-              <span>Café</span>
-              <h3>Big Tree Café</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="tree café café">
-            <div>
-              <span>Café</span>
-              <h3>Tree Café</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="romeo lane dehradun / café">
-            <div>
-              <span>Dehradun / Café</span>
-              <h3>Romeo Lane</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="cirqle dehradun / café &amp; lounge">
-            <div>
-              <span>Dehradun / Café & Lounge</span>
-              <h3>Cirqle</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="suave café">
-            <div>
-              <span>Café</span>
-              <h3>Suave</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="unwind ansal plaza, new delhi / café &amp; lounge">
-            <div>
-              <span>Ansal Plaza, New Delhi / Café & Lounge</span>
-              <h3>Unwind</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="65th avenue café">
-            <div>
-              <span>Café</span>
-              <h3>65th Avenue</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="mandi valley restaurant">
-            <div>
-              <span>Restaurant</span>
-              <h3>Mandi Valley</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="resort aligarh / hospitality">
-            <div>
-              <span>Aligarh / Hospitality</span>
-              <h3>Resort</h3>
-            </div>
-          </article>
-          <article data-category="hospitality" data-search="house of goth goa / hospitality concept">
-            <div>
-              <span>Goa / Hospitality Concept</span>
-              <h3>House of Goth</h3>
-            </div>
-          </article>
-        </div>
+        <ol class="pl-index">
+          <li data-category="hospitality" data-search="echoes kailash colony, new delhi / café"><span class="pl-index-name">Echoes</span><span class="pl-index-meta">Kailash Colony, New Delhi · Café</span></li>
+          <li data-category="hospitality" data-search="echoes dwarka, new delhi / café"><span class="pl-index-name">Echoes</span><span class="pl-index-meta">Dwarka, New Delhi · Café</span></li>
+          <li data-category="hospitality" data-search="echoes hauz khas, new delhi / café"><span class="pl-index-name">Echoes</span><span class="pl-index-meta">Hauz Khas, New Delhi · Café</span></li>
+          <li data-category="hospitality" data-search="sangeeta noida / restaurant"><span class="pl-index-name">Sangeeta</span><span class="pl-index-meta">Noida · Restaurant</span></li>
+          <li data-category="hospitality" data-search="the box morjim, goa / café"><span class="pl-index-name">The Box</span><span class="pl-index-meta">Morjim, Goa · Café</span></li>
+          <li data-category="hospitality" data-search="dravidam noida / café"><span class="pl-index-name">Dravidam</span><span class="pl-index-meta">Noida · Café</span></li>
+          <li data-category="hospitality" data-search="skyro bengaluru / café"><span class="pl-index-name">Skyro</span><span class="pl-index-meta">Bengaluru · Café</span></li>
+          <li data-category="hospitality" data-search="food workshop ghaziabad / restaurant"><span class="pl-index-name">Food Workshop</span><span class="pl-index-meta">Ghaziabad · Restaurant</span></li>
+          <li data-category="hospitality" data-search="food workshop club ghaziabad / club &amp; restaurant"><span class="pl-index-name">Food Workshop Club</span><span class="pl-index-meta">Ghaziabad · Club & Restaurant</span></li>
+          <li data-category="hospitality" data-search="masala mandi restaurant"><span class="pl-index-name">Masala Mandi</span><span class="pl-index-meta">Restaurant</span></li>
+          <li data-category="hospitality" data-search="qubitos rajouri garden, new delhi / café &amp; lounge"><span class="pl-index-name">Qubitos</span><span class="pl-index-meta">Rajouri Garden, New Delhi · Café & Lounge</span></li>
+          <li data-category="hospitality" data-search="south indian café calicut / restaurant"><span class="pl-index-name">South Indian Café</span><span class="pl-index-meta">Calicut · Restaurant</span></li>
+          <li data-category="hospitality" data-search="south indian café saharanpur / restaurant"><span class="pl-index-name">South Indian Café</span><span class="pl-index-meta">Saharanpur · Restaurant</span></li>
+          <li data-category="hospitality" data-search="café half seen café"><span class="pl-index-name">Café Half Seen</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="blanc and churn café"><span class="pl-index-name">Blanc and Churn</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="f&amp;b outlet — epicuria nehru place, new delhi / food court outlet"><span class="pl-index-name">F&B Outlet — Epicuria</span><span class="pl-index-meta">Nehru Place, New Delhi · Food Court Outlet</span></li>
+          <li data-category="hospitality" data-search="hotel shubham hotel"><span class="pl-index-name">Hotel Shubham</span><span class="pl-index-meta">Hotel</span></li>
+          <li data-category="hospitality" data-search="banquet hall mussoorie / banquet hall"><span class="pl-index-name">Banquet Hall</span><span class="pl-index-meta">Mussoorie · Banquet Hall</span></li>
+          <li data-category="hospitality" data-search="indian dragon varanasi / restaurant"><span class="pl-index-name">Indian Dragon</span><span class="pl-index-meta">Varanasi · Restaurant</span></li>
+          <li data-category="hospitality" data-search="big tree café café"><span class="pl-index-name">Big Tree Café</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="tree café café"><span class="pl-index-name">Tree Café</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="romeo lane dehradun / café"><span class="pl-index-name">Romeo Lane</span><span class="pl-index-meta">Dehradun · Café</span></li>
+          <li data-category="hospitality" data-search="cirqle dehradun / café &amp; lounge"><span class="pl-index-name">Cirqle</span><span class="pl-index-meta">Dehradun · Café & Lounge</span></li>
+          <li data-category="hospitality" data-search="suave café"><span class="pl-index-name">Suave</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="unwind ansal plaza, new delhi / café &amp; lounge"><span class="pl-index-name">Unwind</span><span class="pl-index-meta">Ansal Plaza, New Delhi · Café & Lounge</span></li>
+          <li data-category="hospitality" data-search="65th avenue café"><span class="pl-index-name">65th Avenue</span><span class="pl-index-meta">Café</span></li>
+          <li data-category="hospitality" data-search="mandi valley restaurant"><span class="pl-index-name">Mandi Valley</span><span class="pl-index-meta">Restaurant</span></li>
+          <li data-category="hospitality" data-search="resort aligarh / hospitality"><span class="pl-index-name">Resort</span><span class="pl-index-meta">Aligarh · Hospitality</span></li>
+          <li data-category="hospitality" data-search="house of goth goa / hospitality concept"><span class="pl-index-name">House of Goth</span><span class="pl-index-meta">Goa · Hospitality Concept</span></li>
+        </ol>
       </section>
 
       <section class="published-case-band project-list-band" data-pl-group>
         <h2 class="pl-group-title">Healthcare</h2>
-        <div class="published-list published-list-wide">
-          <article data-category="healthcare" data-search="positive pediatrics gurugram / paediatric clinic">
-            <div>
-              <span>Gurugram / Paediatric Clinic</span>
-              <h3>Positive Pediatrics</h3>
-            </div>
-          </article>
-          <article data-category="healthcare" data-search="clinic vikaspuri, new delhi / healthcare">
-            <div>
-              <span>Vikaspuri, New Delhi / Healthcare</span>
-              <h3>Clinic</h3>
-            </div>
-          </article>
-          <article data-category="healthcare" data-search="dental clinic dental clinic">
-            <div>
-              <span>Dental Clinic</span>
-              <h3>Dental Clinic</h3>
-            </div>
-          </article>
-        </div>
+        <ol class="pl-index">
+          <li data-category="healthcare" data-search="positive pediatrics gurugram / paediatric clinic"><span class="pl-index-name">Positive Pediatrics</span><span class="pl-index-meta">Gurugram · Paediatric Clinic</span></li>
+          <li data-category="healthcare" data-search="clinic vikaspuri, new delhi / healthcare"><span class="pl-index-name">Clinic</span><span class="pl-index-meta">Vikaspuri, New Delhi · Healthcare</span></li>
+          <li data-category="healthcare" data-search="dental clinic dental clinic"><span class="pl-index-name">Dental Clinic</span><span class="pl-index-meta">Dental Clinic</span></li>
+        </ol>
       </section>
 
       <section class="published-case-band project-list-band" data-pl-group>
         <h2 class="pl-group-title">Retail, Workplaces & Commercial</h2>
-        <div class="published-list published-list-wide">
-          <article data-category="workplace" data-search="flaunt by duty free udaipur / duty-free retail">
-            <div>
-              <span>Udaipur / Duty-Free Retail</span>
-              <h3>Flaunt by Duty Free</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="dolce by duty free duty-free retail">
-            <div>
-              <span>Duty-Free Retail</span>
-              <h3>Dolce by Duty Free</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="duty free noida / duty-free retail">
-            <div>
-              <span>Noida / Duty-Free Retail</span>
-              <h3>Duty Free</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="duty free ghaziabad / duty-free retail">
-            <div>
-              <span>Ghaziabad / Duty-Free Retail</span>
-              <h3>Duty Free</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="dutyfree &amp; oscar duty-free retail">
-            <div>
-              <span>Duty-Free Retail</span>
-              <h3>Dutyfree & Oscar</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="sunny overseas exhibition booth">
-            <div>
-              <span>Exhibition Booth</span>
-              <h3>Sunny Overseas</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="marwar couture fashion retail">
-            <div>
-              <span>Fashion Retail</span>
-              <h3>Marwar Couture</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="furnish india furniture showroom">
-            <div>
-              <span>Furniture Showroom</span>
-              <h3>Furnish India</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="berlin mall retail mall">
-            <div>
-              <span>Retail Mall</span>
-              <h3>Berlin Mall</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="emaya mall retail mall">
-            <div>
-              <span>Retail Mall</span>
-              <h3>Emaya Mall</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="fine india saket, new delhi / retail">
-            <div>
-              <span>Saket, New Delhi / Retail</span>
-              <h3>Fine India</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="skyrider entertainment centre">
-            <div>
-              <span>Entertainment Centre</span>
-              <h3>Skyrider</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="bsl consulting office">
-            <div>
-              <span>Office</span>
-              <h3>BSL Consulting</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="corporate office workplace">
-            <div>
-              <span>Workplace</span>
-              <h3>Corporate Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="corporate office workplace">
-            <div>
-              <span>Workplace</span>
-              <h3>Corporate Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="corporate office gurugram / workplace">
-            <div>
-              <span>Gurugram / Workplace</span>
-              <h3>Corporate Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="office vasant vihar, new delhi / workplace">
-            <div>
-              <span>Vasant Vihar, New Delhi / Workplace</span>
-              <h3>Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="rwa office workplace">
-            <div>
-              <span>Workplace</span>
-              <h3>RWA Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="urban mistrii studio office saket, new delhi / studio office">
-            <div>
-              <span>Saket, New Delhi / Studio Office</span>
-              <h3>Urban Mistrii Studio Office</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="logistics park industrial">
-            <div>
-              <span>Industrial</span>
-              <h3>Logistics Park</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="industrial facility industrial">
-            <div>
-              <span>Industrial</span>
-              <h3>Industrial Facility</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="fairytales paschim vihar, new delhi / children&#x27;s concept store">
-            <div>
-              <span>Paschim Vihar, New Delhi / Children's Concept Store</span>
-              <h3>Fairytales</h3>
-            </div>
-          </article>
-          <article data-category="workplace" data-search="firozabad highway complex firozabad / commercial complex">
-            <div>
-              <span>Firozabad / Commercial Complex</span>
-              <h3>Firozabad Highway Complex</h3>
-            </div>
-          </article>
-        </div>
+        <ol class="pl-index">
+          <li data-category="workplace" data-search="flaunt by duty free udaipur / duty-free retail"><span class="pl-index-name">Flaunt by Duty Free</span><span class="pl-index-meta">Udaipur · Duty-Free Retail</span></li>
+          <li data-category="workplace" data-search="dolce by duty free duty-free retail"><span class="pl-index-name">Dolce by Duty Free</span><span class="pl-index-meta">Duty-Free Retail</span></li>
+          <li data-category="workplace" data-search="duty free noida / duty-free retail"><span class="pl-index-name">Duty Free</span><span class="pl-index-meta">Noida · Duty-Free Retail</span></li>
+          <li data-category="workplace" data-search="duty free ghaziabad / duty-free retail"><span class="pl-index-name">Duty Free</span><span class="pl-index-meta">Ghaziabad · Duty-Free Retail</span></li>
+          <li data-category="workplace" data-search="dutyfree &amp; oscar duty-free retail"><span class="pl-index-name">Dutyfree & Oscar</span><span class="pl-index-meta">Duty-Free Retail</span></li>
+          <li data-category="workplace" data-search="sunny overseas exhibition booth"><span class="pl-index-name">Sunny Overseas</span><span class="pl-index-meta">Exhibition Booth</span></li>
+          <li data-category="workplace" data-search="marwar couture fashion retail"><span class="pl-index-name">Marwar Couture</span><span class="pl-index-meta">Fashion Retail</span></li>
+          <li data-category="workplace" data-search="furnish india furniture showroom"><span class="pl-index-name">Furnish India</span><span class="pl-index-meta">Furniture Showroom</span></li>
+          <li data-category="workplace" data-search="berlin mall retail mall"><span class="pl-index-name">Berlin Mall</span><span class="pl-index-meta">Retail Mall</span></li>
+          <li data-category="workplace" data-search="emaya mall retail mall"><span class="pl-index-name">Emaya Mall</span><span class="pl-index-meta">Retail Mall</span></li>
+          <li data-category="workplace" data-search="fine india saket, new delhi / retail"><span class="pl-index-name">Fine India</span><span class="pl-index-meta">Saket, New Delhi · Retail</span></li>
+          <li data-category="workplace" data-search="skyrider entertainment centre"><span class="pl-index-name">Skyrider</span><span class="pl-index-meta">Entertainment Centre</span></li>
+          <li data-category="workplace" data-search="bsl consulting office"><span class="pl-index-name">BSL Consulting</span><span class="pl-index-meta">Office</span></li>
+          <li data-category="workplace" data-search="corporate office workplace"><span class="pl-index-name">Corporate Office</span><span class="pl-index-meta">Workplace</span></li>
+          <li data-category="workplace" data-search="corporate office workplace"><span class="pl-index-name">Corporate Office</span><span class="pl-index-meta">Workplace</span></li>
+          <li data-category="workplace" data-search="corporate office gurugram / workplace"><span class="pl-index-name">Corporate Office</span><span class="pl-index-meta">Gurugram · Workplace</span></li>
+          <li data-category="workplace" data-search="office vasant vihar, new delhi / workplace"><span class="pl-index-name">Office</span><span class="pl-index-meta">Vasant Vihar, New Delhi · Workplace</span></li>
+          <li data-category="workplace" data-search="rwa office workplace"><span class="pl-index-name">RWA Office</span><span class="pl-index-meta">Workplace</span></li>
+          <li data-category="workplace" data-search="urban mistrii studio office saket, new delhi / studio office"><span class="pl-index-name">Urban Mistrii Studio Office</span><span class="pl-index-meta">Saket, New Delhi · Studio Office</span></li>
+          <li data-category="workplace" data-search="logistics park industrial"><span class="pl-index-name">Logistics Park</span><span class="pl-index-meta">Industrial</span></li>
+          <li data-category="workplace" data-search="industrial facility industrial"><span class="pl-index-name">Industrial Facility</span><span class="pl-index-meta">Industrial</span></li>
+          <li data-category="workplace" data-search="fairytales paschim vihar, new delhi / children&#x27;s concept store"><span class="pl-index-name">Fairytales</span><span class="pl-index-meta">Paschim Vihar, New Delhi · Children's Concept Store</span></li>
+          <li data-category="workplace" data-search="firozabad highway complex firozabad / commercial complex"><span class="pl-index-name">Firozabad Highway Complex</span><span class="pl-index-meta">Firozabad · Commercial Complex</span></li>
+        </ol>
       </section>
 
       <section class="published-case-band project-list-band" data-pl-group>
         <h2 class="pl-group-title">More Selected Work</h2>
-        <div class="published-list published-list-wide">
-          <article data-category="more" data-search="residential housing firozabad / group housing">
-            <div>
-              <span>Firozabad / Group Housing</span>
-              <h3>Residential Housing</h3>
-            </div>
-          </article>
-          <article data-category="more" data-search="himalayan sports centre rudrapur / sports facility">
-            <div>
-              <span>Rudrapur / Sports Facility</span>
-              <h3>Himalayan Sports Centre</h3>
-            </div>
-          </article>
-          <article data-category="more" data-search="mixed-use development mixed use">
-            <div>
-              <span>Mixed Use</span>
-              <h3>Mixed-Use Development</h3>
-            </div>
-          </article>
-          <article data-category="more" data-search="clubhouse amenity">
-            <div>
-              <span>Amenity</span>
-              <h3>Clubhouse</h3>
-            </div>
-          </article>
-          <article data-category="more" data-search="landscape — public park landscape">
-            <div>
-              <span>Landscape</span>
-              <h3>Landscape — Public Park</h3>
-            </div>
-          </article>
-          <article data-category="more" data-search="residential development residential">
-            <div>
-              <span>Residential</span>
-              <h3>Residential Development</h3>
-            </div>
-          </article>
-        </div>
+        <ol class="pl-index">
+          <li data-category="more" data-search="residential housing firozabad / group housing"><span class="pl-index-name">Residential Housing</span><span class="pl-index-meta">Firozabad · Group Housing</span></li>
+          <li data-category="more" data-search="himalayan sports centre rudrapur / sports facility"><span class="pl-index-name">Himalayan Sports Centre</span><span class="pl-index-meta">Rudrapur · Sports Facility</span></li>
+          <li data-category="more" data-search="mixed-use development mixed use"><span class="pl-index-name">Mixed-Use Development</span><span class="pl-index-meta">Mixed Use</span></li>
+          <li data-category="more" data-search="clubhouse amenity"><span class="pl-index-name">Clubhouse</span><span class="pl-index-meta">Amenity</span></li>
+          <li data-category="more" data-search="landscape — public park landscape"><span class="pl-index-name">Landscape — Public Park</span><span class="pl-index-meta">Landscape</span></li>
+          <li data-category="more" data-search="residential development residential"><span class="pl-index-name">Residential Development</span><span class="pl-index-meta">Residential</span></li>
+        </ol>
       </section>
 
       <section class="project-detail-related"><div class="project-related-inner"><p class="section-kicker">Go deeper</p><div class="project-related-links"><a href="/projects/case-studies"><strong>Case Studies</strong><span>Published projects with photography</span></a><a href="/start-project"><strong>Start a Project</strong><span>Tell us about your site or brief</span></a></div></div></section>
@@ -1016,7 +449,6 @@
         <a href="/contact">Contact</a>
         <a href="/start-project">Start a project</a>
       </nav>
-      <p class="footer-response">We reply to every serious enquiry within 2 working days.</p>
       <div class="footer-meta">
         <a href="mailto:mail@urbanmistrii.com">mail@urbanmistrii.com</a>
         <a href="tel:+919953668560">+91 99536 68560</a>
