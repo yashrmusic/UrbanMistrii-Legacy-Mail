@@ -255,6 +255,14 @@ body {
   width: 100%;
 }
 
+.project-media img.crop-ivory {
+  object-position: center 62%;
+}
+
+.project-media img.crop-metro {
+  object-position: center 68%;
+}
+
 .project-copy {
   padding: 24px;
 }

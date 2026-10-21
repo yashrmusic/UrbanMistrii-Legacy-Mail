@@ -1658,6 +1658,27 @@ a.project-button {
   min-width: 0;
 }
 
+.media-kit-figure {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  margin: 0;
+  overflow: hidden;
+}
+
+.media-kit-figure img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.media-kit-figure figcaption {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 12px 16px 16px;
+}
+
 .feature-list {
   border-top: 1px solid var(--line);
 }
@@ -3455,6 +3476,10 @@ html.js .mf-testimonial.is-visible {
 .mf-testimonial footer span {
   color: var(--muted);
   font-size: 12px;
+}
+
+.case-contact .mf-testimonial footer span {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .mf-testimonial-dots {
@@ -6014,7 +6039,7 @@ h2 {
 .wizard-type-hint { font-size: 14px; opacity: 0.85; margin: 2px 0 0; }
 .wizard-progress { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
 .wizard-track { height: 4px; background: rgba(127, 127, 127, 0.3); margin-bottom: 22px; }
-.wizard-fill { height: 100%; background: #b07d4f; transition: width 0.25s ease; }
+.wizard-fill { width: 25%; height: 100%; background: #b07d4f; transition: width 0.25s ease; }
 .wizard-nav { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
 .wizard-nav button {
   min-height: 48px;

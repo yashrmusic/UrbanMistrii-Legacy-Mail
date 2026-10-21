@@ -100,8 +100,20 @@ function dataAttributes(config, names) {
 const observabilityConfig = readObservabilityConfig();
 const analyticsConfig = observabilityConfig.analytics || {};
 const speedInsightsConfig = observabilityConfig.speedInsights || {};
-const analyticsScriptSrc = analyticsConfig.scriptSrc || "/_vercel/insights/script.js";
-const speedInsightsScriptSrc = speedInsightsConfig.scriptSrc || "/_vercel/speed-insights/script.js";
+
+/* Vercel injects observability scriptSrc values without a leading slash
+   (e.g. "3a2d.../script.js"). Relative URLs break on nested pages such as
+   /projects/<slug> and /journal/<slug>, where they resolve one directory too
+   deep and return 404. Normalise every local path to root-relative. */
+const rootRelative = (url) =>
+  /^(?:[a-z]+:)?\/\//i.test(url) || url.startsWith("/") ? url : `/${url}`;
+
+const analyticsScriptSrc = rootRelative(
+  analyticsConfig.scriptSrc || "/_vercel/insights/script.js"
+);
+const speedInsightsScriptSrc = rootRelative(
+  speedInsightsConfig.scriptSrc || "/_vercel/speed-insights/script.js"
+);
 const analyticsAttributes = dataAttributes(analyticsConfig, ["dsn", "endpoint", "viewEndpoint", "eventEndpoint", "sessionEndpoint"]);
 const speedInsightsAttributes = dataAttributes(speedInsightsConfig, ["dsn", "endpoint"]);
 
